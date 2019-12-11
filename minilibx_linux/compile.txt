@@ -1,0 +1,52 @@
+./configure clean
+X11 include dir : /usr/include
+lib_Linux generation
+Now make it clean.
+make[1]: 디렉터리 '/home/wpark/my_docs/rtv1/minilibx' 들어감
+rm -f mlx_init.o mlx_new_window.o mlx_pixel_put.o mlx_loop.o mlx_mouse_hook.o mlx_key_hook.o mlx_expose_hook.o mlx_loop_hook.o mlx_int_anti_resize_win.o mlx_int_do_nothing.o mlx_int_wait_first_expose.o mlx_int_get_visual.o mlx_flush_event.o mlx_string_put.o mlx_new_image.o mlx_get_data_addr.o mlx_put_image_to_window.o mlx_get_color_value.o mlx_clear_window.o mlx_xpm.o mlx_int_str_to_wordtab.o mlx_destroy_window.o mlx_int_param_event.o mlx_int_set_win_event_mask.o mlx_hook.o mlx_rgb.o mlx_destroy_image.o libmlx.a *~ core *.core
+make[1]: 디렉터리 '/home/wpark/my_docs/rtv1/minilibx' 나감
+make[1]: 디렉터리 '/home/wpark/my_docs/rtv1/minilibx/test' 들어감
+rm -f mlx-test main.o *~ core *.core
+make[1]: 디렉터리 '/home/wpark/my_docs/rtv1/minilibx/test' 나감
+./configure
+X11 include dir : /usr/include
+lib_Linux generation
+Now make it.
+make[1]: 디렉터리 '/home/wpark/my_docs/rtv1/minilibx' 들어감
+gcc -O3 -I/usr/include   -c -o mlx_init.o mlx_init.c
+gcc -O3 -I/usr/include   -c -o mlx_new_window.o mlx_new_window.c
+gcc -O3 -I/usr/include   -c -o mlx_pixel_put.o mlx_pixel_put.c
+gcc -O3 -I/usr/include   -c -o mlx_loop.o mlx_loop.c
+gcc -O3 -I/usr/include   -c -o mlx_mouse_hook.o mlx_mouse_hook.c
+gcc -O3 -I/usr/include   -c -o mlx_key_hook.o mlx_key_hook.c
+gcc -O3 -I/usr/include   -c -o mlx_expose_hook.o mlx_expose_hook.c
+gcc -O3 -I/usr/include   -c -o mlx_loop_hook.o mlx_loop_hook.c
+gcc -O3 -I/usr/include   -c -o mlx_int_anti_resize_win.o mlx_int_anti_resize_win.c
+gcc -O3 -I/usr/include   -c -o mlx_int_do_nothing.o mlx_int_do_nothing.c
+gcc -O3 -I/usr/include   -c -o mlx_int_wait_first_expose.o mlx_int_wait_first_expose.c
+gcc -O3 -I/usr/include   -c -o mlx_int_get_visual.o mlx_int_get_visual.c
+gcc -O3 -I/usr/include   -c -o mlx_flush_event.o mlx_flush_event.c
+gcc -O3 -I/usr/include   -c -o mlx_string_put.o mlx_string_put.c
+gcc -O3 -I/usr/include   -c -o mlx_new_image.o mlx_new_image.c
+gcc -O3 -I/usr/include   -c -o mlx_get_data_addr.o mlx_get_data_addr.c
+gcc -O3 -I/usr/include   -c -o mlx_put_image_to_window.o mlx_put_image_to_window.c
+gcc -O3 -I/usr/include   -c -o mlx_get_color_value.o mlx_get_color_value.c
+gcc -O3 -I/usr/include   -c -o mlx_clear_window.o mlx_clear_window.c
+gcc -O3 -I/usr/include   -c -o mlx_xpm.o mlx_xpm.c
+gcc -O3 -I/usr/include   -c -o mlx_int_str_to_wordtab.o mlx_int_str_to_wordtab.c
+gcc -O3 -I/usr/include   -c -o mlx_destroy_window.o mlx_destroy_window.c
+gcc -O3 -I/usr/include   -c -o mlx_int_param_event.o mlx_int_param_event.c
+gcc -O3 -I/usr/include   -c -o mlx_int_set_win_event_mask.o mlx_int_set_win_event_mask.c
+gcc -O3 -I/usr/include   -c -o mlx_hook.o mlx_hook.c
+gcc -O3 -I/usr/include   -c -o mlx_rgb.o mlx_rgb.c
+gcc -O3 -I/usr/include   -c -o mlx_destroy_image.o mlx_destroy_image.c
+ar -r libmlx.a mlx_init.o mlx_new_window.o mlx_pixel_put.o mlx_loop.o mlx_mouse_hook.o mlx_key_hook.o mlx_expose_hook.o mlx_loop_hook.o mlx_int_anti_resize_win.o mlx_int_do_nothing.o mlx_int_wait_first_expose.o mlx_int_get_visual.o mlx_flush_event.o mlx_string_put.o mlx_new_image.o mlx_get_data_addr.o mlx_put_image_to_window.o mlx_get_color_value.o mlx_clear_window.o mlx_xpm.o mlx_int_str_to_wordtab.o mlx_destroy_window.o mlx_int_param_event.o mlx_int_set_win_event_mask.o mlx_hook.o mlx_rgb.o mlx_destroy_image.o
+ranlib libmlx.a
+cp libmlx.a libmlx_Linux.a
+make[1]: 디렉터리 '/home/wpark/my_docs/rtv1/minilibx' 나감
+make[1]: 디렉터리 '/home/wpark/my_docs/rtv1/minilibx/test' 들어감
+gcc -I/usr/include -O3 -I..   -c -o main.o main.c
+gcc -o mlx-test main.o -L.. -lmlx -L/usr/include/../lib -lXext -lX11 -lm
+Makefile.gen:20: recipe for target 'mlx-test' failed
+make[1]: 디렉터리 '/home/wpark/my_docs/rtv1/minilibx/test' 나감
+Makefile:17: recipe for target 'do_configure' failed
