@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 10:40:22 by blacking          #+#    #+#             */
-/*   Updated: 2019/12/16 14:38:25 by blacking         ###   ########.fr       */
+/*   Updated: 2019/12/16 16:13:56 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ t_ray	init_ray(float i, float j, t_widw widw)
 	new_ray.orig.x = 0.0;
 	new_ray.orig.y = 0.0;
 	new_ray.orig.z = 0.0;
-	new_ray.dir.x = (widw.width / 2) - j;
-	new_ray.dir.y = (widw.heigth / 2) - i;
-	new_ray.dir.z = -widw.width /(2 * tan(10 * 0.5));
+	new_ray.dir.x = i - (widw.width / 2);
+	new_ray.dir.y = (widw.heigth / 2) - j;
+	new_ray.dir.z = -(widw.heigth/2) / (tan(30 * 0.5));
 
 	return new_ray;
 }
@@ -50,16 +50,16 @@ void	display_loop(data_t data, t_widw widw)
 
 	t_sphere sphere;
 
-	sphere.center.x = 0.0;
+	sphere.center.x = 20.0;
 	sphere.center.y = 0.0;
 	sphere.center.z = 20.6;
-	sphere.radius = 12.6;
+	sphere.radius = 5.6;
 	i = 0.0;
 	j = 0.0;
-	while(i <= widw.heigth)
+	while(i <= widw.width)
 	{
 		j = 0;
-		while(j <= widw.width)
+		while(j <= widw.heigth)
 		{
 			ray = init_ray(i, j, widw);
 			printf("%f %f %f\n", ray.dir.x, ray.dir.y, ray.dir.z);
