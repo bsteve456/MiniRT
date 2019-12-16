@@ -15,8 +15,8 @@ int main(void)
 	int j = 0;
 	int hauteur = 1024;
 	int largeur = 1024;
-    if ((data.mlx_ptr = mlx_init()) == NULL)
-        return (EXIT_FAILURE);
+	if ((data.mlx_ptr = mlx_init()) == NULL)
+		return (EXIT_FAILURE);
 	if ((data.mlx_win = mlx_new_window(data.mlx_ptr, hauteur, largeur, "Hello world")) == NULL)
 		return (EXIT_FAILURE);
 	while(i < hauteur)
