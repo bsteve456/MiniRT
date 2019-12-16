@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 10:37:11 by blacking          #+#    #+#             */
-/*   Updated: 2019/12/16 10:44:53 by blacking         ###   ########.fr       */
+/*   Updated: 2019/12/16 10:59:44 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,11 @@ typedef struct		data_s
     void          *mlx_ptr;
     void          *mlx_win;
 }					data_t;
-void	display_loop(data_t data, int haut, int large);
+typedef struct s_window
+{
+	int			width;
+	int			heigth;
+}				t_widw;
+void	display_loop(data_t data, t_widw window);
 
 #endif
