@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.c                                           :+:      :+:    :+:   */
+/*   vector_calcul.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/16 10:42:18 by blacking          #+#    #+#             */
-/*   Updated: 2019/12/16 13:15:00 by blacking         ###   ########.fr       */
+/*   Created: 2019/12/16 12:26:01 by blacking          #+#    #+#             */
+/*   Updated: 2019/12/16 12:30:36 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/minirt.h"
+#include "../includes/minirt.h"
 
-int main(void)
+vect	vectSub(vect v1, vect v2)
 {
-    data_t		data;
-	t_widw		window;
+	v1.x -= v2.x;
+	v1.y -= v2.y;
+	v1.z -= v2.z;
+	return (v1);
+}
 
-	window.width = 1024;
-	window.heigth = 1024;
-	if ((data.mlx_ptr = mlx_init()) == NULL)
-		return (EXIT_FAILURE);
-	if ((data.mlx_win = mlx_new_window(data.mlx_ptr, window.heigth, window.width, "Hello world")) == NULL)
-		return (EXIT_FAILURE);
-	display_loop(data, window);
-    mlx_loop(data.mlx_ptr);
-    return (EXIT_SUCCESS);
+float	vectDot(vect v1, vect v2)
+{
+	float res;
+
+	res = v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
+	return res;
 }

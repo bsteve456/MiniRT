@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 10:37:11 by blacking          #+#    #+#             */
-/*   Updated: 2019/12/16 11:27:25 by blacking         ###   ########.fr       */
+/*   Updated: 2019/12/16 12:34:18 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,18 @@ typedef struct s_window
 }				t_widw;
 typedef struct s_ray
 {
-	vect	origin;
+	vect	orig;
 	vect	dir;
 
 }			t_ray;
+
+typedef struct
+{
+	vect center;
+	float radius;
+}	t_sphere;
 void	display_loop(data_t data, t_widw widw);
+vect	vectSub(vect v1, vect v2);
+float	vectDot(vect v1, vect v2);
 
 #endif
