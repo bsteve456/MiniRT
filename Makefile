@@ -6,7 +6,7 @@
 #    By: blacking <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/16 10:03:56 by blacking          #+#    #+#              #
-#    Updated: 2019/12/16 10:28:05 by blacking         ###   ########.fr        #
+#    Updated: 2019/12/16 10:45:17 by blacking         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ CC=gcc
 CFLAGS=-Wall -Werror -Wextra
 INC=-Iincludes
 NAME=minirt
-FILE=minirt.c
+FILE=minirt.c \
+	  srcs/display_loop_rt.c
 OBJ=$(FILE:.c=.o)
 
 all :$(NAME)

@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.c                                           :+:      :+:    :+:   */
+/*   display_loop_rt.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/16 10:42:18 by blacking          #+#    #+#             */
-/*   Updated: 2019/12/16 10:43:01 by blacking         ###   ########.fr       */
+/*   Created: 2019/12/16 10:40:22 by blacking          #+#    #+#             */
+/*   Updated: 2019/12/16 10:44:43 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/minirt.h"
+#include "../includes/minirt.h"
 
-int main(void)
+void	display_loop(data_t data, int haut, int large)
 {
-    data_t        data;
-	int hauteur = 1024;
-	int largeur = 1024;
-	if ((data.mlx_ptr = mlx_init()) == NULL)
-		return (EXIT_FAILURE);
-	if ((data.mlx_win = mlx_new_window(data.mlx_ptr, hauteur, largeur, "Hello world")) == NULL)
-		return (EXIT_FAILURE);
-	display_loop(data, hauteur, largeur);
-    mlx_loop(data.mlx_ptr);
-    return (EXIT_SUCCESS);
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	while(i < haut)
+	{
+		while(j < large)
+		{
+			mlx_pixel_put(data.mlx_ptr, data.mlx_win, i, j, 120);
+			j++;
+		}
+		j = 0;
+		i++;
+	}
 }
