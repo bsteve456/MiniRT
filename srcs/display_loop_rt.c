@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 10:40:22 by blacking          #+#    #+#             */
-/*   Updated: 2019/12/18 00:09:54 by blacking         ###   ########.fr       */
+/*   Updated: 2019/12/18 01:33:04 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,14 @@ void	display_loop(data_t data, t_widw widw)
 	float i;
 	float j;
 	t_ray ray;
-	int r = 100;
+	int r = 200;
 	int g = 0;
-	int b = 255;
+	int b = 0;
 	int color =  r * 65536 + g * 256 + b;
 	printf("color : %d", color);
 	t_sphere sphere;
 
-	sphere.center.x = 10.0;
+	sphere.center.x = -10.0;
 	sphere.center.y = -10.0;
 	sphere.center.z = 120;
 	sphere.radius = 20.0;
@@ -67,6 +67,7 @@ void	display_loop(data_t data, t_widw widw)
 		j = 0;
 		while(j <= widw.heigth)
 		{
+			mlx_pixel_put(data.mlx_ptr, data.mlx_win, i, j, 255 * 0.5);
 			ray = init_ray(i, j, widw);
 			if(inter_sphere(sphere, ray) == 1)
 			{
