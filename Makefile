@@ -6,7 +6,7 @@
 #    By: blacking <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/16 10:03:56 by blacking          #+#    #+#              #
-#    Updated: 2019/12/16 12:32:07 by blacking         ###   ########.fr        #
+#    Updated: 2019/12/19 16:42:38 by blacking         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ INC=-Iincludes
 NAME=minirt
 FILE=minirt.c \
 	  srcs/display_loop_rt.c \
-	  srcs/vector_calcul.c
+	  srcs/vector_calcul.c \
+	  srcs/matrix_calcul.c
 OBJ=$(FILE:.c=.o)
 
 all :$(NAME)
