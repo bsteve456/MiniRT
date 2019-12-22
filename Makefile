@@ -6,7 +6,7 @@
 #    By: blacking <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/16 10:03:56 by blacking          #+#    #+#              #
-#    Updated: 2019/12/19 16:42:38 by blacking         ###   ########.fr        #
+#    Updated: 2019/12/22 16:03:27 by blacking         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ OBJ=$(FILE:.c=.o)
 all :$(NAME)
 
 $(NAME): $(OBJ) ./includes/minirt.h
-	$(CC) $(CFLAGS) $(INC) $(OBJ) -L./minilibx_linux -lmlx -lXext -lX11 -lm -o $(NAME)
+	$(CC) $(CFLAGS) $(INC) $(OBJ) -L./libft -L./minilibx_linux -lmlx -lXext -lX11 -lm -o $(NAME)
 .c.o: $(FILE)
 	$(CC) $(CFLAGS) $(INC) -c $< -o $@
 clean:

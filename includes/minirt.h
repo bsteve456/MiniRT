@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 10:37:11 by blacking          #+#    #+#             */
-/*   Updated: 2019/12/19 16:40:15 by blacking         ###   ########.fr       */
+/*   Updated: 2019/12/22 15:58:30 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <mlx.h>
 # include <math.h>
 # include <stdio.h>
+# include "../libft/libft.h"
 typedef struct		data_s
 {
     void          *mlx_ptr;
