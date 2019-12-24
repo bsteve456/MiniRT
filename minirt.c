@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 10:42:18 by blacking          #+#    #+#             */
-/*   Updated: 2019/12/24 16:11:47 by blacking         ###   ########.fr       */
+/*   Updated: 2019/12/24 16:22:54 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ void	minirt(char *info)
 {
 	int fd;
 	int read_file;
-	char *line = NULL;
+	char *line;
+
+	line = NULL;
 	read_file = 1;
 	fd = open(info, O_RDONLY);
 	while(read_file > 0)
