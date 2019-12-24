@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 10:37:11 by blacking          #+#    #+#             */
-/*   Updated: 2019/12/24 16:51:45 by blacking         ###   ########.fr       */
+/*   Updated: 2019/12/24 17:06:16 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct
 {
 	int type;
 	void *obj;
-}			scene;
+}			object;
 
 typedef struct		data_s
 {
@@ -62,5 +62,5 @@ vect	normalize(vect ray);
 vect	x_axis_rot(vect dir, float theta);
 vect	y_axis_rot(vect dir, float theta);
 vect	z_axis_rot(vect dir, float theta);
-void	parse_info_scene(scene *object, char *line);
+void	parse_info_scene(t_list *scene, char *line);
 #endif
