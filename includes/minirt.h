@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 10:37:11 by blacking          #+#    #+#             */
-/*   Updated: 2019/12/24 16:07:14 by blacking         ###   ########.fr       */
+/*   Updated: 2019/12/24 16:51:45 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,13 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include "../libft/libft.h"
+
+typedef struct
+{
+	int type;
+	void *obj;
+}			scene;
+
 typedef struct		data_s
 {
     void          *mlx_ptr;
@@ -55,4 +62,5 @@ vect	normalize(vect ray);
 vect	x_axis_rot(vect dir, float theta);
 vect	y_axis_rot(vect dir, float theta);
 vect	z_axis_rot(vect dir, float theta);
+void	parse_info_scene(scene *object, char *line);
 #endif

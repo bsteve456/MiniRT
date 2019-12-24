@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 10:42:18 by blacking          #+#    #+#             */
-/*   Updated: 2019/12/24 16:37:27 by blacking         ###   ########.fr       */
+/*   Updated: 2019/12/24 16:54:03 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,14 @@ void	minirt(char *info)
 	char *line;
 	scene *object;
 
+	object = NULL;
 	fd = open(info, O_RDONLY);
 	line = NULL;
 	rfile = 1;
 	while(rfile > 0)
 	{
 		rfile = get_next_line(fd, &line);
-		ft_parse_info_scene(scene, line);
+		parse_info_scene(object, line);
 	}
 }
 
