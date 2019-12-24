@@ -6,24 +6,29 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 10:42:18 by blacking          #+#    #+#             */
-/*   Updated: 2019/12/17 23:19:30 by blacking         ###   ########.fr       */
+/*   Updated: 2019/12/24 16:11:47 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minirt.h"
 
-int main(void)
+void	minirt(char *info)
 {
-    data_t		data;
-	t_widw		window;
+	int fd;
+	int read_file;
+	char *line = NULL;
+	read_file = 1;
+	fd = open(info, O_RDONLY);
+	while(read_file > 0)
+	{
+		read_file = get_next_line(fd, &line);
+		printf("%s\n", line);
+	}
+}
 
-	window.heigth = 500;
-	window.width = 500;
-	if ((data.mlx_ptr = mlx_init()) == NULL)
-		return (EXIT_FAILURE);
-	if ((data.mlx_win = mlx_new_window(data.mlx_ptr, window.width, window.heigth, "Hello world")) == NULL)
-		return (EXIT_FAILURE);
-	display_loop(data, window);
-    mlx_loop(data.mlx_ptr);
-    return (EXIT_SUCCESS);
+
+int main(int ac, char **av)
+{
+	if(ac == 2)
+		minirt(av[1]);
 }

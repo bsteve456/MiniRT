@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 10:37:11 by blacking          #+#    #+#             */
-/*   Updated: 2019/12/22 15:58:30 by blacking         ###   ########.fr       */
+/*   Updated: 2019/12/24 16:07:14 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <string.h>
 # include <mlx.h>
 # include <math.h>
+# include <fcntl.h>
 # include <stdio.h>
 # include "../libft/libft.h"
 typedef struct		data_s
