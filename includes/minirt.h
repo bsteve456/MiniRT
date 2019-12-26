@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 10:37:11 by blacking          #+#    #+#             */
-/*   Updated: 2019/12/24 17:17:23 by blacking         ###   ########.fr       */
+/*   Updated: 2019/12/26 18:35:03 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ typedef struct
 }			vect;
 typedef struct s_window
 {
-	int			width;
-	int			heigth;
+	float			x;
+	float			y;
 }				t_widw;
 typedef struct s_ray
 {
@@ -55,6 +55,7 @@ typedef struct
 	vect center;
 	float radius;
 }	t_sphere;
+
 void	display_loop(data_t data, t_widw widw);
 vect	vectSub(vect v1, vect v2);
 float	vectDot(vect v1, vect v2);
@@ -63,4 +64,6 @@ vect	x_axis_rot(vect dir, float theta);
 vect	y_axis_rot(vect dir, float theta);
 vect	z_axis_rot(vect dir, float theta);
 void	parse_info_scene(t_list **scene, char *line);
+float	create_float(char **line);
+void	resolution(t_list **scene, char *line);
 #endif

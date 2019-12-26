@@ -1,38 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.c                                           :+:      :+:    :+:   */
+/*   fill_scene_lst.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/16 10:42:18 by blacking          #+#    #+#             */
-/*   Updated: 2019/12/26 18:35:35 by blacking         ###   ########.fr       */
+/*   Created: 2019/12/26 17:09:47 by blacking          #+#    #+#             */
+/*   Updated: 2019/12/26 18:56:43 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/minirt.h"
+#include "../includes/minirt.h"
 
-void	minirt(char *info)
+void	resolution(t_list **scene, char *line)
 {
-	int fd;
-	int rfile;
-	char *line;
-	t_list *scene;
-
-	scene = NULL;
-	fd = open(info, O_RDONLY);
-	line = NULL;
-	rfile = 1;
-	while(rfile > 0)
-	{
-		rfile = get_next_line(fd, &line);
-		parse_info_scene(&scene, line);
-	}
-}
-
-
-int main(int ac, char **av)
-{
-	if(ac == 2)
-		minirt(av[1]);
+	object *widw;
+	t_widw	*window;
+	
+	window = ft_calloc(1, sizeof(t_widw));
+	widw = ft_calloc(1, sizeof(object));
+	widw->type = 1;
+	window->x = create_float(&line);
+	window->y = create_float(&line);
+	widw->obj = window;
+	ft_lstadd_back(scene, ft_lstnew(widw));
 }

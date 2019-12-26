@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 10:40:22 by blacking          #+#    #+#             */
-/*   Updated: 2019/12/19 17:42:20 by blacking         ###   ########.fr       */
+/*   Updated: 2019/12/26 17:56:00 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ t_ray	init_ray(float i, float j, t_widw widw)
 	new_ray.orig.x = 0.0;
 	new_ray.orig.y = 0.0;
 	new_ray.orig.z = 0.0;
-	new_ray.dir.x = i - (widw.width / 2);
-	new_ray.dir.y = (widw.heigth / 2) - j;
-	new_ray.dir.z = (widw.heigth/2) / (tan((M_PI * 0.5 * 50) / 180.0));
+	new_ray.dir.x = i - (widw.x / 2);
+	new_ray.dir.y = (widw.y / 2) - j;
+	new_ray.dir.z = (widw.y/2) / (tan((M_PI * 0.5 * 50) / 180.0));
 	new_ray.dir = vectSub(new_ray.dir, new_ray.orig);
 	new_ray.dir = normalize(new_ray.dir);
 	new_ray.dir = x_axis_rot(new_ray.dir, orte.x);
@@ -70,10 +70,10 @@ void	display_loop(data_t data, t_widw widw)
 	sphere.radius = 5.0;
 	i = 0.0;
 	j = 0.0;
-	while(i <= widw.width)
+	while(i <= widw.x)
 	{
 		j = 0;
-		while(j <= widw.heigth)
+		while(j <= widw.y)
 		{
 			mlx_pixel_put(data.mlx_ptr, data.mlx_win, i, j, 255 * 0.5);
 			ray = init_ray(i, j, widw);

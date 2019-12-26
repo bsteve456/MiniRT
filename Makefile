@@ -6,7 +6,7 @@
 #    By: blacking <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/16 10:03:56 by blacking          #+#    #+#              #
-#    Updated: 2019/12/24 16:52:24 by blacking         ###   ########.fr        #
+#    Updated: 2019/12/26 17:52:58 by blacking         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,10 @@ FILE=minirt.c \
 	  srcs/display_loop_rt.c \
 	  srcs/vector_calcul.c \
 	  srcs/matrix_calcul.c \
-	  srcs/parse_info.c
+	  srcs/parse_info.c \
+	  srcs/fill_scene_lst.c \
+	  srcs/minirt_utils.c 
+
 OBJ=$(FILE:.c=.o)
 
 all :$(NAME)
