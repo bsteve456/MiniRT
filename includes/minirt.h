@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 10:37:11 by blacking          #+#    #+#             */
-/*   Updated: 2019/12/26 18:35:03 by blacking         ###   ########.fr       */
+/*   Updated: 2019/12/28 15:23:12 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,25 @@ typedef struct
 	float y;
 	float z;
 }			vect;
+
 typedef struct s_window
 {
 	float			x;
 	float			y;
 }				t_widw;
+
+typedef struct
+{
+	float ratio;
+	int rgb;
+}			t_aligth;
+
+typedef struct
+{
+	vect	orig;
+	vect	orit;
+	float	fov;
+}			t_cam;
 typedef struct s_ray
 {
 	vect	orig;
@@ -65,5 +79,9 @@ vect	y_axis_rot(vect dir, float theta);
 vect	z_axis_rot(vect dir, float theta);
 void	parse_info_scene(t_list **scene, char *line);
 float	create_float(char **line);
+float	create_color(char **line);
+vect	create_vect(char **line);
+void	camera(t_list **scene, char *line);
+void	A_light(t_list **scene, char *line);
 void	resolution(t_list **scene, char *line);
 #endif
