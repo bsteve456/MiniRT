@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 17:28:04 by blacking          #+#    #+#             */
-/*   Updated: 2019/12/28 15:37:03 by blacking         ###   ########.fr       */
+/*   Updated: 2019/12/28 16:12:55 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,15 @@ float	create_float(char **line)
 		(*line)++;
 	while(ft_isdigit(**line) == 2048 || **line == '.')
 	{
-		if(dot >= 1)
-			dot++;
 		if(**line == '.')
 			dot = 1;
 		if(ft_isdigit(**line) == 2048 && dot == 0)
 			num = num * 10 + ((**line - '0') / pow(10, dot));
-		if(ft_isdigit(**line) == 2048 && dot == 1)
-			num += ((**line - '0') / pow(10, dot));
+		if(ft_isdigit(**line) == 2048 && dot >= 1)
+		{
+			num += ((float)(**line - '0') / pow(10, dot));
+			dot++;
+		}
 		(*line)++;
 	}
 	return (num * neg);

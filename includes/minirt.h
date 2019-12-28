@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 10:37:11 by blacking          #+#    #+#             */
-/*   Updated: 2019/12/28 15:23:12 by blacking         ###   ########.fr       */
+/*   Updated: 2019/12/28 16:02:07 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ typedef struct
 {
 	vect center;
 	float radius;
+	float rgb;
 }	t_sphere;
 
 void	display_loop(data_t data, t_widw widw);
@@ -84,4 +85,5 @@ vect	create_vect(char **line);
 void	camera(t_list **scene, char *line);
 void	A_light(t_list **scene, char *line);
 void	resolution(t_list **scene, char *line);
+void	sphere(t_list **scene, char *line);
 #endif
