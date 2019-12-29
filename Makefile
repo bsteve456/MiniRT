@@ -6,12 +6,12 @@
 #    By: blacking <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/16 10:03:56 by blacking          #+#    #+#              #
-#    Updated: 2019/12/29 13:56:18 by blacking         ###   ########.fr        #
+#    Updated: 2019/12/29 15:05:21 by blacking         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC=gcc
-CFLAGS=-Wall -Werror -Wextra
+CFLAGS=-Werror -Wextra
 INC=-Iincludes
 NAME=minirt
 FILE=minirt.c \
@@ -22,8 +22,7 @@ FILE=minirt.c \
 	  srcs/fill_scene_lst.c \
 	  srcs/fill_object_lst.c \
 	  srcs/minirt_utils.c \
-	  srcs/minirt_utils2.c \
-	  srcs/init_data.c
+	  srcs/minirt_utils2.c 
 
 OBJ=$(FILE:.c=.o)
 

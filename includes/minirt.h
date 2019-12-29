@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 10:37:11 by blacking          #+#    #+#             */
-/*   Updated: 2019/12/29 13:55:21 by blacking         ###   ########.fr       */
+/*   Updated: 2019/12/29 14:42:20 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,6 @@ typedef struct
 	int type;
 	void *obj;
 }			object;
-
-typedef struct		data_s
-{
-    void          *mlx_ptr;
-    void          *mlx_win;
-	float		  width;
-	float		  heigth;
-}					data_t;
 
 typedef struct
 {
@@ -62,10 +54,19 @@ typedef struct
 
 typedef struct s_ray
 {
-	vect	orig;
 	vect	dir;
 
 }			t_ray;
+
+typedef struct		data_s
+{
+    void          *mlx_ptr;
+    void          *mlx_win;
+	t_widw		  *widw;
+	float		  x;
+	float		  y;
+	t_ray		  ray;
+}					data_t;
 
 typedef struct
 {
@@ -90,6 +91,7 @@ void	A_light(t_list **scene, char *line);
 void	resolution(t_list **scene, char *line);
 void	sphere(t_list **scene, char *line);
 void	camera_loop(t_list *scene);
-data_t init_data(t_list *copy);
+data_t *init_data(t_list *copy);
+data_t	*complet_ray_pixel(float i, float j, t_cam *cam, data_t *data);
 
 #endif
