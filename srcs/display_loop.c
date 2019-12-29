@@ -1,16 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display_loop2.c                                    :+:      :+:    :+:   */
+/*   display_loop.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/29 13:28:17 by blacking          #+#    #+#             */
-/*   Updated: 2019/12/29 15:01:09 by blacking         ###   ########.fr       */
+/*   Updated: 2019/12/29 16:25:34 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
+
+void	display_list(t_list *scene, data_t *data, t_cam *cam)
+{
+	ambient_light(scene, data);
+	object_parse(scene, data, cam);
+}
 
 void	window_loop(t_list *scene, data_t *data, t_cam *cam)
 {
@@ -23,8 +29,7 @@ void	window_loop(t_list *scene, data_t *data, t_cam *cam)
 		while(j < data->widw->y)
 		{
 			data = complet_ray_pixel(i, j, cam, data);
-			printf("%f : %f\n  %f : %f : %f\n", i,
-					j, data->ray.dir.x,data->ray.dir.y,data->ray.dir.z);
+			display_list(scene, data, cam);
 			j++;
 		}
 		i++;
