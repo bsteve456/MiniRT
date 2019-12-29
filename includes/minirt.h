@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 10:37:11 by blacking          #+#    #+#             */
-/*   Updated: 2019/12/28 16:02:07 by blacking         ###   ########.fr       */
+/*   Updated: 2019/12/29 13:55:21 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ typedef struct		data_s
 {
     void          *mlx_ptr;
     void          *mlx_win;
+	float		  width;
+	float		  heigth;
 }					data_t;
 
 typedef struct
@@ -57,6 +59,7 @@ typedef struct
 	vect	orit;
 	float	fov;
 }			t_cam;
+
 typedef struct s_ray
 {
 	vect	orig;
@@ -86,4 +89,7 @@ void	camera(t_list **scene, char *line);
 void	A_light(t_list **scene, char *line);
 void	resolution(t_list **scene, char *line);
 void	sphere(t_list **scene, char *line);
+void	camera_loop(t_list *scene);
+data_t init_data(t_list *copy);
+
 #endif
