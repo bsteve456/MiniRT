@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 10:37:11 by blacking          #+#    #+#             */
-/*   Updated: 2019/12/29 14:42:20 by blacking         ###   ########.fr       */
+/*   Updated: 2019/12/30 09:33:48 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,6 @@ void	sphere(t_list **scene, char *line);
 void	camera_loop(t_list *scene);
 data_t *init_data(t_list *copy);
 data_t	*complet_ray_pixel(float i, float j, t_cam *cam, data_t *data);
+void	ambient_light(t_list *scene, data_t *data);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/29 13:28:17 by blacking          #+#    #+#             */
-/*   Updated: 2019/12/29 16:25:34 by blacking         ###   ########.fr       */
+/*   Updated: 2019/12/30 09:42:43 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	window_loop(t_list *scene, data_t *data, t_cam *cam)
 		}
 		i++;
 	}
+	mlx_loop(data->mlx_ptr);
 }
 
 
