@@ -6,7 +6,7 @@
 #    By: blacking <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/16 10:03:56 by blacking          #+#    #+#              #
-#    Updated: 2019/12/30 09:36:13 by blacking         ###   ########.fr        #
+#    Updated: 2019/12/30 09:58:46 by blacking         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ FILE=minirt.c \
 	  srcs/fill_object_lst.c \
 	  srcs/minirt_utils.c \
 	  srcs/minirt_utils2.c \
-	  srcs/add_pixel_color.c
+	  srcs/add_pixel_color.c \
+	  srcs/obj_verif.c
 
 OBJ=$(FILE:.c=.o)
 
