@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 16:27:07 by blacking          #+#    #+#             */
-/*   Updated: 2019/12/19 17:08:12 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/04 13:48:06 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 vect	x_axis_rot(vect dir, float theta)
 {
 	vect new_dir;
+
+	theta *= M_PI;
 	new_dir.x = 1 * dir.x;
 	new_dir.y = cos(theta) * dir.y + (-sin(theta)) * dir.z;
 	new_dir.z =  sin(theta) * dir.y + cos(theta) * dir.z;
@@ -25,6 +27,8 @@ vect	x_axis_rot(vect dir, float theta)
 vect	y_axis_rot(vect dir, float theta)
 {
 	vect new_dir;
+
+	theta *= M_PI;
 	new_dir.x = cos(theta) * dir.x + (sin(theta)) * dir.z;
 	new_dir.y = 1 * dir.y;
 	new_dir.z = -sin(theta) * dir.x + cos(theta) * dir.z;
@@ -34,6 +38,8 @@ vect	y_axis_rot(vect dir, float theta)
 vect	z_axis_rot(vect dir, float theta)
 {
 	vect new_dir;
+
+	theta *= M_PI;
 	new_dir.x = cos(theta) * dir.x + (-sin(theta)) * dir.y;
 	new_dir.y = sin(theta) * dir.x + cos(theta) * dir.y;
 	new_dir.z =  1 * dir.z;
