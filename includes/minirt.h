@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 10:37:11 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/09 14:17:35 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/09 14:26:36 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct
 
 typedef struct s_ray
 {
+	vect	orig;
 	vect	dir;
 
 }			t_ray;
@@ -93,6 +94,6 @@ void	camera_loop(t_list *scene);
 data_t *init_data(t_list *copy);
 data_t	*complet_ray_pixel(float i, float j, t_cam *cam, data_t *data);
 void	ambient_light(t_list *scene, data_t *data);
-void	inter_sphere(t_sphere *sphere, data_t *data, t_cam *cam);
-void	object_parse(t_list *scene, data_t *data, t_cam *cam);
+void	inter_sphere(t_sphere *sphere, data_t *data);
+void	object_parse(t_list *scene, data_t *data);
 #endif

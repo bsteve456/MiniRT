@@ -6,20 +6,20 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 09:47:34 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/09 14:19:00 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/09 14:24:23 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-void	inter_sphere(t_sphere *sphere, data_t *data, t_cam *cam)
+void	inter_sphere(t_sphere *sphere, data_t *data)
 {
 	float a;
 	float b;
 	float c;
 	vect vectOS;
 
-	vectOS = vectSub(cam->orig, sphere->center);
+	vectOS = vectSub(data->ray.orig, sphere->center);
 	a = vectDot(data->ray.dir, data->ray.dir);
 	b = 2 * vectDot(data->ray.dir, vectOS);
 	c = vectDot(vectOS, vectOS) - (sphere->radius * sphere->radius);

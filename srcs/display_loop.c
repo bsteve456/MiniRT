@@ -6,16 +6,16 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/29 13:28:17 by blacking          #+#    #+#             */
-/*   Updated: 2019/12/30 10:16:14 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/09 14:25:31 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-void	display_list(t_list *scene, data_t *data, t_cam *cam)
+void	display_list(t_list *scene, data_t *data)
 {
 	ambient_light(scene, data);
-	object_parse(scene, data, cam);
+	object_parse(scene, data);
 }
 
 void	window_loop(t_list *scene, data_t *data, t_cam *cam)
@@ -29,7 +29,7 @@ void	window_loop(t_list *scene, data_t *data, t_cam *cam)
 		while(j < data->widw->y)
 		{
 			data = complet_ray_pixel(i, j, cam, data);
-			display_list(scene, data, cam);
+			display_list(scene, data);
 			j++;
 		}
 		i++;

@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 09:25:11 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/09 14:17:49 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/09 14:26:49 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ambient_light(t_list *scene, data_t *data)
 	}
 }
 
-void	object_parse(t_list *scene, data_t *data, t_cam *cam)
+void	object_parse(t_list *scene, data_t *data)
 {
 	object *obj;
 
@@ -37,7 +37,7 @@ void	object_parse(t_list *scene, data_t *data, t_cam *cam)
 	{
 		obj = scene->content;
 		if(obj->type == 3)
-			inter_sphere(obj->obj, data, cam);
+			inter_sphere(obj->obj, data);
 		scene = scene->next;
 	}
 }
