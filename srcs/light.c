@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 14:54:49 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/09 15:57:49 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/09 17:06:51 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ void	light(vect Pt, t_sphere *sphere, data_t *data, t_light *light)
 
 	N = vectSub(Pt, sphere->center);
 	L = vectSub(Pt, light->orig);
-	surface_color = (sphere->rgb) * (light->color * light->ratio) * vectDot(N, L);
+//	N = normalize(N);
+//	L = normalize(L);
+	surface_color = ((0.1) / M_PI ) * (light->color * light->ratio) * vectDot(N, L);
 	printf("%f\n", surface_color);
 	mlx_pixel_put(data->mlx_ptr, data->mlx_win, data->x, data->y, surface_color);
 }
