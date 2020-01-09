@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 12:26:01 by blacking          #+#    #+#             */
-/*   Updated: 2019/12/17 16:10:59 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/09 14:58:32 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,21 @@ vect	vectSub(vect v1, vect v2)
 	return (v1);
 }
 
+vect	vectAdd(vect v1, vect v2)
+{
+	v1.x += v2.x;
+	v1.y += v2.y;
+	v1.z += v2.z;
+	return (v1);
+}
+
+vect	vectMult(vect v1,float num)
+{
+	v1.x *= num;
+	v1.y *= num;
+	v1.z *= num;
+	return (v1);
+}
 float	vectDot(vect v1, vect v2)
 {
 	float res;

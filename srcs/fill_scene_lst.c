@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 17:09:47 by blacking          #+#    #+#             */
-/*   Updated: 2019/12/28 15:23:22 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/09 15:35:07 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,21 @@ void	camera(t_list **scene, char *line)
 	cam->fov = create_float(&line);
 	a_cam->obj = cam;
 	ft_lstadd_back(scene, ft_lstnew(a_cam));
+}
+
+void	light_init(t_list **scene, char *line)
+{
+	object *a_light;
+	t_light *light;
+
+	if(!(a_light = ft_calloc(1, sizeof(object))))
+		a_light = 0;
+	if(!(light = ft_calloc(1, sizeof(t_light))))
+		light = 0;
+	a_light->type = 4;
+	light->orig = create_vect(&line);
+	light->ratio = create_float(&line);
+	light->color = create_float(&line);
+	a_light->obj = light;
+	ft_lstadd_back(scene, ft_lstnew(a_light));
 }

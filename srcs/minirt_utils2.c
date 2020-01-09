@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/29 13:42:47 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/09 14:22:52 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/09 15:44:15 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_ray	init_ray(float i, float j, t_widw *widw, t_cam *cam)
 	new_ray.dir = y_axis_rot(new_ray.dir, cam->orit.y);
 	new_ray.dir = z_axis_rot(new_ray.dir, cam->orit.z);
 	new_ray.orig = cam->orig;
-	printf("%f :%f : %f \n", new_ray.dir.x, new_ray.dir.y, new_ray.dir.z);
+//	printf("%f :%f : %f \n", new_ray.dir.x, new_ray.dir.y, new_ray.dir.z);
 	return (new_ray);
 }
 
