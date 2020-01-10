@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 09:47:34 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/09 15:42:09 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/10 15:38:00 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ void	inter_sphere(t_sphere *sphere, data_t *data, t_list *scene)
 	if(discr >= 0.0000)
 	{
 		if(discr == 0.0)
-			t0 = - 0.5 * b / a;
+			t0 = -b / (2 * a);
 		else
 		{
-			t0 = (-1 * (b + sqrt(discr))) / a;
-			t1 = (-1 * (b - sqrt(discr))) / a;
+			t0 = (-b + sqrt(discr)) / (2 * a);
+			t1 = (-b - sqrt(discr)) / (2 * a);
 			if(t0 > t1)
 				t0 = t1;
 		}

@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 17:09:47 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/09 15:35:07 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/10 14:16:18 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	light_init(t_list **scene, char *line)
 	a_light->type = 4;
 	light->orig = create_vect(&line);
 	light->ratio = create_float(&line);
-	light->color = create_float(&line);
+	light->color = create_color(&line);
 	a_light->obj = light;
 	ft_lstadd_back(scene, ft_lstnew(a_light));
 }
