@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 14:54:49 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/10 18:14:11 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/10 18:37:10 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	light(vect Pt, t_sphere *sphere, data_t *data, t_light *light)
 	L = normalize(L);
 //	printf("N: %f, %f, %f\n", N.x, N.y, N.z);
 //	printf("L :%f, %f, %f\n", L.x, L.y, L.z);
-	surface_color = (light->color * light->ratio) * (-1 * (floor(vectDot(N, L)*5)/5));
+	surface_color = (light->color * light->ratio) * (-1 * (floor(vectDot(N, L)*(5*light->ratio))/(5*light->ratio)));
 //	printf("N: %f, %f, %f\n", N.x, N.y, N.z);
 //	printf("L :%f, %f, %f\n", L.x, L.y, L.z);
 //	printf("NL : %f\n", floor(vectDot(N, L)*10)/10);
