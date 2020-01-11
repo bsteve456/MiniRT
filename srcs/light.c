@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 14:54:49 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/10 18:37:10 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/11 15:06:43 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,24 @@ void	light(vect Pt, t_sphere *sphere, data_t *data, t_light *light)
 //	sphere->center = normalize(sphere->center);
 //	light->orig = normalize(light->orig);
 	N = vectSub(Pt, sphere->center);
-	L = vectSub(Pt, light->orig);
+	L = vectSub(light->orig, Pt);
 //	L = vectMult(data->ray.dir, 1);
 	N = normalize(N);
 	L = normalize(L);
+	float a = vectDot(N, L);
 //	printf("N: %f, %f, %f\n", N.x, N.y, N.z);
 //	printf("L :%f, %f, %f\n", L.x, L.y, L.z);
-	surface_color = (light->color * light->ratio) * (-1 * (floor(vectDot(N, L)*(5*light->ratio))/(5*light->ratio)));
+//	surface_color = (light->color * light->ratio) * vectDot(N, L);
+	surface_color = mlx_get_color_value(data->mlx_ptr ,pow(255, 1) * a); 
 //	printf("N: %f, %f, %f\n", N.x, N.y, N.z);
 //	printf("L :%f, %f, %f\n", L.x, L.y, L.z);
 //	printf("NL : %f\n", floor(vectDot(N, L)*10)/10);
 	if(surface_color < 0.0)
-		surface_color *= 0.0;
-	printf("NL : %f\n", floor(vectDot(N, L)*5/5));
+		surface_color *= 0.0;	
+	printf("NL : %f\n", vectDot(N, L));
 	printf("color : %f\n", surface_color);
-	mlx_pixel_put(data->mlx_ptr, data->mlx_win, data->x, data->y, surface_color);
+//	if(surface_color > 255 * 2)
+		mlx_pixel_put(data->mlx_ptr, data->mlx_win, data->x, data->y, (surface_color));
 }
 
 void	light_loop(float t0, t_sphere *sphere, data_t *data, t_list *scene)
