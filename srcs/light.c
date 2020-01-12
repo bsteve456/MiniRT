@@ -6,22 +6,24 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 14:54:49 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/12 10:36:57 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/12 12:03:19 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-int		reflected_color(t_light *light, float dotP)
+int		reflected_color(color rgb, t_light *light, float dotP)
 {
 	int r;
 	int g;
 	int b;
 
-	r = light->rgb.r * light->ratio * dotP;
-	g = light->rgb.g * light->ratio * dotP;
-	b = light->rgb.b * light->ratio * dotP;
-
+	r =  (rgb.r > light->rgb.r) ? light->rgb.r : rgb.r;
+	g =  (rgb.g > light->rgb.g) ? light->rgb.g : rgb.g;
+	b =  (rgb.b > light->rgb.b) ? light->rgb.b : rgb.b;
+	r *= light->ratio * dotP;
+	g *= light->ratio * dotP;
+	b *= light->ratio * dotP;
 	return (r * pow(256, 2) + g * 256 + b);
 }
 
@@ -35,7 +37,7 @@ void	light(vect Pt, t_sphere *sphere, data_t *data, t_light *light)
 	L = vectSub(light->orig, Pt);
 	N = normalize(N);
 	L = normalize(L);
-	surface_color = reflected_color(light, vectDot(N,L));
+	surface_color = reflected_color(sphere->rgb, light, vectDot(N,L));
 	if(surface_color < 0.0)
 		surface_color *= 0.0;
 	mlx_pixel_put(data->mlx_ptr, data->mlx_win, data->x, data->y, surface_color);

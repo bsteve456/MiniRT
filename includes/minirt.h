@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 10:37:11 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/12 10:23:40 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/12 11:42:22 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,5 +113,4 @@ void	inter_sphere(t_sphere *sphere, data_t *data, t_list *scene);
 void	object_parse(t_list *scene, data_t *data);
 void	light_loop(float t0, t_sphere *sphere, data_t *data, t_list *scene);
 void	light(vect Pt, t_sphere *sphere, data_t *data, t_light *light);
-
 #endif
