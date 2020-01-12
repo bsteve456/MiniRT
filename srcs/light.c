@@ -6,17 +6,30 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 14:54:49 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/11 19:43:29 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/12 10:31:51 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
+int		reflected_color(t_light *light, float dotP)
+{
+	int r;
+	int g;
+	int b;
+
+	r = light->rgb.r * light->ratio * dotP;
+	g = light->rgb.g * light->ratio * dotP;
+	b = light->rgb.b * light->ratio * dotP;
+
+	return (r * pow(256, 2) + g * 256 + b);
+}
+
 void	light(vect Pt, t_sphere *sphere, data_t *data, t_light *light)
 {
 	vect N;
 	vect L;
-	float surface_color;
+	int surface_color;
 
 //	sphere->center = normalize(sphere->center);
 //	light->orig = normalize(light->orig);
@@ -25,12 +38,13 @@ void	light(vect Pt, t_sphere *sphere, data_t *data, t_light *light)
 //	L = vectMult(data->ray.dir, 1);
 	N = normalize(N);
 	L = normalize(L);
-	float a = vectDot(N, L);
-	int b = a * 255;
+//	float a = vectDot(N, L);
+//	int b = a * 255;
 //	printf("N: %f, %f, %f\n", N.x, N.y, N.z);
 //	printf("L :%f, %f, %f\n", L.x, L.y, L.z);
 //	surface_color = (light->color * light->ratio) * vectDot(N, L);
-	surface_color = mlx_get_color_value(data->mlx_ptr ,pow(256, 2)* b + pow(256, 1) * b + b);
+//	surface_color = mlx_get_color_value(data->mlx_ptr ,pow(256, 2)* b + pow(256, 1) * b + b);
+	surface_color = reflected_color(light, vectDot(N,L));
 //	printf("N: %f, %f, %f\n", N.x, N.y, N.z);
 //	printf("L :%f, %f, %f\n", L.x, L.y, L.z);
 //	printf("NL : %f\n", floor(vectDot(N, L)*10)/10);

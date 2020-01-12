@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 17:28:04 by blacking          #+#    #+#             */
-/*   Updated: 2019/12/30 11:19:13 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/12 10:24:49 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,15 @@ float	create_float(char **line)
 	return (num * neg);
 }
 
-float	create_color(char **line)
+color	create_color(char **line)
 {
-	float r;
-	float g;
-	float b;
 
-	r = 65536 * create_float(line);
-	g = 256 * create_float(line);
-	b = create_float(line);
-	return (r + g + b);
+	color rgb;
+
+	rgb.r = create_float(line);
+	rgb.g = create_float(line);
+	rgb.b = create_float(line);
+	return (rgb);
 }
 
 vect	create_vect(char **line)
