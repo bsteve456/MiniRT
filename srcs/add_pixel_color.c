@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 09:25:11 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/13 10:27:54 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/13 10:50:36 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	ambient_light(t_list *scene, data_t *data)
 	object *alight;
 	t_aligth *light;
 	int color;
+
 	while(scene)
 	{
 		alight = scene->content;
