@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 17:28:04 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/12 11:42:37 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/13 10:37:38 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ float	create_float(char **line)
 
 color	create_color(char **line)
 {
-
 	color rgb;
 
 	rgb.r = create_float(line);

@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 14:54:49 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/12 12:03:19 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/13 10:31:27 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,8 @@ void	light(vect Pt, t_sphere *sphere, data_t *data, t_light *light)
 	vect L;
 	int surface_color;
 
-	N = vectSub(Pt, sphere->center);
-	L = vectSub(light->orig, Pt);
-	N = normalize(N);
-	L = normalize(L);
+	N = normalize(vectSub(Pt, sphere->center));
+	L = normalize(vectSub(light->orig, Pt));
 	surface_color = reflected_color(sphere->rgb, light, vectDot(N,L));
 	if(surface_color < 0.0)
 		surface_color *= 0.0;

@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 12:26:01 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/09 14:58:32 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/13 10:47:18 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ vect	vectMult(vect v1,float num)
 	v1.z *= num;
 	return (v1);
 }
+
 float	vectDot(vect v1, vect v2)
 {
 	float res;
