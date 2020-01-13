@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 09:47:34 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/13 17:07:24 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/13 18:01:51 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ void	inter_plane(t_plane *plane, data_t *data)
 	if(fabs(demom) > 0.00001f) {
 		vect p0l0 = normalize(vectSub(plane->p0, data->ray.orig));
 		float t = vectDot(p0l0, plane->N) / demom;
-		printf("Polon : %f\ndemom : %f\n", vectDot(p0l0, plane->N), demom);
 		if(t >= 0.00001f) {
 			mlx_pixel_put(data->mlx_ptr, data->mlx_win,data->x, data->y, color);
 		}
