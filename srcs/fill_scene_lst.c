@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 17:09:47 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/12 10:12:07 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/13 13:13:02 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,21 @@ void	light_init(t_list **scene, char *line)
 	light->rgb = create_color(&line);
 	a_light->obj = light;
 	ft_lstadd_back(scene, ft_lstnew(a_light));
+}
+
+void	plane(t_list **scene, char *line)
+{
+	object *a_plane;
+	t_plane *plane;
+
+	if(!(a_plane = ft_calloc(1, sizeof(object))))
+		a_plane = 0;
+	if(!(plane = ft_calloc(1, sizeof(t_plane))))
+		plane = 0;
+	a_plane->type = 5;
+	plane->p0 = create_vect(&line);
+	plane->N = create_vect(&line);
+	plane->rgb = create_color(&line);
+	a_plane->obj = plane;
+	ft_lstadd_back(scene, ft_lstnew(a_plane));
 }

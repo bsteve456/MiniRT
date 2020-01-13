@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 10:37:11 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/12 11:42:22 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/13 13:27:28 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,13 @@ typedef struct
 	float ratio;
 	color rgb;
 }			t_aligth;
+
+typedef struct
+{
+	vect p0;
+	vect N;
+	color rgb;
+}			t_plane;
 
 typedef struct
 {
@@ -105,6 +112,7 @@ void	A_light(t_list **scene, char *line);
 void	resolution(t_list **scene, char *line);
 void	sphere(t_list **scene, char *line);
 void	light_init(t_list **scene, char *line);
+void	plane(t_list **scene, char *line);
 void	camera_loop(t_list *scene);
 data_t *init_data(t_list *copy);
 data_t	*complet_ray_pixel(float i, float j, t_cam *cam, data_t *data);
@@ -113,4 +121,6 @@ void	inter_sphere(t_sphere *sphere, data_t *data, t_list *scene);
 void	object_parse(t_list *scene, data_t *data);
 void	light_loop(float t0, t_sphere *sphere, data_t *data, t_list *scene);
 void	light(vect Pt, t_sphere *sphere, data_t *data, t_light *light);
+void	init_planes(t_list *scene, data_t *data);
+void	inter_plane(t_plane *plane, data_t *data);
 #endif

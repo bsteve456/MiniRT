@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/29 13:28:17 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/09 14:25:31 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/13 13:17:34 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	display_list(t_list *scene, data_t *data)
 {
 	ambient_light(scene, data);
+	init_planes(scene, data);
 	object_parse(scene, data);
 }
 
