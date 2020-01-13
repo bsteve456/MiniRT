@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 09:25:11 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/13 13:25:44 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/13 20:53:15 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,16 @@ void	init_planes(t_list *scene, data_t *data)
 {
 	object *a_plane;
 	t_plane *plane;
+	t_list *copy;
 
+	copy = scene;
 	while(scene)
 	{
 		a_plane = scene->content;
 		if(a_plane->type == 5)
 		{
 			plane = a_plane->obj;
-			inter_plane(plane, data);
+			inter_plane(plane, data, copy);
 		}
 		scene = scene->next;
 	}

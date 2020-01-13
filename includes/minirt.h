@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 10:37:11 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/13 13:27:28 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/13 20:43:25 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,5 +122,7 @@ void	object_parse(t_list *scene, data_t *data);
 void	light_loop(float t0, t_sphere *sphere, data_t *data, t_list *scene);
 void	light(vect Pt, t_sphere *sphere, data_t *data, t_light *light);
 void	init_planes(t_list *scene, data_t *data);
-void	inter_plane(t_plane *plane, data_t *data);
+void	inter_plane(t_plane *plane, data_t *data, t_list *scene);
+void	light_loopa(float t0, t_plane *plane, data_t *data, t_list     *scene);
+
 #endif
