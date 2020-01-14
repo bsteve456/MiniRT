@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 14:54:49 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/13 20:58:46 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/14 16:07:50 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,20 +40,6 @@ void	light(vect Pt, t_sphere *sphere, data_t *data, t_light *light)
 		surface_color *= 0.0;
 	mlx_pixel_put(data->mlx_ptr, data->mlx_win, data->x, data->y, surface_color);
 }
-void	lighta(vect Pt, t_plane *plane, data_t *data, t_light *light)
-{
-	vect N;
-	vect L;
-	int surface_color;
-	printf("%f, %f, %f\n", Pt.x, Pt.y, Pt.z);
-	N = normalize(plane->N);
-	L = normalize(vectSub(light->orig, Pt));
-	printf("%f\n", vectDot(N,L));
-	surface_color = reflected_color(plane->rgb, light, vectDot(N,L));
-	if(surface_color < 0.0)
-		surface_color *= 0.0;
-	mlx_pixel_put(data->mlx_ptr, data->mlx_win, data->x, data->y, surface_color);
-}
 void	light_loop(float t0, t_sphere *sphere, data_t *data, t_list *scene)
 {
 	vect Pt;
@@ -64,22 +50,6 @@ void	light_loop(float t0, t_sphere *sphere, data_t *data, t_list *scene)
 		t_light = scene->content;
 		if(t_light->type == 4)
 			light(Pt, sphere, data, t_light->obj);
-		scene = scene->next;
-	}
-}
-
-
-void	light_loopa(float t0, t_plane *plane, data_t *data, t_list *scene)
-{
-	vect Pt;
-	object *t_light;
-
-	Pt = vectAdd(data->ray.orig, vectMult(data->ray.dir, t0));
-	while(scene)
-	{
-		t_light = scene->content;
-		if(t_light->type == 4)
-			lighta(Pt, plane, data, t_light->obj);
 		scene = scene->next;
 	}
 }
