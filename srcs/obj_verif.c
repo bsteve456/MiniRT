@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 09:47:34 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/14 16:09:01 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/14 20:34:24 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,12 @@ void	inter_sphere(t_sphere *sphere, data_t *data, t_list *scene)
 	if((b * b) - (4 * a * c) >= 0.0000)
 	{
 		a = find_t0(a, b, c);
-		light_loop(a, sphere, data, scene);
+		vect Pt = vectAdd(data->ray.orig, vectMult(data->ray.dir, a));
+		vect N = vectSub(Pt, sphere->center);
+		if(shadow_ray(scene, Pt, data, N) == 0)
+			light_loop(a, sphere, data, scene);
+		else
+			mlx_pixel_put(data->mlx_ptr, data->mlx_win, data->x, data->y, 0);
 	}
 }
 
@@ -60,7 +65,13 @@ void	inter_plane(t_plane *plane, data_t *data, t_list *scene)
 		vect p0l0 = normalize(vectSub(plane->p0, data->ray.orig));
 		float t = vectDot(p0l0, plane->N) / demom;
 
-		if(t >= 0.00001f) 
-			mlx_pixel_put(data->mlx_ptr, data->mlx_win, data->x, data->y, color);
+		if(t >= 0.00001f)
+		{
+			vect Pt = vectAdd(data->ray.orig, vectMult(data->ray.dir, t));
+			if(shadow_ray(scene, Pt, data, plane->N) == 0)
+				mlx_pixel_put(data->mlx_ptr, data->mlx_win, data->x, data->y, color);
+			else
+				mlx_pixel_put(data->mlx_ptr, data->mlx_win, data->x, data->y, 0);
+		}
 	}
 }

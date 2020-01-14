@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 10:37:11 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/14 16:09:20 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/14 20:33:40 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,12 @@ typedef struct		data_s
 
 typedef struct
 {
+	vect orig;
+	vect dir;
+
+}			t_sdaw;
+typedef struct
+{
 	vect center;
 	float radius;
 	color rgb;
@@ -123,4 +129,7 @@ void	light_loop(float t0, t_sphere *sphere, data_t *data, t_list *scene);
 void	light(vect Pt, t_sphere *sphere, data_t *data, t_light *light);
 void	init_planes(t_list *scene, data_t *data);
 void	inter_plane(t_plane *plane, data_t *data, t_list *scene);
+int		shadow_ray(t_list *scene, vect Pt, data_t *data, vect N);
+int		inter_shadow_sphere(t_sdaw d_ray, t_sphere *sphere);
+
 #endif

@@ -6,7 +6,7 @@
 #    By: blacking <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/16 10:03:56 by blacking          #+#    #+#              #
-#    Updated: 2020/01/09 15:20:30 by blacking         ###   ########.fr        #
+#    Updated: 2020/01/14 19:43:49 by blacking         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,9 @@ FILE=minirt.c \
 	  srcs/minirt_utils2.c \
 	  srcs/add_pixel_color.c \
 	  srcs/obj_verif.c \
-	  srcs/light.c
+	  srcs/light.c \
+	  srcs/shadow.c \
+	  srcs/shadow_inter.c
 
 OBJ=$(FILE:.c=.o)
 
