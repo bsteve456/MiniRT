@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 09:47:34 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/15 13:16:16 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/15 14:38:27 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,6 @@ void	inter_sphere(t_sphere *sphere, data_t *data, t_list *scene)
 		data->rgb = sphere->rgb;
 		if(shadow_ray(scene, Pt, data) == 0)
 			light_loop(Pt, N, data, scene);
-		else
-			mlx_pixel_put(data->mlx_ptr, data->mlx_win, data->x, data->y, 0);
 	}
 }
 
@@ -70,10 +68,10 @@ void	inter_plane(t_plane *plane, data_t *data, t_list *scene)
 		if(t >= 0.00001f)
 		{
 			vect Pt = vectAdd(data->ray.orig, vectMult(data->ray.dir, t));
+			data->rgb = plane->rgb;
+
 			if(shadow_ray(scene, Pt, data) == 0)
 				mlx_pixel_put(data->mlx_ptr, data->mlx_win, data->x, data->y, color);
-			else
-				mlx_pixel_put(data->mlx_ptr, data->mlx_win, data->x, data->y, 0);
 		}
 	}
 }

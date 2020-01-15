@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 19:25:01 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/15 13:55:37 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/15 14:51:25 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,26 @@ int	shadow_ray(t_list *scene, vect Pt, data_t *data)
 {
 	object *light;
 	t_list *copy;
-	int num = 0;
-	int mem = 0;
-//	Pt = vectMult(vectAdd(Pt, N), 0.9);
+	int num;
+	color rgb;
+	float ratio;
+
 	copy = scene;
+	num = 0;
 	while(copy)
 	{
 		light = copy->content;
 		if(light->type == 4)
-			mem = shadow_inter(Pt, light->obj, scene);
-		num = (num < mem) ? mem : num;
+			num += shadow_inter(Pt, light->obj, scene);
 		copy = copy->next;
 	}
-	return num;
+	ratio = pow(0.5, num);
+	if(num > 0)
+	{
+		rgb.r = data->rgb.r * ratio;
+		rgb.g = data->rgb.g * ratio;
+		rgb.b = data->rgb.b * ratio;
+		surface_color(data, rgb);
+	}
+	return (num);
 }
