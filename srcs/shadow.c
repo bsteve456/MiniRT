@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 19:25:01 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/14 20:35:55 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/15 11:07:11 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	shadow_inter(vect Pt, t_light *light, t_list *scene)
 
 	d_ray.orig = Pt;
 	d_ray.dir = vectMult(vectSub(d_ray.orig, light->orig), -1);
+	d_ray.light_orig = light->orig;
 	while(scene)
 	{
 		obj = scene->content;
@@ -31,12 +32,12 @@ int	shadow_inter(vect Pt, t_light *light, t_list *scene)
 }
 
 
-int	shadow_ray(t_list *scene, vect Pt, data_t *data, vect N)
+int	shadow_ray(t_list *scene, vect Pt, data_t *data)
 {
 	object *light;
 	t_list *copy;
 	int num = 0;
-	Pt = vectMult(vectAdd(Pt, N), 1);
+//	Pt = vectMult(vectAdd(Pt, N), 0.9);
 	copy = scene;
 	while(copy)
 	{
