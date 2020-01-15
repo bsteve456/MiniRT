@@ -6,50 +6,72 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 14:54:49 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/14 16:07:50 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/15 13:48:49 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-int		reflected_color(color rgb, t_light *light, float dotP)
+void	surface_color(data_t *data, color rgb)
 {
+	int color;
 	int r;
 	int g;
 	int b;
 
-	r =  (rgb.r > light->rgb.r) ? light->rgb.r : rgb.r;
-	g =  (rgb.g > light->rgb.g) ? light->rgb.g : rgb.g;
-	b =  (rgb.b > light->rgb.b) ? light->rgb.b : rgb.b;
-	r *= light->ratio * dotP;
-	g *= light->ratio * dotP;
-	b *= light->ratio * dotP;
-	return (r * pow(256, 2) + g * 256 + b);
+	r = (data->rgb.r > rgb.r) ? rgb.r : data->rgb.r;
+	g = (data->rgb.g > rgb.g) ? rgb.g : data->rgb.g;
+	b = (data->rgb.b > rgb.b) ? rgb.b : data->rgb.b;
+	color = r * pow(256, 2) + g * 256 + b;
+	if(color < 0.0)
+		color *= 0.0;
+	mlx_pixel_put(data->mlx_ptr, data->mlx_win, data->x, data->y, color);
 }
 
-void	light(vect Pt, t_sphere *sphere, data_t *data, t_light *light)
+
+void		reflected_color(t_light *light, float dotP, color *rgb)
 {
-	vect N;
+	if (rgb->r < (light->rgb.r * light->ratio * dotP))
+			rgb->r = light->rgb.r * light->ratio * dotP;
+	if (rgb->g < (light->rgb.g * light->ratio * dotP))
+			rgb->g = light->rgb.g * light->ratio * dotP;
+	if (rgb->b < (light->rgb.b * light->ratio * dotP))
+			rgb->b = light->rgb.b * light->ratio * dotP;
+
+//	return (r * pow(256, 2) + g * 256 + b);
+}
+
+//void	light(float NL, data_t *data, t_light *light, color *rgb)
+//{
+//	int surface_color;
+
+//	reflected_color(light, NL, rgb);
+//	if(surface_color < 0.0)
+//		surface_color *= 0.0;
+//	mlx_pixel_put(data->mlx_ptr, data->mlx_win, data->x, data->y, surface_color);
+//}
+void	light_loop(vect Pt, vect N, data_t *data, t_list *scene)
+{
 	vect L;
-	int surface_color;
+	object *a_light;
+	t_light *light_a;
+	color rgb;
 
-	N = normalize(vectSub(Pt, sphere->center));
-	L = normalize(vectSub(light->orig, Pt));
-	surface_color = reflected_color(sphere->rgb, light, vectDot(N,L));
-	if(surface_color < 0.0)
-		surface_color *= 0.0;
-	mlx_pixel_put(data->mlx_ptr, data->mlx_win, data->x, data->y, surface_color);
-}
-void	light_loop(float t0, t_sphere *sphere, data_t *data, t_list *scene)
-{
-	vect Pt;
-	object *t_light;
-	Pt = vectAdd(data->ray.orig, vectMult(data->ray.dir, t0));
+	rgb.r = 0;
+	rgb.g = 0;
+	rgb.b = 0;
+	N = normalize(N);
 	while(scene)
 	{
-		t_light = scene->content;
-		if(t_light->type == 4)
-			light(Pt, sphere, data, t_light->obj);
+		a_light = scene->content;
+		if(a_light->type == 4)
+		{
+			light_a = a_light->obj;
+			L = normalize(vectSub(light_a->orig, Pt));
+			reflected_color(a_light->obj,vectDot(N, L), &rgb);
+		}
 		scene = scene->next;
 	}
+	surface_color(data, rgb);
+
 }

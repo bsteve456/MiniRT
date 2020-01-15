@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 10:37:11 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/15 11:07:01 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/15 13:28:41 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ typedef struct		data_s
 	float		  x;
 	float		  y;
 	t_ray		  ray;
+	color		rgb;
 }					data_t;
 
 typedef struct
@@ -125,8 +126,7 @@ data_t	*complet_ray_pixel(float i, float j, t_cam *cam, data_t *data);
 void	ambient_light(t_list *scene, data_t *data);
 void	inter_sphere(t_sphere *sphere, data_t *data, t_list *scene);
 void	object_parse(t_list *scene, data_t *data);
-void	light_loop(float t0, t_sphere *sphere, data_t *data, t_list *scene);
-void	light(vect Pt, t_sphere *sphere, data_t *data, t_light *light);
+void	light_loop(vect Pt, vect N, data_t *data, t_list *scene);
 void	init_planes(t_list *scene, data_t *data);
 void	inter_plane(t_plane *plane, data_t *data, t_list *scene);
 int		shadow_ray(t_list *scene, vect Pt, data_t *data);

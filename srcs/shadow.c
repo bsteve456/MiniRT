@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 19:25:01 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/15 11:07:11 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/15 13:55:37 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,15 @@ int	shadow_ray(t_list *scene, vect Pt, data_t *data)
 	object *light;
 	t_list *copy;
 	int num = 0;
+	int mem = 0;
 //	Pt = vectMult(vectAdd(Pt, N), 0.9);
 	copy = scene;
 	while(copy)
 	{
 		light = copy->content;
 		if(light->type == 4)
-			num = shadow_inter(Pt, light->obj, scene);
+			mem = shadow_inter(Pt, light->obj, scene);
+		num = (num < mem) ? mem : num;
 		copy = copy->next;
 	}
 	return num;
