@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 10:37:11 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/15 14:47:28 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/16 11:32:41 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef struct s_window
 {
 	float			x;
 	float			y;
-}				t_widw;
+}			t_widw;
 
 typedef struct
 {
@@ -77,8 +77,9 @@ typedef struct
 	vect orig;
 	float ratio;
 	color rgb;
-}	t_light;
-typedef struct		data_s
+}			t_light;
+
+typedef struct	data_s
 {
     void          *mlx_ptr;
     void          *mlx_win;
@@ -87,7 +88,7 @@ typedef struct		data_s
 	float		  y;
 	t_ray		  ray;
 	color		rgb;
-}					data_t;
+}				data_t;
 
 typedef struct
 {
@@ -95,13 +96,21 @@ typedef struct
 	vect dir;
 	vect light_orig;
 }			t_sdaw;
+
 typedef struct
 {
 	vect center;
 	float radius;
 	color rgb;
-}	t_sphere;
+}			t_sphere;
 
+typedef struct
+{
+	vect p0;
+	vect N;
+	float height;
+	color rgb;
+}			t_square;
 vect	vectSub(vect v1, vect v2);
 float	vectDot(vect v1, vect v2);
 vect	vectAdd(vect v1, vect v2);
@@ -120,6 +129,7 @@ void	resolution(t_list **scene, char *line);
 void	sphere(t_list **scene, char *line);
 void	light_init(t_list **scene, char *line);
 void	plane(t_list **scene, char *line);
+void	square(t_list **scene, char *line);
 void	camera_loop(t_list *scene);
 data_t *init_data(t_list *copy);
 data_t	*complet_ray_pixel(float i, float j, t_cam *cam, data_t *data);
@@ -131,6 +141,6 @@ void	init_planes(t_list *scene, data_t *data);
 void	inter_plane(t_plane *plane, data_t *data, t_list *scene);
 int		shadow_ray(t_list *scene, vect Pt, data_t *data);
 int		inter_shadow_sphere(t_sdaw d_ray, t_sphere *sphere);
-float find_t0(float a, float b, float c);
+float	find_t0(float a, float b, float c);
 void	surface_color(data_t *data, color rgb);
 #endif
