@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 09:47:34 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/16 11:05:51 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/16 11:42:28 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ void	inter_plane(t_plane *plane, data_t *data, t_list *scene)
 	float demom;
 
 	color = plane->rgb.r * pow(256, 2) + plane->rgb.g * 256 + plane->rgb.b;
-	plane->N = plane->N;
 	demom = vectDot(data->ray.dir, plane->N);
 	if(fabs(demom) > 0.00001f) {
 		p0l0 = vectSub(plane->p0, data->ray.orig);

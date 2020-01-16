@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 10:37:11 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/16 11:32:41 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/16 12:06:25 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,4 +143,5 @@ int		shadow_ray(t_list *scene, vect Pt, data_t *data);
 int		inter_shadow_sphere(t_sdaw d_ray, t_sphere *sphere);
 float	find_t0(float a, float b, float c);
 void	surface_color(data_t *data, color rgb);
+void	inter_plane_square(t_square *square, data_t *data);
 #endif

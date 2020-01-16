@@ -6,7 +6,7 @@
 #    By: blacking <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/16 10:03:56 by blacking          #+#    #+#              #
-#    Updated: 2020/01/16 10:53:50 by blacking         ###   ########.fr        #
+#    Updated: 2020/01/16 11:39:46 by blacking         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ FILE=minirt.c \
 	  srcs/sphere_plane_inter.c \
 	  srcs/light.c \
 	  srcs/shadow.c \
-	  srcs/shadow_inter.c
+	  srcs/shadow_inter.c \
+	  srcs/square_inter.c
 
 OBJ=$(FILE:.c=.o)
 
