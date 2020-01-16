@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 10:37:11 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/16 12:06:25 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/16 21:13:09 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ vect	vectSub(vect v1, vect v2);
 float	vectDot(vect v1, vect v2);
 vect	vectAdd(vect v1, vect v2);
 vect	vectMult(vect v1, float num);
+vect	crossP(vect v1, vect v2);
 vect	normalize(vect ray);
 vect	x_axis_rot(vect dir, float theta);
 vect	y_axis_rot(vect dir, float theta);

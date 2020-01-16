@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 12:26:01 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/13 10:47:18 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/16 21:13:26 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,14 @@ vect	normalize(vect ray)
 	ray.y /= length;
 	ray.z /= length;
 	return (ray);
+}
+
+vect	crossP(vect v1, vect v2)
+{
+	vect res;
+
+	res.x = (v1.y * v2.z) - (v1.z * v2.y);
+	res.y = (v1.z * v2.x) - (v1.x * v2.z);
+	res.z = (v1.x * v2.y) - (v1.y * v2.x);
+	return res;
 }

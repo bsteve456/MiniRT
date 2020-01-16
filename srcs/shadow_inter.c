@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 19:39:30 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/15 11:44:26 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/16 20:00:35 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,11 @@ int	inter_shadow_sphere(t_sdaw d_ray, t_sphere *sphere)
 	if((b * b) - (4 * a * c) >= 0.0000)
 	{
 		float t = find_t0(a, b, c);
-		if(t > 0.0f)
+		if(t > 0.00015f)
+		{
+			printf("%f\n", t);
 			return (1);
+		}
 	}
 	return (0);
 }

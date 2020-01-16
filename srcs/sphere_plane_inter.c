@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 09:47:34 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/16 11:42:28 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/16 19:58:23 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	sphere_n_pt(float t0, t_sphere *sphere, data_t *data, t_list *scene)
 
 	Pt = vectAdd(data->ray.orig, vectMult(data->ray.dir, (double)t0));
 	N = vectSub(Pt, sphere->center);
-	Pt = vectMult(vectAdd(Pt, N), 0.9);
+//	Pt = vectMult(vectAdd(Pt, N), 1);
 	data->rgb = sphere->rgb;
 	if(shadow_ray(scene, Pt, data) == 0)
 		light_loop(Pt, N, data, scene);
