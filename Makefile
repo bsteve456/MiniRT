@@ -6,7 +6,7 @@
 #    By: blacking <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/16 10:03:56 by blacking          #+#    #+#              #
-#    Updated: 2020/01/14 19:43:49 by blacking         ###   ########.fr        #
+#    Updated: 2020/01/16 10:53:50 by blacking         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,9 +22,9 @@ FILE=minirt.c \
 	  srcs/fill_scene_lst.c \
 	  srcs/fill_object_lst.c \
 	  srcs/minirt_utils.c \
-	  srcs/minirt_utils2.c \
+	  srcs/init_data_ray.c \
 	  srcs/add_pixel_color.c \
-	  srcs/obj_verif.c \
+	  srcs/sphere_plane_inter.c \
 	  srcs/light.c \
 	  srcs/shadow.c \
 	  srcs/shadow_inter.c
