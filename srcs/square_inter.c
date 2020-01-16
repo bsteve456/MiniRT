@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 11:38:06 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/16 13:25:58 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/16 15:43:05 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,23 +52,16 @@ int		dot_product(vect *corner, vect q)
 void	corner_orientation(vect **corner, vect N)
 {
 	vect *new_corner = *corner;
+	int i;
 
-	new_corner[0] = x_axis_rot(new_corner[0], N.x);
-	new_corner[0] = y_axis_rot(new_corner[0], N.y);
-	new_corner[0] = z_axis_rot(new_corner[0], N.z);
-
-	new_corner[1] = x_axis_rot(new_corner[1], N.x);
-	new_corner[1] = y_axis_rot(new_corner[1], N.y);
-	new_corner[1] = z_axis_rot(new_corner[1], N.z);
-
-	new_corner[2] = x_axis_rot(new_corner[2], N.x);
-	new_corner[2] = y_axis_rot(new_corner[2], N.y);
-	new_corner[2] = z_axis_rot(new_corner[2], N.z);
-
-	new_corner[3] = x_axis_rot(new_corner[3], N.x);
-	new_corner[3] = y_axis_rot(new_corner[3], N.y);
-	new_corner[3] = z_axis_rot(new_corner[3], N.z);
-
+	i = 0;
+	while(i < 4)
+	{
+		new_corner[i] = x_axis_rot(new_corner[i], N.x);
+		new_corner[i] = y_axis_rot(new_corner[i], N.y);
+		new_corner[i] = z_axis_rot(new_corner[i], N.z);
+		i++;
+	}
 	*corner = new_corner;
 }
 void	inter_square(vect Pt, t_square *square, data_t *data)
