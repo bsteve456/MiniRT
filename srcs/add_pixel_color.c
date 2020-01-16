@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 09:25:11 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/16 12:05:50 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/16 22:42:29 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	object_parse(t_list *scene, data_t *data)
 		if(obj->type == 3)
 			inter_sphere(obj->obj, data, copy);
 		else if(obj->type == 6)
-			inter_plane_square(obj->obj, data);
+			inter_plane_square(obj->obj, data, copy);
 		scene = scene->next;
 	}
 }

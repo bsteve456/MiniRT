@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 11:38:06 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/16 21:34:40 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/16 23:16:20 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	corner_orientation(vect **corner, vect N)
 	}
 	*corner = new_corner;
 }
-void	inter_square(vect Pt, t_square *square, data_t *data)
+void	inter_square(vect Pt, t_square *square, data_t *data, t_list *scene)
 {
 	vect *square_corner = ft_calloc(4, sizeof(vect));
 	int color = square->rgb.r * pow(256, 2) + square->rgb.g * 256 + square->rgb.b;
@@ -79,14 +79,18 @@ void	inter_square(vect Pt, t_square *square, data_t *data)
 		square->p0.y - square->height/2, square->p0.z);
 	square_corner[3] = square_corner_init(square->p0.x - square->height/2, 
 		square->p0.y - square->height/2, square->p0.z);
-//	corner_orientation(&square_corner, square->N);
+	data->rgb = square->rgb;
 	if(dot_product(square_corner, Pt, square->N) == 1)
-		mlx_pixel_put(data->mlx_ptr, data->mlx_win, data->x, data->y, color);
+	{
+		if(shadow_ray(scene, Pt, data) == 0){
+			mlx_pixel_put(data->mlx_ptr, data->mlx_win, data->x, data->y, color);
+		}
 	free(square_corner);
+	}
 }
 
 
-void	inter_plane_square(t_square *square, data_t *data)
+void	inter_plane_square(t_square *square, data_t *data, t_list *scene)
 {
 	vect p0l0;
 	float t;
@@ -99,10 +103,10 @@ void	inter_plane_square(t_square *square, data_t *data)
 		t = vectDot(p0l0, square->N) / demom;
 		if(t >= 0.00001f)
 		{
-			mlx_pixel_put(data->mlx_ptr, data->mlx_win, data->x, data->y, 255);
+//			mlx_pixel_put(data->mlx_ptr, data->mlx_win, data->x, data->y, 255);
 
 			Pt = vectAdd(data->ray.orig, vectMult(data->ray.dir, t));
-			inter_square(Pt, square, data);
+			inter_square(Pt, square, data, scene);
 		}
 	}
 }
