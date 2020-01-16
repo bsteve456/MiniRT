@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 14:54:49 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/15 13:48:49 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/16 11:08:51 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	surface_color(data_t *data, color rgb)
 	mlx_pixel_put(data->mlx_ptr, data->mlx_win, data->x, data->y, color);
 }
 
-
 void		reflected_color(t_light *light, float dotP, color *rgb)
 {
 	if (rgb->r < (light->rgb.r * light->ratio * dotP))
@@ -37,19 +36,8 @@ void		reflected_color(t_light *light, float dotP, color *rgb)
 			rgb->g = light->rgb.g * light->ratio * dotP;
 	if (rgb->b < (light->rgb.b * light->ratio * dotP))
 			rgb->b = light->rgb.b * light->ratio * dotP;
-
-//	return (r * pow(256, 2) + g * 256 + b);
 }
 
-//void	light(float NL, data_t *data, t_light *light, color *rgb)
-//{
-//	int surface_color;
-
-//	reflected_color(light, NL, rgb);
-//	if(surface_color < 0.0)
-//		surface_color *= 0.0;
-//	mlx_pixel_put(data->mlx_ptr, data->mlx_win, data->x, data->y, surface_color);
-//}
 void	light_loop(vect Pt, vect N, data_t *data, t_list *scene)
 {
 	vect L;
@@ -73,5 +61,4 @@ void	light_loop(vect Pt, vect N, data_t *data, t_list *scene)
 		scene = scene->next;
 	}
 	surface_color(data, rgb);
-
 }
