@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 09:47:34 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/16 19:58:23 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/17 11:19:11 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	sphere_n_pt(float t0, t_sphere *sphere, data_t *data, t_list *scene)
 
 	Pt = vectAdd(data->ray.orig, vectMult(data->ray.dir, (double)t0));
 	N = vectSub(Pt, sphere->center);
-//	Pt = vectMult(vectAdd(Pt, N), 1);
 	data->rgb = sphere->rgb;
 	if(shadow_ray(scene, Pt, data) == 0)
 		light_loop(Pt, N, data, scene);
@@ -65,13 +64,11 @@ void	inter_sphere(t_sphere *sphere, data_t *data, t_list *scene)
 
 void	inter_plane(t_plane *plane, data_t *data, t_list *scene)
 {
-	int color;
 	vect Pt;
 	vect p0l0;
 	float t;
 	float demom;
 
-	color = plane->rgb.r * pow(256, 2) + plane->rgb.g * 256 + plane->rgb.b;
 	demom = vectDot(data->ray.dir, plane->N);
 	if(fabs(demom) > 0.00001f) {
 		p0l0 = vectSub(plane->p0, data->ray.orig);
@@ -81,7 +78,7 @@ void	inter_plane(t_plane *plane, data_t *data, t_list *scene)
 			Pt = vectAdd(data->ray.orig, vectMult(data->ray.dir, t));
 			data->rgb = plane->rgb;
 			if(shadow_ray(scene, Pt, data) == 0)
-				mlx_pixel_put(data->mlx_ptr, data->mlx_win, data->x, data->y, color);
+				light_loop(Pt, plane->N, data, scene);
 		}
 	}
 }
