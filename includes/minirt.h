@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 10:37:11 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/16 22:41:38 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/17 19:40:15 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct
 	int g;
 	int b;
 }			color;
+
 typedef struct
 {
 	float ratio;
@@ -111,6 +112,15 @@ typedef struct
 	float height;
 	color rgb;
 }			t_square;
+
+typedef struct
+{
+	vect p0;
+	vect N;
+	float radius;
+	float height;
+	color rgb;
+}			t_cylinder;
 vect	vectSub(vect v1, vect v2);
 float	vectDot(vect v1, vect v2);
 vect	vectAdd(vect v1, vect v2);
@@ -131,6 +141,7 @@ void	sphere(t_list **scene, char *line);
 void	light_init(t_list **scene, char *line);
 void	plane(t_list **scene, char *line);
 void	square(t_list **scene, char *line);
+void	cylinder(t_list **scene, char *line);
 void	camera_loop(t_list *scene);
 data_t *init_data(t_list *copy);
 data_t	*complet_ray_pixel(float i, float j, t_cam *cam, data_t *data);
@@ -145,4 +156,5 @@ int		inter_shadow_sphere(t_sdaw d_ray, t_sphere *sphere);
 float	find_t0(float a, float b, float c);
 void	surface_color(data_t *data, color rgb);
 void	inter_plane_square(t_square *square, data_t *data, t_list *sphere);
+void	inter_cylinder(t_cylinder *cylinder, data_t *data);
 #endif

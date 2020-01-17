@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/28 15:53:04 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/16 11:31:30 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/17 15:17:10 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	sphere(t_list **scene, char *line)
 		sphr = 0;
 	sphere->type = 3;
 	sphr->center = create_vect(&line);
-	sphr->radius = create_float(&line);
+	sphr->radius = create_float(&line) / 2;
 	sphr->rgb = create_color(&line);
 	sphere->obj = sphr;
 	ft_lstadd_back(scene, ft_lstnew(sphere));
@@ -45,3 +45,20 @@ void	square(t_list **scene, char *line)
 	ft_lstadd_back(scene, ft_lstnew(square));
 }
 
+void	cylinder(t_list **scene, char *line)
+{
+	object *cylinder;
+	t_cylinder *cyldr;
+	if(!(cylinder = ft_calloc(1, sizeof(object))))
+		cylinder = 0;
+	if(!(cyldr = ft_calloc(1, sizeof(t_cylinder))))
+		cyldr = 0;
+	cylinder->type = 7;
+	cyldr->p0 = create_vect(&line);
+	cyldr->N = create_vect(&line);
+	cyldr->radius = create_float(&line) / 2;
+	cyldr->height = create_float(&line);
+	cyldr->rgb = create_color(&line);
+	cylinder->obj = cyldr;
+	ft_lstadd_back(scene, ft_lstnew(cylinder));
+}
