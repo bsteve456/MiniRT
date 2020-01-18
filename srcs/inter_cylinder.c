@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 14:30:20 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/18 10:28:45 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/18 10:33:34 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ void	inter_cylinder_delta(float delta, float abc[3], data_t *data, t_cylinder *c
 		t0 = t1;
 		t1 = temp;
 	}
-	y0 = data->ray.orig.y + data->ray.dir.y * t0;
-	y1 = data->ray.orig.y + data->ray.dir.y * t1;
+	y0 = (data->ray.orig.y - cylinder->p0.y) + data->ray.dir.y * t0;
+	y1 = (data->ray.orig.y - cylinder->p0.y) + data->ray.dir.y * t1;
 	if((temp = find_final_t(t0, t1, y0, y1, cylinder)) > 0)
 	{
 //		printf("%f\n", temp);
