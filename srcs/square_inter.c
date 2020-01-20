@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 11:38:06 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/17 11:18:16 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/20 22:21:36 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ void	inter_plane_square(t_square *square, data_t *data, t_list *scene)
 	float demom;
 	vect Pt;
 
+	square->N = normalize(square->N);
 	demom = vectDot(data->ray.dir, square->N);
 	if(fabs(demom) > 0.00001f) {
 		p0l0 = vectSub(square->p0, data->ray.orig);
