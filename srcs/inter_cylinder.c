@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 14:30:20 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/18 10:33:34 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/20 20:49:32 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ void	inter_cylinder_delta(float delta, float abc[3], data_t *data, t_cylinder *c
 	float y1;
 	float temp;
 
-//	printf("%f\n %f\n", -abc[1], abc[1] * (-1));
 	t0 = (-1 * abc[1] + sqrt(delta)) / (2 * abc[0]);
 	t1 = (-1 * abc[1] - sqrt(delta)) / (2 * abc[0]);
 	if(t0 > t1)
@@ -78,32 +77,53 @@ void	inter_cylinder_delta(float delta, float abc[3], data_t *data, t_cylinder *c
 	y1 = (data->ray.orig.y - cylinder->p0.y) + data->ray.dir.y * t1;
 	if((temp = find_final_t(t0, t1, y0, y1, cylinder)) > 0)
 	{
-//		printf("%f\n", temp);
 		mlx_pixel_put(data->mlx_ptr, data->mlx_win, data->x, data->y, 255*255);
 	}
 }
 
 
-void	inter_cylinder(t_cylinder *cylinder, data_t *data)
+void	inter_cylinder(t_cylinder *cy, data_t *data, t_list *scene)
 {
-//	float a;
-//	float b;
-//	float c;
 	float abc[3];
 	float delta;
-	float ocx;
-	float ocz;
+//	float ocx;
+//	float ocz;
+	vect orig;
+	vect dir;
+	orig = data->ray.orig;
+	dir = data->ray.dir;
+	cy->N = normalize(cy->N);
+	vect MoO = vectSub(orig, cy->p0);
+	float a = vectDot(MoO, cy->N);
+	float b = vectDot(dir, cy->N);
+	vect V1 = (vectSub(MoO, vectMult(cy->N, a)));
+	vect V2 = (vectSub(dir, vectMult(cy->N, b)));
+//	orig = x_axis_rot(orig, cylinder->N.x);
+//	orig = y_axis_rot(orig, cylinder->N.y);
+//	orig = z_axis_rot(orig, cylinder->N.z);
+//	dir = x_axis_rot(dir, cylinder->N.x);
+//	dir = y_axis_rot(dir, cylinder->N.y);
+//	dir = z_axis_rot(dir, cylinder->N.z);
 
-	ocx = data->ray.orig.x - cylinder->p0.x;
-	ocz = data->ray.orig.z - cylinder->p0.z;
+	
+//	printf("%f, %f\n", cos(0.5 * M_PI), cos(90));
 
-
-	abc[0] = data->ray.dir.x * data->ray.dir.x 
-		+ data->ray.dir.z * data->ray.dir.z;
-	abc[1] = 2 * ocx * data->ray.dir.x 
-		+ 2 * ocz * data->ray.dir.z;
-	abc[2] = ocx * ocx + ocz * ocz - (cylinder->radius * cylinder->radius);
-	delta = abc[1] * abc[1] - 4 * abc[0] * abc[2];
+	abc[0] = vectDot(V2, V2);
+	abc[1] = 2  * vectDot(V1, V2);
+	abc[2] = vectDot(V1, V1) - (cy->radius * cy->radius);
+	delta = (abc[1] * abc[1]) - (4 * abc[0] * abc[2]);
 	if(delta >= 0.0f)
-		inter_cylinder_delta(delta, abc, data, cylinder);
+	{
+		a = find_t0(abc[0], abc[1], abc[2]);
+		data->rgb = cy->rgb;
+		vect Pt = vectAdd(data->ray.orig, vectMult(data->ray.dir, (double)a));
+		vect MoP = vectSub(Pt, cy->p0);
+		b = vectDot(MoP, cy->N);
+		printf("%f\n", b);
+		if(b >= -cy->height/2 && b <= cy->height/2){
+			if(shadow_ray(scene, Pt, data) == 0)
+				light_loop(Pt, cy->N, data, scene);
+	//	mlx_pixel_put(data->mlx_ptr, data->mlx_win, data->x, data->y, 255*255);
+		}
+	}
 }
