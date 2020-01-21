@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 14:30:20 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/21 21:47:59 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/21 21:49:36 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ float find_delta(data_t *data, t_cylinder *cy, float *a)
 	vect V2;
 	vect MoO;
 	float abc[3];
-
 
 	MoO = vectSub(data->ray.orig, cy->p0);
 	V1 = (vectSub(MoO, vectMult(cy->N,  vectDot(MoO, cy->N))));
