@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 10:37:11 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/21 12:26:40 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/22 00:06:00 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,14 @@ typedef struct
 	float height;
 	color rgb;
 }			t_cylinder;
+
+typedef struct
+{
+	vect p0;
+	vect p1;
+	vect p2;
+	color rgb;
+}			t_triangle;
 vect	vectSub(vect v1, vect v2);
 float	vectDot(vect v1, vect v2);
 vect	vectAdd(vect v1, vect v2);
@@ -142,6 +150,7 @@ void	light_init(t_list **scene, char *line);
 void	plane(t_list **scene, char *line);
 void	square(t_list **scene, char *line);
 void	cylinder(t_list **scene, char *line);
+void	triangle(t_list **scene, char *line);
 void	camera_loop(t_list *scene);
 data_t *init_data(t_list *copy);
 data_t	*complet_ray_pixel(float i, float j, t_cam *cam, data_t *data);
@@ -158,4 +167,6 @@ void	surface_color(data_t *data, color rgb);
 void	inter_plane_square(t_square *square, data_t *data, t_list *scene);
 void	inter_cylinder(t_cylinder *cy, data_t *data, t_list *scene);
 int		inter_disk(t_cylinder *cy, vect p, data_t *data, t_list *scene);
+void	inter_triangle(t_triangle *trgl, data_t *data, t_list *scene);
+
 #endif

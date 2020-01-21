@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 14:54:49 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/21 14:36:11 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/22 00:03:16 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,6 @@ void	light_loop(vect Pt, vect N, data_t *data, t_list *scene)
 		{
 			light_a = a_light->obj;
 			L = normalize(vectSub(light_a->orig, Pt));
-			if(Pt.x == 0.0f && Pt.y == 0.0f)
-			{
-//				printf("N : %f,%f, %f\n", N.x,N.y,N.z);
-//				printf("%f\n%f, %f, %f\n",vectDot(N, L), Pt.x, Pt.y, Pt.z);
-			}
 			reflected_color(a_light->obj,vectDot(N, L), &rgb);
 		}
 		scene = scene->next;

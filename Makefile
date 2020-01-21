@@ -6,7 +6,7 @@
 #    By: blacking <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/16 10:03:56 by blacking          #+#    #+#              #
-#    Updated: 2020/01/21 10:44:54 by blacking         ###   ########.fr        #
+#    Updated: 2020/01/22 00:05:04 by blacking         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ FILE=minirt.c \
 	  srcs/shadow_inter.c \
 	  srcs/square_inter.c \
 	  srcs/inter_cylinder.c \
-	  srcs/inter_disk.c
+	  srcs/inter_disk.c \
+	  srcs/inter_triangle.c
 
 OBJ=$(FILE:.c=.o)
 

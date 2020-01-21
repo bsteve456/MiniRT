@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/28 15:53:04 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/17 15:17:10 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/21 23:47:31 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,21 @@ void	cylinder(t_list **scene, char *line)
 	cyldr->rgb = create_color(&line);
 	cylinder->obj = cyldr;
 	ft_lstadd_back(scene, ft_lstnew(cylinder));
+}
+
+void	triangle(t_list **scene, char *line)
+{
+	object *triangle;
+	t_triangle *trgl;
+	if(!(triangle = ft_calloc(1, sizeof(object))))
+		triangle = 0;
+	if(!(trgl = ft_calloc(1, sizeof(t_triangle))))
+		trgl = 0;
+	triangle->type = 8;
+	trgl->p0 = create_vect(&line);
+	trgl->p1 = create_vect(&line);
+	trgl->p2 = create_vect(&line);
+	trgl->rgb = create_color(&line);
+	triangle->obj = trgl;
+	ft_lstadd_back(scene, ft_lstnew(triangle));
 }

@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 16:29:27 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/17 15:16:43 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/21 23:45:49 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	scene_object(t_list **scene, char *line)
 		square(scene, line + 2);
 	else if(ft_strncmp(line, "cy", 2) == 0)
 		cylinder(scene, line + 2);
+	else if(ft_strncmp(line, "tr", 2) == 0)
+		triangle(scene, line + 2);
 }
 
 void	parse_info_scene(t_list **scene, char *line)
@@ -47,6 +49,7 @@ void	parse_info_scene(t_list **scene, char *line)
 		scene_env(scene, line);
 	else if(ft_strncmp(line, "sp", 2) == 0 ||
 		ft_strncmp(line, "sq", 2) == 0 || 
-		ft_strncmp(line, "cy", 2) == 0)
+		ft_strncmp(line, "cy", 2) == 0 ||
+		ft_strncmp(line, "tr", 2) == 0)
 		scene_object(scene, line);
 }
