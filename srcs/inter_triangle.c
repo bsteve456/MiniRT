@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 23:49:09 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/22 00:15:51 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/22 00:28:29 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,9 @@ void	inter_triangle(t_triangle *trgl, data_t *data, t_list *scene)
 	N = normalize(N);
 	float D = vectDot(N, trgl->p0);
 	float t = (vectDot(N, data->ray.orig) + D) / vectDot(N, data->ray.dir);
-//	printf("%f\n", t);
+
 	if(t > 0.0f)
 	{
-		printf("%f\n", t);
-
 		vect Pt = vectAdd(data->ray.orig, vectMult(data->ray.dir, (double)t));
 		vect edge0 = vectSub(trgl->p1, trgl->p0);
 		vect edge1 = vectSub(trgl->p2, trgl->p1);
@@ -36,10 +34,11 @@ void	inter_triangle(t_triangle *trgl, data_t *data, t_list *scene)
 			vectDot(N, crossP(edge1, C1)) > 0 &&
 			vectDot(N, crossP(edge2, C2)) > 0)
 		{
-				mlx_pixel_put(data->mlx_ptr, data->mlx_win, data->x, data->y, 255);
+			data->rgb = trgl->rgb;
+//				mlx_pixel_put(data->mlx_ptr, data->mlx_win, data->x, data->y, 255);
+			if(shadow_ray(scene, Pt, data) == 0)
+				light_loop(Pt, N, data, scene);
 		}
-//		mlx_pixel_put(data->mlx_ptr, data->mlx_win, data->x, data->y, 255);
-
 	}
 }
 
