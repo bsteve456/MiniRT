@@ -6,13 +6,13 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 10:34:33 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/21 10:47:12 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/21 12:32:06 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-int		inter_disk(t_cylinder *cy, vect p, data_t *data)
+int		inter_disk(t_cylinder *cy, vect p, data_t *data, t_list *scene)
 {
 	vect Pt;
 	vect p0l0;
@@ -29,7 +29,11 @@ int		inter_disk(t_cylinder *cy, vect p, data_t *data)
 			vect v = vectSub(Pt, p);
 			float d1 = vectDot(v, v);
 			if(sqrt(d1) <= cy->radius)
+			{
+				if(shadow_ray(scene, Pt, data) == 0)
+					light_loop(Pt, cy->N, data, scene);
 				return (1);
+			}
 		}
 	}
 	return (0);

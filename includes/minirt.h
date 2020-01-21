@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 10:37:11 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/21 10:44:26 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/21 12:26:40 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,5 +157,5 @@ float	find_t0(float a, float b, float c);
 void	surface_color(data_t *data, color rgb);
 void	inter_plane_square(t_square *square, data_t *data, t_list *scene);
 void	inter_cylinder(t_cylinder *cy, data_t *data, t_list *scene);
-int		inter_disk(t_cylinder *cy, vect p, data_t *data);
+int		inter_disk(t_cylinder *cy, vect p, data_t *data, t_list *scene);
 #endif

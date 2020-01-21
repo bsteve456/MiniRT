@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 14:30:20 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/21 11:26:30 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/21 14:39:41 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,12 +84,12 @@ void	inter_cylinder_delta(float delta, float abc[3], data_t *data, t_cylinder *c
 
 
 
-void	top_bottom_cap(t_cylinder *cy, vect p1, vect Pt, data_t *data)
+void	top_bottom_cap(t_cylinder *cy, vect p1, vect Pt, data_t *data, t_list *scene)
 {
-		if(inter_disk(cy, cy->p0, data) == 1)
-			mlx_pixel_put(data->mlx_ptr, data->mlx_win, data->x, data->y, 255*255);
-		if(inter_disk(cy, p1, data) == 1)
-			mlx_pixel_put(data->mlx_ptr, data->mlx_win, data->x, data->y, 255*255);
+		inter_disk(cy, cy->p0, data, scene);
+//			mlx_pixel_put(data->mlx_ptr, data->mlx_win, data->x, data->y, 255*255);
+		inter_disk(cy, p1, data, scene);
+//			mlx_pixel_put(data->mlx_ptr, data->mlx_win, data->x, data->y, 255*255);
 }
 
 void	inter_cylinder(t_cylinder *cy, data_t *data, t_list *scene)
@@ -121,12 +121,26 @@ void	inter_cylinder(t_cylinder *cy, data_t *data, t_list *scene)
 		vect Pt = vectAdd(data->ray.orig, vectMult(data->ray.dir, (double)a));
 		vect MoP = vectSub(Pt, cy->p0);
 		b = vectDot(MoP, cy->N);
-		printf("%f\n", (b));
-		if(b > 0 && b < cy->height){
-		//	if(shadow_ray(scene, Pt, data) == 0)
-		//		light_loop(Pt, cy->N, data, scene);
-		mlx_pixel_put(data->mlx_ptr, data->mlx_win, data->x, data->y, 255*255);
+		vect Mp = vectMult(cy->N, b);
+//		if(Mp.y  == 3.0)
+//			printf("%f, %f, %f\n", Pt.x, Pt.y, Pt.z);
+		vect N = vectSub(MoP, Mp);
+		if(Pt.y == 0.0 && Pt.x == 0.0 && Pt.z == 3.0)
+		{
+			printf("%f, %f, %f\n", MoP.x, MoP.y, MoP.z);
+			printf("%f, %f, %f\n", Mp.x, Mp.y, Mp.z);
+			printf("%f, %f, %f\n", N.x, N.y, N.z);
 		}
-		top_bottom_cap(cy, p1, Pt, data);
+		if(b > 0 && b < cy->height){
+//		printf("%f, %f, %f\n", Pt.x, Pt.y, Pt.z);
+
+//		printf("%f, %f, %f\n", N.x, N.y, N.z);
+
+			if(shadow_ray(scene, Pt, data) == 0)
+				light_loop(Pt, N, data, scene);
+	//	mlx_pixel_put(data->mlx_ptr, data->mlx_win, data->x, data->y, 255*255);
+		}
+		else 
+			top_bottom_cap(cy, p1, Pt, data, scene);
 	}
 }
