@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 14:30:20 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/20 20:49:32 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/21 11:26:30 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,32 +82,34 @@ void	inter_cylinder_delta(float delta, float abc[3], data_t *data, t_cylinder *c
 }
 
 
+
+
+void	top_bottom_cap(t_cylinder *cy, vect p1, vect Pt, data_t *data)
+{
+		if(inter_disk(cy, cy->p0, data) == 1)
+			mlx_pixel_put(data->mlx_ptr, data->mlx_win, data->x, data->y, 255*255);
+		if(inter_disk(cy, p1, data) == 1)
+			mlx_pixel_put(data->mlx_ptr, data->mlx_win, data->x, data->y, 255*255);
+}
+
 void	inter_cylinder(t_cylinder *cy, data_t *data, t_list *scene)
 {
 	float abc[3];
 	float delta;
-//	float ocx;
-//	float ocz;
 	vect orig;
 	vect dir;
+
 	orig = data->ray.orig;
 	dir = data->ray.dir;
 	cy->N = normalize(cy->N);
+	vect p1 = vectAdd(cy->p0, vectMult(cy->N, cy->height));
+//	printf("p1 :%f, %f, %f\n", p1.x, p1.y, p1.z);
+//	printf("p0 :%f, %f, %f\n", cy->p0.x, cy->p0.y, cy->p0.z);
 	vect MoO = vectSub(orig, cy->p0);
 	float a = vectDot(MoO, cy->N);
 	float b = vectDot(dir, cy->N);
 	vect V1 = (vectSub(MoO, vectMult(cy->N, a)));
 	vect V2 = (vectSub(dir, vectMult(cy->N, b)));
-//	orig = x_axis_rot(orig, cylinder->N.x);
-//	orig = y_axis_rot(orig, cylinder->N.y);
-//	orig = z_axis_rot(orig, cylinder->N.z);
-//	dir = x_axis_rot(dir, cylinder->N.x);
-//	dir = y_axis_rot(dir, cylinder->N.y);
-//	dir = z_axis_rot(dir, cylinder->N.z);
-
-	
-//	printf("%f, %f\n", cos(0.5 * M_PI), cos(90));
-
 	abc[0] = vectDot(V2, V2);
 	abc[1] = 2  * vectDot(V1, V2);
 	abc[2] = vectDot(V1, V1) - (cy->radius * cy->radius);
@@ -119,11 +121,12 @@ void	inter_cylinder(t_cylinder *cy, data_t *data, t_list *scene)
 		vect Pt = vectAdd(data->ray.orig, vectMult(data->ray.dir, (double)a));
 		vect MoP = vectSub(Pt, cy->p0);
 		b = vectDot(MoP, cy->N);
-		printf("%f\n", b);
-		if(b >= -cy->height/2 && b <= cy->height/2){
-			if(shadow_ray(scene, Pt, data) == 0)
-				light_loop(Pt, cy->N, data, scene);
-	//	mlx_pixel_put(data->mlx_ptr, data->mlx_win, data->x, data->y, 255*255);
+		printf("%f\n", (b));
+		if(b > 0 && b < cy->height){
+		//	if(shadow_ray(scene, Pt, data) == 0)
+		//		light_loop(Pt, cy->N, data, scene);
+		mlx_pixel_put(data->mlx_ptr, data->mlx_win, data->x, data->y, 255*255);
 		}
+		top_bottom_cap(cy, p1, Pt, data);
 	}
 }
