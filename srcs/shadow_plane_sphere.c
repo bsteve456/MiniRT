@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 19:39:30 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/22 16:07:18 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/22 16:52:47 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,3 +32,19 @@ int	inter_shadow_sphere(t_sdaw d_ray, t_sphere *sphere)
 	return (0);
 }
 
+int		inter_shadow_plane(t_sdaw d_ray, t_plane *plane)
+{
+	vect p0l0;
+	float t;
+	float demom;
+
+	plane->N = normalize(plane->N);
+	demom = vectDot(d_ray.dir, plane->N);
+	if(fabs(demom) > 0.00001f) {
+		p0l0 = vectSub(plane->p0, d_ray.orig);
+		t = vectDot(p0l0, plane->N) / demom;
+		if(t >= 0.00001f)
+			return (1);
+	}
+	return (0);
+}

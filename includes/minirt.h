@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 10:37:11 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/22 00:06:00 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/23 12:05:47 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,11 +162,18 @@ void	init_planes(t_list *scene, data_t *data);
 void	inter_plane(t_plane *plane, data_t *data, t_list *scene);
 int		shadow_ray(t_list *scene, vect Pt, data_t *data);
 int		inter_shadow_sphere(t_sdaw d_ray, t_sphere *sphere);
+int		inter_shadow_plane(t_sdaw d_ray, t_plane *plane);
+int		shadow_square(t_sdaw d_ray, t_square *square);
+int		shadow_cylinder(t_sdaw d_ray, t_cylinder *cy);
+int		shadow_triangle(t_sdaw d_ray, t_triangle *trgl);
 float	find_t0(float a, float b, float c);
 void	surface_color(data_t *data, color rgb);
 void	inter_plane_square(t_square *square, data_t *data, t_list *scene);
 void	inter_cylinder(t_cylinder *cy, data_t *data, t_list *scene);
 int		inter_disk(t_cylinder *cy, vect p, data_t *data, t_list *scene);
 void	inter_triangle(t_triangle *trgl, data_t *data, t_list *scene);
+vect	square_corner_init(float x, float y, float z);
+float	orient(vect a, vect b, vect c, vect n);
+float	inter_triangle2(vect Pt, t_triangle *trgl, vect N);
 
 #endif

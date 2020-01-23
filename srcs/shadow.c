@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 19:25:01 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/16 11:11:39 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/23 12:07:11 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,18 @@ int	shadow_inter(vect Pt, t_light *light, t_list *scene)
 		obj = scene->content;
 		if(obj->type == 3)
 			if(inter_shadow_sphere(d_ray, obj->obj) == 1)
+				return (1);
+		else if(obj->type == 5)
+			if(inter_shadow_plane(d_ray, obj->obj) == 1)
+				return (1);
+		else if(obj->type == 6)
+			if(shadow_square(d_ray, obj->obj) == 1)
+				return (1);
+		else if(obj->type == 7)
+			if(shadow_cylinder(d_ray, obj->obj) == 1)
+				return (1);
+		else if(obj->type == 8)
+			if(shadow_triangle(d_ray, obj->obj) == 1)
 				return (1);
 		scene = scene->next;
 	}
