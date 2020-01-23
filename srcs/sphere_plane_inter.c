@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 09:47:34 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/20 22:25:19 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/23 14:44:02 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,8 @@ void	sphere_n_pt(float t0, t_sphere *sphere, data_t *data, t_list *scene)
 
 	Pt = vectAdd(data->ray.orig, vectMult(data->ray.dir, (double)t0));
 	N = vectSub(Pt, sphere->center);
-	data->rgb = sphere->rgb;
-	if(shadow_ray(scene, Pt, data) == 0)
-		light_loop(Pt, N, data, scene);
+	data->rgbt = sphere->rgb;
+	temporary_value(data, t0, Pt, N);
 }
 
 float find_t0(float a, float b, float c)
@@ -77,9 +76,8 @@ void	inter_plane(t_plane *plane, data_t *data, t_list *scene)
 		if(t >= 0.00001f)
 		{
 			Pt = vectAdd(data->ray.orig, vectMult(data->ray.dir, t));
-			data->rgb = plane->rgb;
-			if(shadow_ray(scene, Pt, data) == 0)
-				light_loop(Pt, plane->N, data, scene);
+			data->rgbt = plane->rgb;
+			temporary_value(data, t, Pt, plane->N);
 		}
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 14:30:20 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/21 21:49:36 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/23 14:44:18 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,10 @@ void	inter_cylinder(t_cylinder *cy, data_t *data, t_list *scene)
 		Pt = vectAdd(data->ray.orig, vectMult(data->ray.dir, (double)a));
 		N = find_normal(Pt, cy);
 		b = vectDot(vectSub(Pt, cy->p0), cy->N);
-		if(b > 0 && b < cy->height){
-			if(shadow_ray(scene, Pt, data) == 0)
-				light_loop(Pt, N, data, scene);
+		if(b > 0 && b < cy->height)
+		{
+			data->rgbt = cy->rgb;
+			temporary_value(data, a, Pt, N);
 		}
 		else 
 			top_bottom_cap(cy, Pt, data, scene);

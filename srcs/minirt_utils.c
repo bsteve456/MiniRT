@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 17:28:04 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/13 10:37:38 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/23 14:15:42 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,32 @@ vect	create_vect(char **line)
 	res.y = create_float(line);
 	res.z = create_float(line);
 	return (res);
+}
+
+void	check_order_object(data_t *data)
+{
+	if(data->temp >= 0)
+	{
+		if(data->t == -1)
+		{
+			data->t = data->temp;
+			data->Pt = data->Ptemp;
+			data->N = data->Ntemp;
+			data->rgb = data->rgbt;
+		}
+		else if(data->t >= data->temp)
+		{
+			data->t = data->temp;
+			data->Pt = data->Ptemp;
+			data->N = data->Ntemp;
+			data->rgb = data->rgbt;
+		}
+	}
+}
+
+void	temporary_value(data_t *data, float t, vect Pt, vect N)
+{
+	data->temp = t;
+	data->Ptemp = Pt;
+	data->Ntemp = N;
 }

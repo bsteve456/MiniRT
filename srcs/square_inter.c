@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 11:38:06 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/22 19:27:22 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/23 14:44:58 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int		dot_product(vect *corner, vect q, vect n)
 	return (0);
 }
 
-void	inter_square(vect Pt, t_square *square, data_t *data, t_list *scene)
+void	inter_square(vect Pt, t_square *square, data_t *data, t_list *scene, float t)
 {
 	vect *square_corner = ft_calloc(4, sizeof(vect));
 
@@ -66,11 +66,9 @@ void	inter_square(vect Pt, t_square *square, data_t *data, t_list *scene)
 	data->rgb = square->rgb;
 	if(dot_product(square_corner, Pt, square->N) == 1)
 	{
-		if(shadow_ray(scene, Pt, data) == 0)
-		{
-			square->N.z = (square->N.z > 0) ? -square->N.z : square->N.z;
-			light_loop(Pt, square->N, data, scene);
-		}
+		square->N.z = (square->N.z > 0) ? -square->N.z : square->N.z;
+		data->rgbt = square->rgb;
+		temporary_value(data, t, Pt, square->N);
 	}
 	free(square_corner);
 }
@@ -91,7 +89,7 @@ void	inter_plane_square(t_square *square, data_t *data, t_list *scene)
 		if(t >= 0.00001f)
 		{
 			Pt = vectAdd(data->ray.orig, vectMult(data->ray.dir, t));
-			inter_square(Pt, square, data, scene);
+			inter_square(Pt, square, data, scene, t);
 		}
 	}
 }

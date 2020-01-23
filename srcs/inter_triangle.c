@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 23:49:09 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/22 16:20:54 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/23 14:45:15 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,8 @@ void	inter_triangle(t_triangle *trgl, data_t *data, t_list *scene)
 		Pt = vectAdd(data->ray.orig, vectMult(data->ray.dir, (double)t));
 		if(inter_triangle2(Pt, trgl, N) == 1)
 		{
-			data->rgb = trgl->rgb;
-			if(shadow_ray(scene, Pt, data) == 0)
-				light_loop(Pt, N, data, scene);
+			data->rgbt = trgl->rgb;
+			temporary_value(data, t, Pt, N);
 		}
 	}
 }

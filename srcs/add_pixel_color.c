@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 09:25:11 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/21 23:44:03 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/23 14:43:23 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,34 +34,19 @@ void	ambient_light(t_list *scene, data_t *data)
 	}
 }
 
-void	init_planes(t_list *scene, data_t *data)
-{
-	object *a_plane;
-	t_plane *plane;
-	t_list *copy;
-
-	copy = scene;
-	while(scene)
-	{
-		a_plane = scene->content;
-		if(a_plane->type == 5)
-		{
-			plane = a_plane->obj;
-			inter_plane(plane, data, copy);
-		}
-		scene = scene->next;
-	}
-}
-
 void	object_parse(t_list *scene, data_t *data)
 {
 	object *obj;
 	t_list *copy;
 
 	copy = scene;
+	data->t = -1;
+	data->temp = -1;
 	while(scene)
 	{
 		obj = scene->content;
+		if(obj->type == 5)
+			inter_plane(obj->obj, data, copy);
 		if(obj->type == 3)
 			inter_sphere(obj->obj, data, copy);
 		else if(obj->type == 6)
@@ -70,6 +55,9 @@ void	object_parse(t_list *scene, data_t *data)
 			inter_cylinder(obj->obj, data, copy);
 		else if(obj->type == 8)
 			inter_triangle(obj->obj, data, copy);
+		check_order_object(data);
 		scene = scene->next;
 	}
+	if(data->t != -1 && shadow_ray(copy, data) == 0)
+		light_loop(data->Pt, data->N, data, copy);
 }

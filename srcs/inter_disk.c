@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 10:34:33 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/21 12:32:06 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/23 14:44:31 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int		inter_disk(t_cylinder *cy, vect p, data_t *data, t_list *scene)
 			float d1 = vectDot(v, v);
 			if(sqrt(d1) <= cy->radius)
 			{
-				if(shadow_ray(scene, Pt, data) == 0)
-					light_loop(Pt, cy->N, data, scene);
+				data->rgbt = cy->rgb;
+				temporary_value(data, t, Pt, cy->N);
 				return (1);
 			}
 		}

@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 19:25:01 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/23 12:07:11 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/23 13:52:31 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	shadow_inter(vect Pt, t_light *light, t_list *scene)
 	return (0);
 }
 
-int	shadow_ray(t_list *scene, vect Pt, data_t *data)
+int	shadow_ray(t_list *scene, data_t *data)
 {
 	object *light;
 	t_list *copy;
@@ -56,7 +56,7 @@ int	shadow_ray(t_list *scene, vect Pt, data_t *data)
 	{
 		light = copy->content;
 		if(light->type == 4)
-			num += shadow_inter(Pt, light->obj, scene);
+			num += shadow_inter(data->Pt, light->obj, scene);
 		copy = copy->next;
 	}
 	if(num > 0)
