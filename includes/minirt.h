@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 10:37:11 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/24 13:26:01 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/24 18:31:27 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,20 @@ typedef struct
 	vect p2;
 	color rgb;
 }			t_triangle;
+
+typedef struct s_lst
+{
+	void *mlx_ptr;
+	void *mlx_win;
+	void *img;
+	int n;
+	struct s_lst *next;
+}				t_lst;
+
+typedef struct
+{
+	t_lst *img;
+}				img_lst;
 vect	vectSub(vect v1, vect v2);
 float	vectDot(vect v1, vect v2);
 vect	vectAdd(vect v1, vect v2);
@@ -186,4 +200,7 @@ float	inter_triangle2(vect Pt, t_triangle *trgl, vect N);
 void	check_order_object(data_t *data);
 void	temporary_value(data_t *data, float t, vect Pt, vect N);
 void	put_color_to_window(data_t *data, color rgb);
+t_lst	*lstnew(data_t *content);
+void	lstadd_back(t_lst **alst, t_lst *new, int n);
+int		deal_key(int key, img_lst *img_test);
 #endif
