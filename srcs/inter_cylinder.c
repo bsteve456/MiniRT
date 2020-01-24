@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 14:30:20 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/23 14:44:18 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/24 20:42:27 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,16 @@
 void	top_bottom_cap(t_cylinder *cy, vect Pt, data_t *data, t_list *scene)
 {
 		vect p1;
+		vect MP;
 
+//		MP =  vectSub(cy->p0, Pt);
 		p1 = vectAdd(cy->p0, vectMult(cy->N, cy->height));
-		inter_disk(cy, cy->p0, data, scene);
-		inter_disk(cy, p1, data, scene);
+//		if(vectDot(MP,cy->N) == 0)
+			cy->N = vectMult(cy->N, -1);
+			inter_disk(cy, cy->p0, data, scene);
+			cy->N = vectMult(cy->N, -1);
+//		else if(vectDot(MP,cy->N) == cy->height)
+			inter_disk(cy, p1, data, scene);
 }
 
 float find_delta(data_t *data, t_cylinder *cy, float *a)
@@ -65,7 +71,6 @@ void	inter_cylinder(t_cylinder *cy, data_t *data, t_list *scene)
 	delta = find_delta(data, cy, &a);
 	if(delta >= 0.0f)
 	{
-		data->rgb = cy->rgb;
 		Pt = vectAdd(data->ray.orig, vectMult(data->ray.dir, (double)a));
 		N = find_normal(Pt, cy);
 		b = vectDot(vectSub(Pt, cy->p0), cy->N);
