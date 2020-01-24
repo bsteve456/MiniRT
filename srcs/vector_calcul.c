@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 12:26:01 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/20 13:15:37 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/24 15:10:33 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,6 @@ vect	vectMult(vect v1,float num)
 	return (v1);
 }
 
-float	vectDot(vect v1, vect v2)
-{
-	float res;
-
-	res = v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
-	return (res);
-}
-
 vect	normalize(vect ray)
 {
 	float length;
@@ -62,5 +54,5 @@ vect	crossP(vect v1, vect v2)
 	res.x = (v1.y * v2.z) - (v1.z * v2.y);
 	res.y = (v1.z * v2.x) - (v1.x * v2.z);
 	res.z = (v1.x * v2.y) - (v1.y * v2.x);
-	return res;
+	return (res);
 }

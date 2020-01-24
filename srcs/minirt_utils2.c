@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 13:20:20 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/24 14:44:30 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/24 15:10:19 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,3 +21,12 @@ void	put_color_to_window(data_t *data, color rgb)
 	data->img_data[x + 1] = rgb.g;
 	data->img_data[x + 2] = rgb.r;
 }
+
+float	vectDot(vect v1, vect v2)
+{
+	float res;
+
+	res = v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
+	return (res);
+}
+
