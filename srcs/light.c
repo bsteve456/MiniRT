@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 14:54:49 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/22 00:03:16 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/24 14:46:27 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,20 @@
 
 void	surface_color(data_t *data, color rgb)
 {
-	int color;
-	int r;
-	int g;
-	int b;
+	int colora;
+	color rgbr;
 
-	r = (data->rgb.r > rgb.r) ? rgb.r : data->rgb.r;
-	g = (data->rgb.g > rgb.g) ? rgb.g : data->rgb.g;
-	b = (data->rgb.b > rgb.b) ? rgb.b : data->rgb.b;
-	color = r * pow(256, 2) + g * 256 + b;
-	if(color < 0.0)
-		color *= 0.0;
-	mlx_pixel_put(data->mlx_ptr, data->mlx_win, data->x, data->y, color);
+	rgbr.r = (data->rgb.r > rgb.r) ? rgb.r : data->rgb.r;
+	rgbr.g = (data->rgb.g > rgb.g) ? rgb.g : data->rgb.g;
+	rgbr.b = (data->rgb.b > rgb.b) ? rgb.b : data->rgb.b;
+	colora = rgbr.r * pow(256, 2) + rgbr.g * 256 + rgbr.b;
+	if(colora < 0.0)
+	{
+		rgbr.r = 0;
+		rgbr.g = 0;
+		rgbr.b = 0;
+	}
+	put_color_to_window(data, rgbr);
 }
 
 void		reflected_color(t_light *light, float dotP, color *rgb)

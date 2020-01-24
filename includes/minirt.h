@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 10:37:11 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/23 14:43:41 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/24 13:26:01 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ typedef struct	data_s
 {
     void          *mlx_ptr;
     void          *mlx_win;
+	void		  *img;
+	char		  *img_data;
 	t_widw		  *widw;
 	float		  x;
 	float		  y;
@@ -183,4 +185,5 @@ float	orient(vect a, vect b, vect c, vect n);
 float	inter_triangle2(vect Pt, t_triangle *trgl, vect N);
 void	check_order_object(data_t *data);
 void	temporary_value(data_t *data, float t, vect Pt, vect N);
+void	put_color_to_window(data_t *data, color rgb);
 #endif

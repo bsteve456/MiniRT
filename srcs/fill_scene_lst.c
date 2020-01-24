@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 17:09:47 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/13 13:13:02 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/24 14:27:27 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,9 @@ void	A_light(t_list **scene, char *line)
 	A_light->type = 2;
 	aligth->ratio = create_float(&line);
 	aligth->rgb = create_color(&line);
+	aligth->rgb.r *= aligth->ratio;
+	aligth->rgb.g *= aligth->ratio;
+	aligth->rgb.b *= aligth->ratio;
 	A_light->obj = aligth;
 	ft_lstadd_back(scene, ft_lstnew(A_light));
 }

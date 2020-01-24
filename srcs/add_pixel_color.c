@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 09:25:11 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/23 14:43:23 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/24 14:27:33 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	ambient_light(t_list *scene, data_t *data)
 {
 	object *alight;
 	t_aligth *light;
-	int color;
 
 	while(scene)
 	{
@@ -24,10 +23,7 @@ void	ambient_light(t_list *scene, data_t *data)
 		if(alight->type == 2)
 		{
 			light = alight->obj;
-			color = light->rgb.r * pow(256, 2) +
-			light->rgb.g * 256 + light->rgb.b;
-			mlx_pixel_put(data->mlx_ptr, data->mlx_win,
-			data->x, data->y, color * light->ratio);
+			put_color_to_window(data, light->rgb);
 			break;
 		}
 		scene = scene->next;

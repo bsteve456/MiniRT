@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/29 13:28:17 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/13 13:17:34 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/24 14:50:38 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	display_list(t_list *scene, data_t *data)
 {
 	ambient_light(scene, data);
-	init_planes(scene, data);
+//	init_planes(scene, data);
 	object_parse(scene, data);
 }
 
@@ -35,6 +35,7 @@ void	window_loop(t_list *scene, data_t *data, t_cam *cam)
 		}
 		i++;
 	}
+	mlx_put_image_to_window(data->mlx_ptr, data->mlx_win, data->img, 0, 0);
 	mlx_loop(data->mlx_ptr);
 }
 
@@ -45,11 +46,11 @@ void	camera_loop(t_list *scene)
 	data_t *data;
 	t_list *copy;
 
-	data = init_data(scene); //error if data == NULL;
 	copy = scene;
 	while(copy)
 	{
 		cam_obj = copy->content;
+		data = init_data(scene); //error if data == NULL;
 		if(cam_obj->type == 0)
 			window_loop(scene, data, cam_obj->obj);
 		copy = copy->next;

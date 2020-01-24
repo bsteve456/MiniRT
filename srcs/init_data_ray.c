@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/29 13:42:47 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/20 12:50:30 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/24 13:37:55 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ data_t *init_data(t_list *copy)
 {
 	data_t *res;
 	t_widw *widw;
+	int bpp;
+	int size_line;
+	int endian;
 
 	if(!(res = ft_calloc(1, sizeof(data_t))))
 		return (NULL);
@@ -38,6 +41,8 @@ data_t *init_data(t_list *copy)
 	if((widw = object_widw(copy)) == NULL)
 		return (NULL);
 	res->widw = widw;
+	res->img = mlx_new_image(res->mlx_ptr, widw->x, widw->y);
+	res->img_data = mlx_get_data_addr(res->img, &bpp, &size_line, &endian);
 	if ((res->mlx_win =
 	mlx_new_window(res->mlx_ptr, widw->x, widw->y, "minirt")) == NULL)
 		return (NULL);
