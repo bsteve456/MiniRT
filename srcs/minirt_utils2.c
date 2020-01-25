@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 13:20:20 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/24 18:38:30 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/25 14:52:29 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,11 @@ int		deal_key(int key, img_lst *img_test)
 	if(key == 97 && img_test->img)
 
 	{
-//		printf("%d\n", img_test->img->n);
 		mlx_put_image_to_window(img_test->img->mlx_ptr, img_test->img->mlx_win, img_test->img->img, 0, 0);
 		img_test->img = img_test->img->next;
 
 	}
+	if(key == 65307)
+		mlx_destroy_window(img_test->img->mlx_ptr, img_test->img->mlx_win);
 	return (0);
 }

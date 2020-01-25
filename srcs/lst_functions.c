@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 15:14:08 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/24 17:24:22 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/25 14:41:39 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ t_lst *lstnew(data_t *content)
 void	lstadd_back(t_lst **alst, t_lst *new, int n)
 {
 	t_lst *lst;
-
 
 	new->n = n;
 	lst = *alst;
