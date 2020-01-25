@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 15:14:08 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/25 14:41:39 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/25 18:24:53 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ t_lst *lstnew(data_t *content)
 	new->mlx_ptr = content->mlx_ptr;
 	new->mlx_win = content->mlx_win;
 	new->img = content->img;
+	new->img_data = content->img_data;
+	new->widw = content->widw;
 	new->next = NULL;
 	return new;
 }

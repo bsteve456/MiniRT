@@ -6,7 +6,7 @@
 #    By: blacking <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/16 10:03:56 by blacking          #+#    #+#              #
-#    Updated: 2020/01/24 15:32:10 by blacking         ###   ########.fr        #
+#    Updated: 2020/01/25 18:27:55 by blacking         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,8 @@ FILE=minirt.c \
 	  srcs/shadow_cylinder.c \
 	  srcs/shadow_triangle.c \
 	  srcs/minirt_utils2.c \
-	  srcs/lst_functions.c
+	  srcs/lst_functions.c \
+	  srcs/screenshot.c
 
 OBJ=$(FILE:.c=.o)
 

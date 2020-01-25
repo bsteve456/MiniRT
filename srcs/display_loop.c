@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/29 13:28:17 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/25 14:42:46 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/25 20:52:15 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@ void	display_camera(t_lst *imga)
 	img_lst  test;
 
 	test.img = imga;
+	t_lst *copy;
+	copy = imga;
+	screenshot_loop(copy);
 	mlx_key_hook(imga->mlx_win, &deal_key, &test);
 	mlx_loop(imga->mlx_ptr);
 }

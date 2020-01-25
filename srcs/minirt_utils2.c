@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 13:20:20 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/25 14:52:29 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/25 20:51:44 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,15 @@ float	vectDot(vect v1, vect v2)
 int		deal_key(int key, img_lst *img_test)
 {
 	if(key == 97 && img_test->img)
-
 	{
 		mlx_put_image_to_window(img_test->img->mlx_ptr, img_test->img->mlx_win, img_test->img->img, 0, 0);
-		img_test->img = img_test->img->next;
-
+		if(img_test->img->next != NULL)
+			img_test->img = img_test->img->next;
 	}
 	if(key == 65307)
+	{
 		mlx_destroy_window(img_test->img->mlx_ptr, img_test->img->mlx_win);
+		_Exit(0);
+	}
 	return (0);
 }

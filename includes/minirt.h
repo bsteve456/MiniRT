@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 10:37:11 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/24 18:31:27 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/25 18:45:46 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define MINIRT_H
 # include <stdlib.h>
 # include <string.h>
+# include <unistd.h>
 # include <mlx.h>
 # include <math.h>
 # include <fcntl.h>
@@ -144,6 +145,8 @@ typedef struct s_lst
 	void *mlx_ptr;
 	void *mlx_win;
 	void *img;
+	char *img_data;
+	t_widw *widw;
 	int n;
 	struct s_lst *next;
 }				t_lst;
@@ -152,6 +155,29 @@ typedef struct
 {
 	t_lst *img;
 }				img_lst;
+
+typedef struct bitmap_file_header {
+    unsigned char   bitmap_type[2];     // 2 bytes
+    int             file_size;          // 4 bytes
+    short           reserved1;          // 2 bytes
+    short           reserved2;          // 2 bytes
+    unsigned int    offset_bits;        // 4 bytes
+} bfh;
+
+typedef struct bitmap_image_header {
+    unsigned int    size_header;        // 4 bytes
+    unsigned int    width;              // 4 bytes
+    unsigned int    height;             // 4 bytes
+    short int       planes;             // 2 bytes
+    short int       bit_count;          // 2 bytes
+    unsigned int    compression;        // 4 bytes
+    unsigned int    image_size;         // 4 bytes
+    unsigned int    ppm_x;              // 4 bytes
+    unsigned int    ppm_y;              // 4 bytes
+    unsigned int    clr_used;           // 4 bytes
+    unsigned int    clr_important;      // 4 bytes
+} bih;
+
 vect	vectSub(vect v1, vect v2);
 float	vectDot(vect v1, vect v2);
 vect	vectAdd(vect v1, vect v2);
@@ -203,4 +229,5 @@ void	put_color_to_window(data_t *data, color rgb);
 t_lst	*lstnew(data_t *content);
 void	lstadd_back(t_lst **alst, t_lst *new, int n);
 int		deal_key(int key, img_lst *img_test);
+void	screenshot_loop(t_lst *imga);
 #endif
