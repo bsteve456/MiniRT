@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:26:58 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/25 21:08:27 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/25 21:12:46 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	screenshot_loop(t_lst *imga)
 	file_name[9] = "9.bmp";
 	while(imga)
 	{
-		save_bitmap(file_name[i], imga, 4000);
+		save_bitmap(file_name[i], imga, 96);
 		imga = imga->next;
 		i++;
 	}
