@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:26:58 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/25 20:44:55 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/25 21:08:27 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,23 @@ void	save_bitmap(char *file_name, t_lst *imga, int dpi)
 
 void	screenshot_loop(t_lst *imga)
 {
-//	char *file_name;
-//	file_name[50] = "img.bmp";
+	char **file_name = ft_calloc(10, sizeof(char *));
+	int i = 0;
+	file_name[0] = "0.bmp";
+	file_name[1] = "1.bmp";
+	file_name[2] = "2.bmp";
+	file_name[3] = "3.bmp";
+	file_name[4] = "4.bmp";
+	file_name[5] = "5.bmp";
+	file_name[6] = "6.bmp";
+	file_name[7] = "7.bmp";
+	file_name[8] = "8.bmp";
+	file_name[9] = "9.bmp";
 	while(imga)
 	{
-//		file_name = ft_strcat(file_name, (i + '0'))
-		save_bitmap("mb.bmp", imga, 4000);
+		save_bitmap(file_name[i], imga, 4000);
 		imga = imga->next;
+		i++;
 	}
+	free(file_name);
 }
