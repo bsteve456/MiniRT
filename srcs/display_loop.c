@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/29 13:28:17 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/25 20:52:15 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/26 11:53:54 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,21 @@ void	window_loop(t_list *scene, data_t *data, t_cam *cam)
 	}
 }
 
-void	display_camera(t_lst *imga)
+void	display_camera(t_lst *imga, int n)
 {
 	img_lst  test;
 
 	test.img = imga;
 	t_lst *copy;
 	copy = imga;
-	screenshot_loop(copy);
-	mlx_key_hook(imga->mlx_win, &deal_key, &test);
-	mlx_loop(imga->mlx_ptr);
+	if(n == 1)
+		screenshot_loop(copy);
+	else
+	{
+		mlx_hook(imga->mlx_win, 17, 0, &X_close, &test);
+		mlx_key_hook(imga->mlx_win, &deal_key, &test);
+		mlx_loop(imga->mlx_ptr);
+	}
 }
 
 void	init_img(data_t *data)
@@ -58,13 +63,12 @@ void	init_img(data_t *data)
 	data->img_data = mlx_get_data_addr(data->img, &bpp, &size_line, &endian);
 }
 
-void	camera_loop(t_list *scene)
+void	camera_loop(t_list *scene, int n)
 {
 	object	*cam_obj;
 	data_t *data;
 	t_list *copy;
 	t_lst *img;
-	int n = 0;
 
 	img = NULL;
 	copy = scene;
@@ -76,10 +80,9 @@ void	camera_loop(t_list *scene)
 		{
 			init_img(data);
 			window_loop(scene, data, cam_obj->obj);
-			lstadd_back(&img, lstnew(data), n);
-			n++;
+			lstadd_back(&img, lstnew(data));
 		}
 		copy = copy->next;
 	}
-	display_camera(img);
+	display_camera(img, n);
 }

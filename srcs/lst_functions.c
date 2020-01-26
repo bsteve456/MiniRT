@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 15:14:08 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/25 18:24:53 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/26 11:05:36 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,10 @@ t_lst *lstnew(data_t *content)
 	return new;
 }
 
-void	lstadd_back(t_lst **alst, t_lst *new, int n)
+void	lstadd_back(t_lst **alst, t_lst *new)
 {
 	t_lst *lst;
 
-	new->n = n;
 	lst = *alst;
 	if (!lst)
 		*alst = new;

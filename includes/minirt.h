@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 10:37:11 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/25 18:45:46 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/26 11:09:53 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,6 @@ typedef struct s_lst
 	void *img;
 	char *img_data;
 	t_widw *widw;
-	int n;
 	struct s_lst *next;
 }				t_lst;
 
@@ -200,8 +199,8 @@ void	plane(t_list **scene, char *line);
 void	square(t_list **scene, char *line);
 void	cylinder(t_list **scene, char *line);
 void	triangle(t_list **scene, char *line);
-void	camera_loop(t_list *scene);
-data_t *init_data(t_list *copy);
+void	camera_loop(t_list *scene, int n);
+data_t	*init_data(t_list *copy);
 data_t	*complet_ray_pixel(float i, float j, t_cam *cam, data_t *data);
 void	ambient_light(t_list *scene, data_t *data);
 void	inter_sphere(t_sphere *sphere, data_t *data, t_list *scene);
@@ -227,7 +226,8 @@ void	check_order_object(data_t *data);
 void	temporary_value(data_t *data, float t, vect Pt, vect N);
 void	put_color_to_window(data_t *data, color rgb);
 t_lst	*lstnew(data_t *content);
-void	lstadd_back(t_lst **alst, t_lst *new, int n);
+void	lstadd_back(t_lst **alst, t_lst *new);
 int		deal_key(int key, img_lst *img_test);
+int 	X_close(img_lst *img_test);
 void	screenshot_loop(t_lst *imga);
 #endif

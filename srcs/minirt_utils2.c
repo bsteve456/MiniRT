@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 13:20:20 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/25 20:51:44 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/26 11:49:53 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,13 @@ float	vectDot(vect v1, vect v2)
 
 	res = v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
 	return (res);
+}
+int 	X_close(img_lst *img_test)
+{
+	printf("AEADDDA\n");
+	mlx_destroy_window(img_test->img->mlx_ptr, img_test->img->mlx_win);
+	exit(0);
+	return (0);
 }
 
 int		deal_key(int key, img_lst *img_test)
