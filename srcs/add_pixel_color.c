@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 09:25:11 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/24 14:27:33 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/26 20:59:14 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,15 @@ void	object_parse(t_list *scene, data_t *data)
 	{
 		obj = scene->content;
 		if(obj->type == 5)
-			inter_plane(obj->obj, data, copy);
+			inter_plane(obj->obj, data);
 		if(obj->type == 3)
-			inter_sphere(obj->obj, data, copy);
+			inter_sphere(obj->obj, data);
 		else if(obj->type == 6)
-			inter_plane_square(obj->obj, data, copy);
+			inter_plane_square(obj->obj, data);
 		else if(obj->type == 7)
-			inter_cylinder(obj->obj, data, copy);
+			inter_cylinder(obj->obj, data);
 		else if(obj->type == 8)
-			inter_triangle(obj->obj, data, copy);
+			inter_triangle(obj->obj, data);
 		check_order_object(data);
 		scene = scene->next;
 	}

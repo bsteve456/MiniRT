@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:26:58 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/25 21:12:46 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/26 18:14:36 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	save_bitmap(char *file_name, t_lst *imga, int dpi)
 {
 	int fd;
-	int image_size = imga->widw->x * imga->widw->y * 4;
+	int image_size = imga->x * imga->y * 4;
 	int file_size = 54 + image_size;
 	int ppm = dpi * 39.375;
 	bih bih1;
@@ -29,8 +29,8 @@ void	save_bitmap(char *file_name, t_lst *imga, int dpi)
 	bfh1.reserved2       = 0;
 	bfh1.offset_bits     = 0;
 	bih1.size_header     = sizeof(bih);
-	bih1.width           = imga->widw->x;
-	bih1.height          = imga->widw->y;
+	bih1.width           = imga->x;
+	bih1.height          = imga->y;
 	bih1.planes          = 1;
 	bih1.bit_count       = 32;
 	bih1.compression     = 0;

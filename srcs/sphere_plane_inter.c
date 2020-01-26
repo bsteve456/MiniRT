@@ -6,14 +6,14 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 09:47:34 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/23 14:44:02 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/26 18:31:21 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
 
-void	sphere_n_pt(float t0, t_sphere *sphere, data_t *data, t_list *scene)
+void	sphere_n_pt(float t0, t_sphere *sphere, data_t *data)
 {
 	vect Pt;
 	vect N;
@@ -43,7 +43,7 @@ float find_t0(float a, float b, float c)
 	return (t0);
 }
 
-void	inter_sphere(t_sphere *sphere, data_t *data, t_list *scene)
+void	inter_sphere(t_sphere *sphere, data_t *data)
 {
 	float a;
 	float b;
@@ -57,11 +57,11 @@ void	inter_sphere(t_sphere *sphere, data_t *data, t_list *scene)
 	if((b * b) - (4 * a * c) >= 0.0000)
 	{
 		a = find_t0(a, b, c);
-		sphere_n_pt(a, sphere, data, scene);
+		sphere_n_pt(a, sphere, data);
 	}
 }
 
-void	inter_plane(t_plane *plane, data_t *data, t_list *scene)
+void	inter_plane(t_plane *plane, data_t *data)
 {
 	vect Pt;
 	vect p0l0;

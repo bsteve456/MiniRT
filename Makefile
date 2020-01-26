@@ -6,12 +6,12 @@
 #    By: blacking <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/16 10:03:56 by blacking          #+#    #+#              #
-#    Updated: 2020/01/25 18:27:55 by blacking         ###   ########.fr        #
+#    Updated: 2020/01/26 18:27:59 by blacking         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC=gcc
-CFLAGS=-Werror -Wextra
+CFLAGS=-Wall -Werror -Wextra
 INC=-Iincludes
 NAME=minirt
 FILE=minirt.c \
@@ -37,7 +37,8 @@ FILE=minirt.c \
 	  srcs/shadow_triangle.c \
 	  srcs/minirt_utils2.c \
 	  srcs/lst_functions.c \
-	  srcs/screenshot.c
+	  srcs/screenshot.c \
+	  srcs/ft_free.c
 
 OBJ=$(FILE:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 10:37:11 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/26 11:09:53 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/26 20:55:10 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include "../libft/libft.h"
-
 typedef struct
 {
 	int type;
@@ -146,13 +145,15 @@ typedef struct s_lst
 	void *mlx_win;
 	void *img;
 	char *img_data;
-	t_widw *widw;
+	float x;
+	float y;
 	struct s_lst *next;
 }				t_lst;
 
 typedef struct
 {
 	t_lst *img;
+	t_lst *copy;
 }				img_lst;
 
 typedef struct bitmap_file_header {
@@ -203,10 +204,10 @@ void	camera_loop(t_list *scene, int n);
 data_t	*init_data(t_list *copy);
 data_t	*complet_ray_pixel(float i, float j, t_cam *cam, data_t *data);
 void	ambient_light(t_list *scene, data_t *data);
-void	inter_sphere(t_sphere *sphere, data_t *data, t_list *scene);
+void	inter_sphere(t_sphere *sphere, data_t *data);
 void	object_parse(t_list *scene, data_t *data);
 void	light_loop(vect Pt, vect N, data_t *data, t_list *scene);
-void	inter_plane(t_plane *plane, data_t *data, t_list *scene);
+void	inter_plane(t_plane *plane, data_t *data);
 int		shadow_ray(t_list *scene, data_t *data);
 int		inter_shadow_sphere(t_sdaw d_ray, t_sphere *sphere);
 int		inter_shadow_plane(t_sdaw d_ray, t_plane *plane);
@@ -215,10 +216,10 @@ int		shadow_cylinder(t_sdaw d_ray, t_cylinder *cy);
 int		shadow_triangle(t_sdaw d_ray, t_triangle *trgl);
 float	find_t0(float a, float b, float c);
 void	surface_color(data_t *data, color rgb);
-void	inter_plane_square(t_square *square, data_t *data, t_list *scene);
-void	inter_cylinder(t_cylinder *cy, data_t *data, t_list *scene);
-int		inter_disk(t_cylinder *cy, vect p, data_t *data, t_list *scene);
-void	inter_triangle(t_triangle *trgl, data_t *data, t_list *scene);
+void	inter_plane_square(t_square *square, data_t *data);
+void	inter_cylinder(t_cylinder *cy, data_t *data);
+int		inter_disk(t_cylinder *cy, vect p, data_t *data);
+void	inter_triangle(t_triangle *trgl, data_t *data);
 vect	square_corner_init(float x, float y, float z);
 float	orient(vect a, vect b, vect c, vect n);
 float	inter_triangle2(vect Pt, t_triangle *trgl, vect N);
@@ -230,4 +231,7 @@ void	lstadd_back(t_lst **alst, t_lst *new);
 int		deal_key(int key, img_lst *img_test);
 int 	X_close(img_lst *img_test);
 void	screenshot_loop(t_lst *imga);
+void	free_data(data_t *data);
+void	free_scene(t_list **scene);
+void	free_imga(t_lst **imga);
 #endif

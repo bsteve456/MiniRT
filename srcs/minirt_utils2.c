@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 13:20:20 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/26 11:55:20 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/26 20:58:19 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,26 @@ float	vectDot(vect v1, vect v2)
 }
 int 	X_close(img_lst *img_test)
 {
-	mlx_destroy_window(img_test->img->mlx_ptr, img_test->img->mlx_win);
-	exit(0);
+	t_lst *imga = img_test->img;
+	mlx_destroy_window(img_test->copy->mlx_ptr, img_test->copy->mlx_win);
+	free_imga(&imga);
+	_Exit(0);
 	return (0);
 }
 
 int		deal_key(int key, img_lst *img_test)
 {
-	if(key == 97 && img_test->img)
+	t_lst *imga = img_test->img;
+	if(key == 97 && img_test->copy)
 	{
-		mlx_put_image_to_window(img_test->img->mlx_ptr, img_test->img->mlx_win, img_test->img->img, 0, 0);
-		if(img_test->img->next != NULL)
-			img_test->img = img_test->img->next;
+		mlx_put_image_to_window(img_test->copy->mlx_ptr, img_test->copy->mlx_win, img_test->copy->img, 0, 0);
+		if(img_test->copy->next != NULL)
+			img_test->copy = img_test->copy->next;
 	}
 	if(key == 65307)
 	{
-		mlx_destroy_window(img_test->img->mlx_ptr, img_test->img->mlx_win);
+		mlx_destroy_window(img_test->copy->mlx_ptr, img_test->copy->mlx_win);
+		free_imga(&imga);
 		_Exit(0);
 	}
 	return (0);

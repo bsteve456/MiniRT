@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/29 13:28:17 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/26 11:53:54 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/26 18:04:51 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,16 @@ void	display_camera(t_lst *imga, int n)
 	test.img = imga;
 	t_lst *copy;
 	copy = imga;
+	test.copy = copy;
 	if(n == 1)
 		screenshot_loop(copy);
 	else
 	{
-		mlx_hook(imga->mlx_win, 17, 0, &X_close, &test);
-		mlx_key_hook(imga->mlx_win, &deal_key, &test);
-		mlx_loop(imga->mlx_ptr);
+		mlx_hook(copy->mlx_win, 17, 0, &X_close, &test);
+		mlx_key_hook(copy->mlx_win, &deal_key, &test);
+		mlx_loop(copy->mlx_ptr);
 	}
+	free_imga(&imga);
 }
 
 void	init_img(data_t *data)
@@ -84,5 +86,7 @@ void	camera_loop(t_list *scene, int n)
 		}
 		copy = copy->next;
 	}
+	free_data(data);
+	free_scene(&scene);
 	display_camera(img, n);
 }

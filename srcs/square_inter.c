@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 11:38:06 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/23 14:44:58 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/26 20:51:23 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int		dot_product(vect *corner, vect q, vect n)
 	return (0);
 }
 
-void	inter_square(vect Pt, t_square *square, data_t *data, t_list *scene, float t)
+void	inter_square(vect Pt, t_square *square, data_t *data, float t)
 {
 	vect *square_corner = ft_calloc(4, sizeof(vect));
 
@@ -74,7 +74,7 @@ void	inter_square(vect Pt, t_square *square, data_t *data, t_list *scene, float 
 }
 
 
-void	inter_plane_square(t_square *square, data_t *data, t_list *scene)
+void	inter_plane_square(t_square *square, data_t *data)
 {
 	vect p0l0;
 	float t;
@@ -89,7 +89,7 @@ void	inter_plane_square(t_square *square, data_t *data, t_list *scene)
 		if(t >= 0.00001f)
 		{
 			Pt = vectAdd(data->ray.orig, vectMult(data->ray.dir, t));
-			inter_square(Pt, square, data, scene, t);
+			inter_square(Pt, square, data, t);
 		}
 	}
 }

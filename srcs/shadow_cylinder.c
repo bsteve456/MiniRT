@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 11:52:20 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/23 12:09:49 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/26 20:56:48 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ float find_delta_s(t_sdaw d_ray, t_cylinder *cy)
 int		shadow_cylinder(t_sdaw d_ray, t_cylinder *cy)
 {
 	float delta;
-	float a;
-	float b;
 
 	cy->N = normalize(cy->N);
 	delta = find_delta_s(d_ray, cy);
