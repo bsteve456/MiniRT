@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 17:21:08 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/26 21:06:09 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/26 21:17:48 by blacking         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	free_imga(t_lst **imga)
 			free((*imga)->mlx_ptr);
 			free((*imga)->mlx_win);
 			free((*imga)->img);
-			free((*imga)->img_data);
+//			free((*imga)->img_data);
 			free(*imga);
 			*imga = mem;
 		}
