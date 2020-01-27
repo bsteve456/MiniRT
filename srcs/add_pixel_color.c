@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 09:25:11 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/27 13:03:20 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/27 13:53:23 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	object_parse(t_list *scene, data_t *data)
 			inter_cylinder(obj->obj, data);
 		else if(obj->type == 8)
 			inter_triangle(obj->obj, data);
-		check_order_object(data, n, obj->type);
+		check_order_object(data, n);
 		n++;
 		scene = scene->next;
 	}

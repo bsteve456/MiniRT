@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 10:37:11 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/27 12:15:02 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/27 13:54:13 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,6 @@ typedef struct	data_s
 	color		  rgb;
 	color		  rgbt;
 	int			  n;
-	int 		  type;
 }				data_t;
 
 typedef struct
@@ -225,7 +224,7 @@ void	inter_triangle(t_triangle *trgl, data_t *data);
 vect	square_corner_init(float x, float y, float z);
 float	orient(vect a, vect b, vect c, vect n);
 float	inter_triangle2(vect Pt, t_triangle *trgl, vect N);
-void	check_order_object(data_t *data, int n, int type);
+void	check_order_object(data_t *data, int n);
 void	temporary_value(data_t *data, float t, vect Pt, vect N);
 void	put_color_to_window(data_t *data, color rgb);
 t_lst	*lstnew(data_t *content);
