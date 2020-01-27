@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 16:29:27 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/23 14:36:46 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/27 14:31:06 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,5 @@ void	parse_info_scene(t_list **scene, char *line)
 		ft_strncmp(line, "tr", 2) == 0 ||
 		ft_strncmp(line, "pl", 2) == 0)
 		scene_object(scene, line);
+	free(line);
 }

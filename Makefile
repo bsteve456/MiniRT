@@ -6,14 +6,14 @@
 #    By: blacking <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/16 10:03:56 by blacking          #+#    #+#              #
-#    Updated: 2020/01/27 10:21:41 by stbaleba         ###   ########.fr        #
+#    Updated: 2020/01/27 14:28:30 by stbaleba         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC=gcc
 CFLAGS=-Wall -Werror -Wextra
 INC=-Iincludes
-NAME=minirt
+NAME=miniRT
 FILE=minirt.c \
 	  srcs/display_loop.c \
 	  srcs/vector_calcul.c \

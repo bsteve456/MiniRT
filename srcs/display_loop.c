@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/29 13:28:17 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/27 09:50:46 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/27 15:11:32 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	display_camera(t_lst *imga, int n)
 		mlx_key_hook(copy->mlx_win, &deal_key, &test);
 		mlx_loop(copy->mlx_ptr);
 	}
-//	free_imga(&imga);
+	free_imga(&imga);
 }
 
 void	init_img(data_t *data)
@@ -87,6 +87,5 @@ void	camera_loop(t_list *scene, int n)
 		copy = copy->next;
 	}
 	free_data(data);
-	free_scene(&scene);
 	display_camera(img, n);
 }

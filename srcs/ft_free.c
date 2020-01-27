@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 17:21:08 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/26 21:17:48 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/27 15:09:02 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,19 @@ void	free_data(data_t *data)
 	free(data);
 }
 
-void	free_scene(t_list **scene)
+void	free_scene(t_list *scene)
 {
 	t_list *mem;
 	object *content;
-	if (*scene)
+	if (scene)
 	{
-		while(*scene)
+		while(scene)
 		{
-			mem = (*scene)->next;
-			content = (*scene)->content;
+			mem = (scene)->next;
+			content = (scene)->content;
 			free(content);
-			free(*scene);
-			*scene = mem;
+			free(scene);
+			scene = mem;
 		}
 	}
 }
@@ -45,20 +45,11 @@ void	free_imga(t_lst **imga)
 	t_lst *mem;
 	if (*imga)
 	{
-		while((*imga)->next)
+		while((*imga))
 		{
 			mem = (*imga)->next;
-			free((*imga)->mlx_ptr);
-			free((*imga)->mlx_win);
-			free((*imga)->img);
-//			free((*imga)->img_data);
 			free(*imga);
 			*imga = mem;
 		}
-			free((*imga)->mlx_ptr);
-			free((*imga)->mlx_win);
-			free((*imga)->img);
-			free(*imga);
-
 	}
 }

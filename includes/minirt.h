@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 10:37:11 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/27 13:54:13 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/27 15:11:10 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -233,6 +233,5 @@ int		deal_key(int key, img_lst *img_test);
 int 	X_close(img_lst *img_test);
 void	screenshot_loop(t_lst *imga);
 void	free_data(data_t *data);
-void	free_scene(t_list **scene);
 void	free_imga(t_lst **imga);
 #endif

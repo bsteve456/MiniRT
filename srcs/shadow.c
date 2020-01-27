@@ -6,13 +6,43 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 19:25:01 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/27 12:39:33 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/27 16:25:29 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-int	shadow_inter(vect Pt, t_light *light, t_list *scene, int n)
+int		shadow_inter2(t_sdaw d_ray, object *obj, int n, int nbis)
+{
+	if(obj->type == 3)
+	{
+		if(n != nbis && inter_shadow_sphere(d_ray, obj->obj) == 1)
+			return (1);
+	}
+	else if(obj->type == 5)
+	{
+		if(n != nbis && inter_shadow_plane(d_ray, obj->obj) == 1)
+			return (1);
+	}
+	else if(obj->type == 6)
+	{
+		if(n != nbis && shadow_square(d_ray, obj->obj) == 1)
+			return (1);
+	}
+	else if(obj->type == 7)
+	{
+		if(n != nbis && shadow_cylinder(d_ray, obj->obj) == 1)
+			return (1);
+	}
+	else if(obj->type == 8)
+	{
+		if(n != nbis && shadow_triangle(d_ray, obj->obj) == 1)
+			return (1);
+	}
+	return (0);
+}
+
+int		shadow_inter(vect Pt, t_light *light, t_list *scene, int n)
 {
 	t_sdaw d_ray;
 	object *obj;
@@ -24,38 +54,15 @@ int	shadow_inter(vect Pt, t_light *light, t_list *scene, int n)
 	while(scene)
 	{
 		obj = scene->content;
-		if(obj->type == 3)
-		{
-			if(n != nbis && inter_shadow_sphere(d_ray, obj->obj) == 1)
-				return (1);
-		}
-		else if(obj->type == 5)
-		{
-			if(n != nbis && inter_shadow_plane(d_ray, obj->obj) == 1)
-				return (1);
-		}
-		else if(obj->type == 6)
-		{
-			if(n != nbis && shadow_square(d_ray, obj->obj) == 1)
-				return (1);
-		}
-		else if(obj->type == 7)
-		{
-			if(n != nbis && shadow_cylinder(d_ray, obj->obj) == 1)
-				return (1);
-		}
-		else if(obj->type == 8)
-		{
-			if(n != nbis && shadow_triangle(d_ray, obj->obj) == 1)
-				return (1);
-		}
+		if (shadow_inter2(d_ray, obj, n, nbis) == 1)
+			return (1);
 		nbis++;
 		scene = scene->next;
 	}
 	return (0);
 }
 
-int	shadow_ray(t_list *scene, data_t *data, int n)
+int		shadow_ray(t_list *scene, data_t *data, int n)
 {
 	object *light;
 	t_list *copy;
@@ -64,7 +71,6 @@ int	shadow_ray(t_list *scene, data_t *data, int n)
 
 	copy = scene;
 	num = 0;
-//	printf("%d, %d, %d, %d\n", data->type, data->rgb.r, data->rgb.g,data->rgb.b);
 	while(copy)
 	{
 		light = copy->content;
