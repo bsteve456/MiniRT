@@ -6,13 +6,13 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 10:42:18 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/27 15:04:33 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/27 17:46:52 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minirt.h"
 
-void	minirt(char *info, int n)
+int	minirt(char *info, int n)
 {
 	int fd;
 	int rfile;
@@ -25,10 +25,16 @@ void	minirt(char *info, int n)
 	rfile = 1;
 	while(rfile > 0)
 	{
-		rfile = get_next_line(fd, &line);
-		parse_info_scene(&scene, line);
+		if((rfile = get_next_line(fd, &line)) == -1)
+		{
+			perror("Error\n");
+			return (-1);
+		}
+		if(parse_info_scene(&scene, line) == -1)
+			return (-1);
 	}
 	camera_loop(scene,  n);
+	return (1);
 }
 
 int main(int ac, char **av)
@@ -37,4 +43,6 @@ int main(int ac, char **av)
 		minirt(av[1], 0);
 	else if(ac == 3 && ft_strncmp(av[2], "-save", 5) == 0)
 		minirt(av[1], 1);
+	else
+		write(2, "Error\nno file\n", 14);
 }

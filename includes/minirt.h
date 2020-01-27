@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 10:37:11 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/27 15:11:10 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/27 18:22:55 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,19 +188,19 @@ vect	normalize(vect ray);
 vect	x_axis_rot(vect dir, float theta);
 vect	y_axis_rot(vect dir, float theta);
 vect	z_axis_rot(vect dir, float theta);
-void	parse_info_scene(t_list **scene, char *line);
+int		parse_info_scene(t_list **scene, char *line);
 float	create_float(char **line);
 color	create_color(char **line);
 vect	create_vect(char **line);
-void	camera(t_list **scene, char *line);
-void	A_light(t_list **scene, char *line);
-void	resolution(t_list **scene, char *line);
-void	sphere(t_list **scene, char *line);
-void	light_init(t_list **scene, char *line);
-void	plane(t_list **scene, char *line);
-void	square(t_list **scene, char *line);
-void	cylinder(t_list **scene, char *line);
-void	triangle(t_list **scene, char *line);
+int		camera(t_list **scene, char *line);
+int		A_light(t_list **scene, char *line);
+int		resolution(t_list **scene, char *line);
+int		sphere(t_list **scene, char *line);
+int		light_init(t_list **scene, char *line);
+int		plane(t_list **scene, char *line);
+int		square(t_list **scene, char *line);
+int		cylinder(t_list **scene, char *line);
+int		triangle(t_list **scene, char *line);
 void	camera_loop(t_list *scene, int n);
 data_t	*init_data(t_list *copy);
 data_t	*complet_ray_pixel(float i, float j, t_cam *cam, data_t *data);
@@ -234,4 +234,6 @@ int 	X_close(img_lst *img_test);
 void	screenshot_loop(t_lst *imga);
 void	free_data(data_t *data);
 void	free_imga(t_lst **imga);
+int		check_params1(char *line);
+int		check_rgb(color rgb);
 #endif

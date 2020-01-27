@@ -6,13 +6,13 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 17:09:47 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/24 14:27:27 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/27 18:18:15 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-void	resolution(t_list **scene, char *line)
+int	resolution(t_list **scene, char *line)
 {
 	object *widw;
 	t_widw	*window;
@@ -24,11 +24,21 @@ void	resolution(t_list **scene, char *line)
 	widw->type = 1;
 	window->x = create_float(&line);
 	window->y = create_float(&line);
+	if(window->x <= 0 || window->y <= 0)
+	{
+		write(2, "Error\nnegative value in resolution(x, y)\n",41);
+		return (-1);
+	}
+	window->x = (window->x > 2560)  ? 2560 : window->x;
+	window->y = (window->y > 1440)  ? 1440 : window->y;
 	widw->obj = window;
+	if(check_params1(line) == -1)
+		return (-1);
 	ft_lstadd_back(scene, ft_lstnew(widw));
+	return (1);
 }
 
-void	A_light(t_list **scene, char *line)
+int	A_light(t_list **scene, char *line)
 {
 	object *A_light;
 	t_aligth *aligth;
@@ -43,11 +53,14 @@ void	A_light(t_list **scene, char *line)
 	aligth->rgb.r *= aligth->ratio;
 	aligth->rgb.g *= aligth->ratio;
 	aligth->rgb.b *= aligth->ratio;
+	if(check_rgb(aligth->rgb) == -1)
+		return (-1);
 	A_light->obj = aligth;
 	ft_lstadd_back(scene, ft_lstnew(A_light));
+	return (1);
 }
 
-void	camera(t_list **scene, char *line)
+int	camera(t_list **scene, char *line)
 {
 	object *a_cam;
 	t_cam *cam;
@@ -62,9 +75,10 @@ void	camera(t_list **scene, char *line)
 	cam->fov = create_float(&line);
 	a_cam->obj = cam;
 	ft_lstadd_back(scene, ft_lstnew(a_cam));
+	return (1);
 }
 
-void	light_init(t_list **scene, char *line)
+int	light_init(t_list **scene, char *line)
 {
 	object *a_light;
 	t_light *light;
@@ -79,9 +93,10 @@ void	light_init(t_list **scene, char *line)
 	light->rgb = create_color(&line);
 	a_light->obj = light;
 	ft_lstadd_back(scene, ft_lstnew(a_light));
+	return (1);
 }
 
-void	plane(t_list **scene, char *line)
+int	plane(t_list **scene, char *line)
 {
 	object *a_plane;
 	t_plane *plane;
@@ -96,4 +111,5 @@ void	plane(t_list **scene, char *line)
 	plane->rgb = create_color(&line);
 	a_plane->obj = plane;
 	ft_lstadd_back(scene, ft_lstnew(a_plane));
+	return (1);
 }

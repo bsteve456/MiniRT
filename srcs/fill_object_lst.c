@@ -6,13 +6,13 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/28 15:53:04 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/21 23:47:31 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/27 17:27:29 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-void	sphere(t_list **scene, char *line)
+int		sphere(t_list **scene, char *line)
 {
 	object *sphere;
 	t_sphere *sphr;
@@ -26,9 +26,10 @@ void	sphere(t_list **scene, char *line)
 	sphr->rgb = create_color(&line);
 	sphere->obj = sphr;
 	ft_lstadd_back(scene, ft_lstnew(sphere));
+	return (1);
 }
 
-void	square(t_list **scene, char *line)
+int		square(t_list **scene, char *line)
 {
 	object *square;
 	t_square *sqr;
@@ -43,9 +44,10 @@ void	square(t_list **scene, char *line)
 	sqr->rgb = create_color(&line);
 	square->obj = sqr;
 	ft_lstadd_back(scene, ft_lstnew(square));
+	return (1);
 }
 
-void	cylinder(t_list **scene, char *line)
+int		cylinder(t_list **scene, char *line)
 {
 	object *cylinder;
 	t_cylinder *cyldr;
@@ -61,9 +63,10 @@ void	cylinder(t_list **scene, char *line)
 	cyldr->rgb = create_color(&line);
 	cylinder->obj = cyldr;
 	ft_lstadd_back(scene, ft_lstnew(cylinder));
+	return (1);
 }
 
-void	triangle(t_list **scene, char *line)
+int		triangle(t_list **scene, char *line)
 {
 	object *triangle;
 	t_triangle *trgl;
@@ -78,4 +81,5 @@ void	triangle(t_list **scene, char *line)
 	trgl->rgb = create_color(&line);
 	triangle->obj = trgl;
 	ft_lstadd_back(scene, ft_lstnew(triangle));
+	return (1);
 }

@@ -6,7 +6,7 @@
 #    By: blacking <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/16 10:03:56 by blacking          #+#    #+#              #
-#    Updated: 2020/01/27 14:28:30 by stbaleba         ###   ########.fr        #
+#    Updated: 2020/01/27 18:09:48 by stbaleba         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,8 @@ FILE=minirt.c \
 	  srcs/minirt_utils2.c \
 	  srcs/lst_functions.c \
 	  srcs/screenshot.c \
-	  srcs/ft_free.c
+	  srcs/ft_free.c \
+	  srcs/ft_errors.c
 
 OBJ=$(FILE:.c=.o)
 

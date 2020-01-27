@@ -6,52 +6,54 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 16:29:27 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/27 14:31:06 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/27 17:36:41 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-void	scene_env(t_list **scene, char *line)
+int	scene_env(t_list **scene, char *line)
 {
 	if(ft_strncmp(line, "R", 1) == 0)
-		resolution(scene, line + 1);
+		return (resolution(scene, line + 1));
 	else if(ft_strncmp(line, "A", 1) == 0)
-		A_light(scene, line + 1);
+		return (A_light(scene, line + 1));
 	else if(ft_strncmp(line, "c", 1) == 0)
-		camera(scene, line + 1);
+		return (camera(scene, line + 1));
 	else if(ft_strncmp(line, "l", 1) == 0)
-		light_init(scene, line + 1);
+		return (light_init(scene, line + 1));
+	return (1);
 }
 
-void	scene_object(t_list **scene, char *line)
+int	scene_object(t_list **scene, char *line)
 {
-	if(ft_strncmp(line, "sp", 2) == 0)
-		sphere(scene, line + 2);
-	else if(ft_strncmp(line, "sq", 2) == 0)
-		square(scene, line + 2);
-	else if(ft_strncmp(line, "cy", 2) == 0)
-		cylinder(scene, line + 2);
-	else if(ft_strncmp(line, "tr", 2) == 0)
-		triangle(scene, line + 2);
-	else if(ft_strncmp(line, "pl", 2) == 0)
-		plane(scene, line + 2);
-
+	if (ft_strncmp(line, "sp", 2) == 0)
+		return (sphere(scene, line + 2));
+	else if (ft_strncmp(line, "sq", 2) == 0)
+		return (square(scene, line + 2));
+	else if (ft_strncmp(line, "cy", 2) == 0)
+		return (cylinder(scene, line + 2));
+	else if (ft_strncmp(line, "tr", 2) == 0)
+		return (triangle(scene, line + 2));
+	else if (ft_strncmp(line, "pl", 2) == 0)
+		return (plane(scene, line + 2));
+	return (1);
 }
 
-void	parse_info_scene(t_list **scene, char *line)
+int	parse_info_scene(t_list **scene, char *line)
 {
 	if(ft_strncmp(line, "R", 1) == 0 ||
 		ft_strncmp(line, "A", 1) == 0 ||
 		(ft_strncmp(line, "c", 1) == 0 &&
 		 ft_strncmp(line, "cy", 2) != 0) ||
 		ft_strncmp(line, "l", 1) == 0)
-		scene_env(scene, line);
+		return (scene_env(scene, line));
 	else if(ft_strncmp(line, "sp", 2) == 0 ||
 		ft_strncmp(line, "sq", 2) == 0 || 
 		ft_strncmp(line, "cy", 2) == 0 ||
 		ft_strncmp(line, "tr", 2) == 0 ||
 		ft_strncmp(line, "pl", 2) == 0)
-		scene_object(scene, line);
+		return(scene_object(scene, line));
 	free(line);
+	return (1);
 }
