@@ -6,7 +6,7 @@
 #    By: blacking <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/16 10:03:56 by blacking          #+#    #+#              #
-#    Updated: 2020/01/26 18:27:59 by blacking         ###   ########.fr        #
+#    Updated: 2020/01/27 10:21:41 by stbaleba         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,9 +45,9 @@ OBJ=$(FILE:.c=.o)
 all :$(NAME)
 
 $(NAME): $(OBJ) ./includes/minirt.h
-	$(CC) $(CFLAGS) $(INC) $(OBJ) libft/libft.a -L./libft -L./minilibx_linux -lmlx -lXext -lX11 -lm -o $(NAME)
+	$(CC) $(CFLAGS) $(INC) $(OBJ) libft/libft.a -lmlx -framework OpenGl -framework AppKit  -o $(NAME)
 .c.o: $(FILE)
-	$(CC) $(CFLAGS) $(INC) -c $< -o $@
+	$(CC) $(CFLAGS) $(INC)  -c $< -o $@
 clean:
 	rm -rf *.o ./srcs/*.o
 fclean: clean

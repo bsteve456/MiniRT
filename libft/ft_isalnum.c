@@ -6,16 +6,15 @@
 /*   By: stbaleba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 14:37:50 by stbaleba          #+#    #+#             */
-/*   Updated: 2019/10/11 21:32:10 by blacking         ###   ########.fr       */
+/*   Updated: 2019/10/20 12:23:00 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_isalnum(int c) {
-	if(ft_isalpha(c) == 1024 || ft_isdigit(c) == 2048) {
-		return 8;
-	}
-	return 0;
+int	ft_isalnum(int c)
+{
+	if (ft_isalpha(c) == 1024 || ft_isdigit(c) == 2048)
+		return (8);
+	return (0);
 }
-

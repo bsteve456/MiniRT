@@ -6,13 +6,13 @@
 /*   By: stbaleba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 14:39:33 by stbaleba          #+#    #+#             */
-/*   Updated: 2019/10/11 21:58:18 by blacking         ###   ########.fr       */
+/*   Updated: 2019/10/20 12:25:06 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_isalpha(int c) {
-	if((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')) {
-		return 1024;
-	}
-	return 0;
+int	ft_isalpha(int c)
+{
+	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
+		return (1024);
+	return (0);
 }

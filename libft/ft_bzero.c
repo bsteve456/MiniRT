@@ -6,16 +6,19 @@
 /*   By: stbaleba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 14:50:27 by stbaleba          #+#    #+#             */
-/*   Updated: 2019/10/09 16:06:34 by stbaleba         ###   ########.fr       */
+/*   Updated: 2019/10/20 12:19:10 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n) {
+void	ft_bzero(void *s, size_t n)
+{
 	size_t i;
+
 	i = 0;
-	while (i < n) {
+	while (i < n)
+	{
 		((unsigned char *)s)[i] = '\0';
 		i++;
 	}

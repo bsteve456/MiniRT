@@ -6,14 +6,13 @@
 /*   By: stbaleba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 14:40:55 by stbaleba          #+#    #+#             */
-/*   Updated: 2019/10/11 22:03:33 by blacking         ###   ########.fr       */
+/*   Updated: 2019/10/20 12:28:21 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_isdigit(int c) {
-	if(c >= '0' && c <= '9') {
-		return 2048;
-	}
-	return 0;
+int	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (2048);
+	return (0);
 }
-

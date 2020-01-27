@@ -6,16 +6,17 @@
 /*   By: stbaleba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 14:45:54 by stbaleba          #+#    #+#             */
-/*   Updated: 2019/10/16 14:51:56 by stbaleba         ###   ########.fr       */
+/*   Updated: 2019/10/20 13:45:57 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list *ft_lstlast(t_list *lst) {
-	if(lst == 0)
-		return 0;
+t_list	*ft_lstlast(t_list *lst)
+{
+	if (lst == 0)
+		return (0);
 	while (lst->next)
 		lst = lst->next;
-	return lst;
+	return (lst);
 }

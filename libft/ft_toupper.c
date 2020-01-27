@@ -6,14 +6,13 @@
 /*   By: ctbaleba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 14:37:22 by ctbaleba          #+#    #+#             */
-/*   Updated: 2019/10/12 12:15:41 by blacking         ###   ########.fr       */
+/*   Updated: 2019/10/20 13:38:08 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_toupper(int c) {
-	if (c >= 'a' && c <= 'z')
-		return c - 32;
-	else if (c < 0 && c > -129)
-		return 256 + c;
-	return c;
+int	ft_toupper(int c)
+{
+	if ((unsigned char)c >= 'a' && (unsigned char)c <= 'z')
+		c -= 32;
+	return (c);
 }

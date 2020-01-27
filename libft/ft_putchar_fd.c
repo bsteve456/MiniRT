@@ -6,14 +6,14 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 19:26:04 by blacking          #+#    #+#             */
-/*   Updated: 2019/10/14 20:21:54 by blacking         ###   ########.fr       */
+/*   Updated: 2019/10/20 13:05:07 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_putchar_fd(char c, int fd) {
-
-	if(fd != -1)
+void	ft_putchar_fd(char c, int fd)
+{
+	if (fd != -1)
 		write(fd, &c, sizeof(c));
 }

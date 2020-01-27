@@ -6,15 +6,13 @@
 /*   By: stbaleba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 14:37:09 by stbaleba          #+#    #+#             */
-/*   Updated: 2019/10/09 14:37:12 by stbaleba         ###   ########.fr       */
+/*   Updated: 2019/10/20 13:34:31 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_tolower(int c) {
-	unsigned char s = (unsigned char)c;
-
-	if (s >= 'A' && s <= 'Z') {
-		s += 32;
-	}
-	return (int)s;
+int	ft_tolower(int c)
+{
+	if ((unsigned char)c >= 'A' && (unsigned char)c <= 'Z')
+		c += 32;
+	return (c);
 }

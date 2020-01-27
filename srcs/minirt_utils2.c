@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 13:20:20 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/26 20:58:19 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/27 09:51:18 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,26 +31,27 @@ float	vectDot(vect v1, vect v2)
 }
 int 	X_close(img_lst *img_test)
 {
-	t_lst *imga = img_test->img;
+//	t_lst *imga = img_test->img;
 	mlx_destroy_window(img_test->copy->mlx_ptr, img_test->copy->mlx_win);
-	free_imga(&imga);
+//	free_imga(&imga);
 	_Exit(0);
 	return (0);
 }
 
 int		deal_key(int key, img_lst *img_test)
 {
-	t_lst *imga = img_test->img;
-	if(key == 97 && img_test->copy)
+//	t_lst *imga = img_test->img;
+	printf("%d\n", key);
+	if(key == 0 && img_test->copy)
 	{
 		mlx_put_image_to_window(img_test->copy->mlx_ptr, img_test->copy->mlx_win, img_test->copy->img, 0, 0);
 		if(img_test->copy->next != NULL)
 			img_test->copy = img_test->copy->next;
 	}
-	if(key == 65307)
+	if(key == 53)
 	{
 		mlx_destroy_window(img_test->copy->mlx_ptr, img_test->copy->mlx_win);
-		free_imga(&imga);
+//		free_imga(&imga);
 		_Exit(0);
 	}
 	return (0);

@@ -6,14 +6,13 @@
 /*   By: stbaleba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 14:39:48 by stbaleba          #+#    #+#             */
-/*   Updated: 2019/10/19 16:34:07 by stbaleba         ###   ########.fr       */
+/*   Updated: 2019/10/20 12:26:04 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_isascii(int c) {
-	if(c >= 0 && c <= 127) {
-		return 1;
-	}
-	return 0;
+int	ft_isascii(int c)
+{
+	if (c >= 0 && c <= 127)
+		return (1);
+	return (0);
 }
-

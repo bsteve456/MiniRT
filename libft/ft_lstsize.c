@@ -6,19 +6,21 @@
 /*   By: stbaleba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 14:18:58 by stbaleba          #+#    #+#             */
-/*   Updated: 2019/10/16 14:33:18 by stbaleba         ###   ########.fr       */
+/*   Updated: 2019/10/20 13:49:04 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_lstsize(t_list *lst) {
+int	ft_lstsize(t_list *lst)
+{
 	int count;
 
 	count = 0;
-	while(lst) {
+	while (lst)
+	{
 		count++;
 		lst = lst->next;
 	}
-	return count;
+	return (count);
 }
