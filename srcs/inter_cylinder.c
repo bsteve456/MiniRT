@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 14:30:20 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/26 20:54:52 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/27 10:35:30 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ float find_delta(data_t *data, t_cylinder *cy, float *a)
 
 	MoO = vectSub(data->ray.orig, cy->p0);
 	V1 = (vectSub(MoO, vectMult(cy->N,  vectDot(MoO, cy->N))));
-	V2 = (vectSub(data->ray.dir, 
+	V2 = (vectSub(data->ray.dir,
 	vectMult(cy->N, vectDot(data->ray.dir, cy->N))));
 	abc[0] = vectDot(V2, V2);
 	abc[1] = 2  * vectDot(V1, V2);
@@ -67,7 +67,7 @@ void	inter_cylinder(t_cylinder *cy, data_t *data)
 	delta = find_delta(data, cy, &a);
 	if(delta >= 0.0f)
 	{
-		Pt = vectAdd(data->ray.orig, vectMult(data->ray.dir, (double)a));
+		Pt = vectAdd(data->ray.orig, vectMult(data->ray.dir, a));
 		N = find_normal(Pt, cy);
 		b = vectDot(vectSub(Pt, cy->p0), cy->N);
 		if(b > 0 && b < cy->height)
@@ -75,7 +75,7 @@ void	inter_cylinder(t_cylinder *cy, data_t *data)
 			data->rgbt = cy->rgb;
 			temporary_value(data, a, Pt, N);
 		}
-		else 
+		else
 			top_bottom_cap(cy, data);
 	}
 }

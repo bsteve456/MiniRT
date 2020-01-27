@@ -6,16 +6,17 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 19:25:01 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/26 20:50:28 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/27 12:39:33 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-int	shadow_inter(vect Pt, t_light *light, t_list *scene)
+int	shadow_inter(vect Pt, t_light *light, t_list *scene, int n)
 {
 	t_sdaw d_ray;
 	object *obj;
+	int nbis = 0;
 
 	d_ray.orig = Pt;
 	d_ray.dir = vectMult(vectSub(d_ray.orig, light->orig), -1);
@@ -25,35 +26,36 @@ int	shadow_inter(vect Pt, t_light *light, t_list *scene)
 		obj = scene->content;
 		if(obj->type == 3)
 		{
-			if(inter_shadow_sphere(d_ray, obj->obj) == 1)
+			if(n != nbis && inter_shadow_sphere(d_ray, obj->obj) == 1)
 				return (1);
 		}
 		else if(obj->type == 5)
 		{
-			if(inter_shadow_plane(d_ray, obj->obj) == 1)
+			if(n != nbis && inter_shadow_plane(d_ray, obj->obj) == 1)
 				return (1);
 		}
 		else if(obj->type == 6)
 		{
-			if(shadow_square(d_ray, obj->obj) == 1)
+			if(n != nbis && shadow_square(d_ray, obj->obj) == 1)
 				return (1);
 		}
 		else if(obj->type == 7)
 		{
-			if(shadow_cylinder(d_ray, obj->obj) == 1)
+			if(n != nbis && shadow_cylinder(d_ray, obj->obj) == 1)
 				return (1);
 		}
 		else if(obj->type == 8)
 		{
-			if(shadow_triangle(d_ray, obj->obj) == 1)
+			if(n != nbis && shadow_triangle(d_ray, obj->obj) == 1)
 				return (1);
 		}
+		nbis++;
 		scene = scene->next;
 	}
 	return (0);
 }
 
-int	shadow_ray(t_list *scene, data_t *data)
+int	shadow_ray(t_list *scene, data_t *data, int n)
 {
 	object *light;
 	t_list *copy;
@@ -62,11 +64,12 @@ int	shadow_ray(t_list *scene, data_t *data)
 
 	copy = scene;
 	num = 0;
+//	printf("%d, %d, %d, %d\n", data->type, data->rgb.r, data->rgb.g,data->rgb.b);
 	while(copy)
 	{
 		light = copy->content;
 		if(light->type == 4)
-			num += shadow_inter(data->Pt, light->obj, scene);
+			num += shadow_inter(data->Pt, light->obj, scene, n);
 		copy = copy->next;
 	}
 	if(num > 0)

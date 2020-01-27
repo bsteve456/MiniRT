@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 10:37:11 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/26 20:55:10 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/27 12:15:02 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,8 @@ typedef struct	data_s
 	vect		  Ntemp;
 	color		  rgb;
 	color		  rgbt;
+	int			  n;
+	int 		  type;
 }				data_t;
 
 typedef struct
@@ -208,7 +210,7 @@ void	inter_sphere(t_sphere *sphere, data_t *data);
 void	object_parse(t_list *scene, data_t *data);
 void	light_loop(vect Pt, vect N, data_t *data, t_list *scene);
 void	inter_plane(t_plane *plane, data_t *data);
-int		shadow_ray(t_list *scene, data_t *data);
+int		shadow_ray(t_list *scene, data_t *data, int n);
 int		inter_shadow_sphere(t_sdaw d_ray, t_sphere *sphere);
 int		inter_shadow_plane(t_sdaw d_ray, t_plane *plane);
 int		shadow_square(t_sdaw d_ray, t_square *square);
@@ -223,7 +225,7 @@ void	inter_triangle(t_triangle *trgl, data_t *data);
 vect	square_corner_init(float x, float y, float z);
 float	orient(vect a, vect b, vect c, vect n);
 float	inter_triangle2(vect Pt, t_triangle *trgl, vect N);
-void	check_order_object(data_t *data);
+void	check_order_object(data_t *data, int n, int type);
 void	temporary_value(data_t *data, float t, vect Pt, vect N);
 void	put_color_to_window(data_t *data, color rgb);
 t_lst	*lstnew(data_t *content);

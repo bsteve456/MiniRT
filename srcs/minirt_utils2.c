@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 13:20:20 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/27 09:51:18 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/27 10:28:55 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int 	X_close(img_lst *img_test)
 int		deal_key(int key, img_lst *img_test)
 {
 //	t_lst *imga = img_test->img;
-	printf("%d\n", key);
 	if(key == 0 && img_test->copy)
 	{
 		mlx_put_image_to_window(img_test->copy->mlx_ptr, img_test->copy->mlx_win, img_test->copy->img, 0, 0);

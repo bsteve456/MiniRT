@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 09:47:34 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/26 18:31:21 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/27 12:55:43 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	sphere_n_pt(float t0, t_sphere *sphere, data_t *data)
 	Pt = vectAdd(data->ray.orig, vectMult(data->ray.dir, (double)t0));
 	N = vectSub(Pt, sphere->center);
 	data->rgbt = sphere->rgb;
+	printf("%d, %d, %d\n", data->rgbt.r, data->rgbt.g,data->rgbt.b);
 	temporary_value(data, t0, Pt, N);
 }
 
