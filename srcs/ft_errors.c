@@ -6,7 +6,7 @@
 /*   By: stbaleba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 18:10:19 by stbaleba          #+#    #+#             */
-/*   Updated: 2020/01/27 18:34:29 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/28 10:21:05 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int		check_params1(char *line)
 {
-	if(*line != '\0' && *line != ' ' && *line != '\n')
+	if(*line == '\0')
 	{
-		write(2, "Error\nsomething wrong with resolution params\n",45);
+		write(2, "Error\nsomething wrong with few params\n",38);
 		return (-1);
 	}
 	return (1);

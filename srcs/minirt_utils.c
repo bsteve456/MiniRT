@@ -6,11 +6,26 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 17:28:04 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/27 13:55:10 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/28 10:30:48 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
+
+float	create_float_utils(char **line, float *dot, float num)
+{
+		if(**line == '.')
+			*dot = 1;
+		if(ft_isdigit(**line) == 2048 && *dot == 0)
+			num = num * 10 + ((**line - '0') / pow(10, *dot));
+		if(ft_isdigit(**line) == 2048 && *dot >= 1)
+		{
+			num += ((float)(**line - '0') / pow(10, *dot));
+			(*dot)++;
+		}
+		return (num);
+}
+
 
 float	create_float(char **line)
 {
@@ -27,28 +42,24 @@ float	create_float(char **line)
 		(*line)++;
 	while(ft_isdigit(**line) == 2048 || **line == '.')
 	{
-		if(**line == '.')
-			dot = 1;
-		if(ft_isdigit(**line) == 2048 && dot == 0)
-			num = num * 10 + ((**line - '0') / pow(10, dot));
-		if(ft_isdigit(**line) == 2048 && dot >= 1)
-		{
-			num += ((float)(**line - '0') / pow(10, dot));
-			dot++;
-		}
+		num = create_float_utils(line, &dot, num);
 		(*line)++;
 	}
 	return (num * neg);
 }
 
-color	create_color(char **line)
+int		create_color(color *rgb, char **line)
 {
-	color rgb;
-
-	rgb.r = create_float(line);
-	rgb.g = create_float(line);
-	rgb.b = create_float(line);
-	return (rgb);
+	if (check_params1(*line) == -1)
+		return (-1);
+	(*rgb).r = create_float(line);
+	if (check_params1(*line) == -1)
+		return (-1);
+	(*rgb).g = create_float(line);
+	if (check_params1(*line) == -1)
+		return (-1);
+	(*rgb).b = create_float(line);
+	return (1);
 }
 
 vect	create_vect(char **line)

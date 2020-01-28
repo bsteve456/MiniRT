@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 10:37:11 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/27 18:22:55 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/28 10:08:47 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,7 +190,7 @@ vect	y_axis_rot(vect dir, float theta);
 vect	z_axis_rot(vect dir, float theta);
 int		parse_info_scene(t_list **scene, char *line);
 float	create_float(char **line);
-color	create_color(char **line);
+int		create_color(color *rgb, char **line);
 vect	create_vect(char **line);
 int		camera(t_list **scene, char *line);
 int		A_light(t_list **scene, char *line);
