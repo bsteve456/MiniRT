@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 14:54:49 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/27 10:58:13 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/28 15:45:12 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,13 @@ void	light_loop(vect Pt, vect N, data_t *data, t_list *scene)
 	vect L;
 	object *a_light;
 	t_light *light_a;
+	t_list *copy;
 	color rgb;
 
 	rgb.r = 0;
 	rgb.g = 0;
 	rgb.b = 0;
+	copy = scene;
 	N = normalize(N);
 	while(scene)
 	{
@@ -57,10 +59,14 @@ void	light_loop(vect Pt, vect N, data_t *data, t_list *scene)
 		if(a_light->type == 4)
 		{
 			light_a = a_light->obj;
+//			printf("%f, %f,  %f\n", N.x, N.y, N.z);
 			L = normalize(vectSub(light_a->orig, Pt));
+//			printf("%f, %f,  %f\n", Pt.x, Pt.y, Pt.z);
+
+//			printf("%f\n",  vectDot(N, L));
 			reflected_color(a_light->obj,vectDot(N, L), &rgb);
 		}
 		scene = scene->next;
 	}
-	surface_color(data, rgb);
+	shadow_ray(copy, data, data->n, rgb);
 }

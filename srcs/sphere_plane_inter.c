@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 09:47:34 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/27 14:00:44 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/28 16:57:06 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ void	inter_plane(t_plane *plane, data_t *data)
 	float demom;
 
 	plane->N = normalize(plane->N);
+	if((demom = vectDot(data->ray.dir, plane->N)) > 0)
+		plane->N = vectMult(plane->N, -1);
 	demom = vectDot(data->ray.dir, plane->N);
 	if(fabs(demom) > 0.00001f) {
 		p0l0 = vectSub(plane->p0, data->ray.orig);

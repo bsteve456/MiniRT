@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 09:25:11 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/27 16:16:50 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/28 13:19:55 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,6 @@ void	object_parse(t_list *scene, data_t *data)
 		n++;
 		scene = scene->next;
 	}
-	if(data->t != -1 && shadow_ray(copy, data, data->n) == 0)
+	if(data->t != -1)
 		light_loop(data->Pt, data->N, data, copy);
 }

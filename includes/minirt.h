@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 10:37:11 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/28 10:08:47 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/28 13:19:08 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -209,7 +209,7 @@ void	inter_sphere(t_sphere *sphere, data_t *data);
 void	object_parse(t_list *scene, data_t *data);
 void	light_loop(vect Pt, vect N, data_t *data, t_list *scene);
 void	inter_plane(t_plane *plane, data_t *data);
-int		shadow_ray(t_list *scene, data_t *data, int n);
+int		shadow_ray(t_list *scene, data_t *data, int n, color rgb);
 int		inter_shadow_sphere(t_sdaw d_ray, t_sphere *sphere);
 int		inter_shadow_plane(t_sdaw d_ray, t_plane *plane);
 int		shadow_square(t_sdaw d_ray, t_square *square);
@@ -236,4 +236,5 @@ void	free_data(data_t *data);
 void	free_imga(t_lst **imga);
 int		check_params1(char *line);
 int		check_rgb(color rgb);
+vect find_normal(vect Pt, t_cylinder *cy);
 #endif
