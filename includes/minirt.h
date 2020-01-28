@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 10:37:11 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/28 13:19:08 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/28 18:22:25 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ typedef struct	data_s
 	color		  rgb;
 	color		  rgbt;
 	int			  n;
+	int			  type;
 }				data_t;
 
 typedef struct
@@ -209,7 +210,7 @@ void	inter_sphere(t_sphere *sphere, data_t *data);
 void	object_parse(t_list *scene, data_t *data);
 void	light_loop(vect Pt, vect N, data_t *data, t_list *scene);
 void	inter_plane(t_plane *plane, data_t *data);
-int		shadow_ray(t_list *scene, data_t *data, int n, color rgb);
+int		shadow_ray(t_list *scene, data_t *data, color rgb);
 int		inter_shadow_sphere(t_sdaw d_ray, t_sphere *sphere);
 int		inter_shadow_plane(t_sdaw d_ray, t_plane *plane);
 int		shadow_square(t_sdaw d_ray, t_square *square);
@@ -224,17 +225,17 @@ void	inter_triangle(t_triangle *trgl, data_t *data);
 vect	square_corner_init(float x, float y, float z);
 float	orient(vect a, vect b, vect c, vect n);
 float	inter_triangle2(vect Pt, t_triangle *trgl, vect N);
-void	check_order_object(data_t *data, int n);
+void	check_order_object(data_t *data, int n, int obj_type);
 void	temporary_value(data_t *data, float t, vect Pt, vect N);
 void	put_color_to_window(data_t *data, color rgb);
 t_lst	*lstnew(data_t *content);
 void	lstadd_back(t_lst **alst, t_lst *new);
 int		deal_key(int key, img_lst *img_test);
-int 	X_close(img_lst *img_test);
+int		X_close(img_lst *img_test);
 void	screenshot_loop(t_lst *imga);
 void	free_data(data_t *data);
 void	free_imga(t_lst **imga);
 int		check_params1(char *line);
 int		check_rgb(color rgb);
-vect find_normal(vect Pt, t_cylinder *cy);
+vect	find_normal(vect Pt, t_cylinder *cy);
 #endif

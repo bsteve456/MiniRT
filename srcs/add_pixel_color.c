@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 09:25:11 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/28 13:19:55 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/28 18:09:15 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	object_parse(t_list *scene, data_t *data)
 	{
 		obj = scene->content;
 		object_parse2(obj, data);
-		check_order_object(data, n);
+		check_order_object(data, n, obj->type);
 		n++;
 		scene = scene->next;
 	}
