@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 19:39:30 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/22 16:52:47 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/29 10:03:48 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int		inter_shadow_plane(t_sdaw d_ray, t_plane *plane)
 	if(fabs(demom) > 0.00001f) {
 		p0l0 = vectSub(plane->p0, d_ray.orig);
 		t = vectDot(p0l0, plane->N) / demom;
-		if(t >= 0.00001f)
+		if(t >= 0.00001f && demom <= 0)
 			return (1);
 	}
 	return (0);

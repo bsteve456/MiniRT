@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 09:47:34 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/28 16:57:06 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/29 12:05:01 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ float find_t0(float a, float b, float c)
 	{
 		t0 = (-b + sqrt(discr)) / (2 * a);
 		t1 = (-b - sqrt(discr)) / (2 * a);
+		if(t0 < 0)
+			return (t1);
+		if(t1 < 0)
+			return(t0);
 		if(t0 > t1)
 			t0 = t1;
 	}

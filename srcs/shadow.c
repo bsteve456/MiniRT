@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 19:25:01 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/28 18:22:08 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/29 11:58:45 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		shadow_inter2(t_sdaw d_ray, object *obj, data_t *data, int nbis)
 		if(data->n != nbis && inter_shadow_sphere(d_ray, obj->obj) == 1)
 			return (1);
 	}
-	else if(obj->type == 5 && data->type != obj->type)
+	else if(obj->type == 5)
 	{
 		if(data->n != nbis && inter_shadow_plane(d_ray, obj->obj) == 1)
 			return (1);
@@ -49,7 +49,7 @@ int		shadow_inter(data_t *data, t_light *light, t_list *scene)
 	int nbis = 0;
 
 	d_ray.orig = data->Pt;
-	d_ray.dir = vectMult(vectSub(d_ray.orig, light->orig), -1);
+	d_ray.dir = normalize(vectSub(light->orig , d_ray.orig));
 	d_ray.light_orig = light->orig;
 	while(scene)
 	{

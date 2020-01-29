@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 11:52:20 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/28 14:01:00 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/29 12:10:22 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,15 +77,17 @@ int		shadow_cylinder(t_sdaw d_ray, t_cylinder *cy)
 	float a;
 	float b;
 	vect N;
+
 	cy->N = normalize(cy->N);
 	delta = find_delta_s(d_ray, cy, &a);
-	if(delta >= 0.0f)
+	if(delta > 0.0f && a > 0)
 	{
 		Pt = vectAdd(d_ray.orig, vectMult(d_ray.dir, a));
 		N = find_normal(Pt, cy);
+
 		b = vectDot(vectSub(Pt, cy->p0), cy->N);
 		if(b > 0 && b < cy->height)
-			return (1);
+				return (1);
 		else if(top_bottom_cap1(cy, d_ray) == 1)
 			return (1);
 	}
