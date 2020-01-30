@@ -5,32 +5,36 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/25 18:20:01 by blacking          #+#    #+#             */
-/*   Updated: 2019/12/22 16:00:49 by blacking         ###   ########.fr       */
+/*   Created: 2019/10/27 16:31:10 by blacking          #+#    #+#             */
+/*   Updated: 2020/01/30 17:02:13 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *ft_substr_gnl(char *prev_cumul, unsigned int start, size_t len)
+char	*substr_gnl(char *s, unsigned int start, size_t len)
 {
-	char *line_or_cumul;
-	unsigned int i = 0;
-	unsigned int j = 0;
-	if(!(line_or_cumul = ft_calloc(len + 1, sizeof(char))))
+	unsigned int	i;
+	size_t			j;
+	char			*dst;
+
+	i = 0;
+	j = 0;
+	if (!(dst = ft_calloc(len + 1, sizeof(char))))
 		return (NULL);
-	while(prev_cumul[i])
+	while (s[i] && j < len)
 	{
-		if(start == 0 && prev_cumul[i] == '\n')
-			return(line_or_cumul);
-		if(i >= start)
+		if (start == 0 && s[i] == '\n')
 		{
-			line_or_cumul[j] = prev_cumul[i];
-			j++;
+			dst[j] = '\0';
+			return (dst);
 		}
+		else if (i >= start && j < len)
+			dst[j++] = s[i];
 		i++;
 	}
-	if(start != 0)
-		free(prev_cumul);
-	return (line_or_cumul);
+	if (start != 0)
+		free(s);
+	dst[j] = '\0';
+	return (dst);
 }
