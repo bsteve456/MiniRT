@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 11:38:06 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/30 12:51:39 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/30 14:25:37 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		inter_plane_square(t_square *square, data_t *data)
 {
 	t_triangle trgl2;
 	t_triangle trgl1;
-
+	square->N = normalize(square->N);
 	vect Oy = square_corner_init(0, 1, 0);
 	vect OP1 = crossP(square->N, Oy);
 	float d = sqrt(2 * square->height * square->height) / 2;

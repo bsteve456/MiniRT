@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 23:49:09 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/30 12:56:43 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/30 14:14:50 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ float	inter_triangle2(vect Pt, t_triangle *trgl, vect N)
 	C[0] = vectSub(Pt, trgl->p0);
 	C[1] = vectSub(Pt, trgl->p1);
 	C[2] = vectSub(Pt, trgl->p2);
-	if(vectDot(N, crossP(edge[0], C[0])) >= 0 &&
-		vectDot(N, crossP(edge[1], C[1])) >= 0 &&
-		vectDot(N, crossP(edge[2], C[2])) >= 0)
+	if(vectDot(N, crossP(edge[0], C[0])) >= -0.001f &&
+		vectDot(N, crossP(edge[1], C[1])) >= -0.001f &&
+		vectDot(N, crossP(edge[2], C[2])) >= -0.001f)
 		return (1);
 	return (0);
 }

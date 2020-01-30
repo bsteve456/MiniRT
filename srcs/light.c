@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 14:54:49 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/29 16:58:14 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/30 15:52:48 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,17 @@ void	surface_color(data_t *data, color rgb)
 	}
 	put_color_to_window(data, rgbr);
 }
+
+void		reflected_color2(t_aligth *light, color *rgb)
+{
+	if (rgb->r < (light->rgb.r))
+			rgb->r = light->rgb.r;
+	if (rgb->g < (light->rgb.g))
+			rgb->g = light->rgb.g;
+	if (rgb->b < (light->rgb.b))
+			rgb->b = light->rgb.b;
+}
+
 
 void		reflected_color(t_light *light, float dotP, color *rgb)
 {
@@ -62,6 +73,8 @@ void	light_loop(vect Pt, vect N, data_t *data, t_list *scene)
 			L = normalize(vectSub(light_a->orig, Pt));
 			reflected_color(a_light->obj,vectDot(N, L), &rgb);
 		}
+		else if(a_light->type == 2)
+			reflected_color2(a_light->obj, &rgb);
 		scene = scene->next;
 	}
 	shadow_ray(copy, data, rgb);

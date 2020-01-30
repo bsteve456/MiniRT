@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 19:25:01 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/30 11:37:51 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/30 15:51:28 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,19 +67,26 @@ int		shadow_ray(t_list *scene, data_t *data, color rgb)
 	object *light;
 	t_list *copy;
 	int num;
+	int a;
 
 	copy = scene;
 	num = 0;
+	a = 0;
 	while(copy)
 	{
 		light = copy->content;
 		if(light->type == 4)
 			num += shadow_inter(data, light->obj, scene);
+		else if(light->type == 2)
+			a++;
 		copy = copy->next;
 	}
-	rgb.r = rgb.r * pow(0.5, num);
-	rgb.g = rgb.g * pow(0.5, num);
-	rgb.b = rgb.b * pow(0.5, num);
+	if(a != 1 || num != 0)
+	{
+		rgb.r = rgb.r * pow(0.5, num);
+		rgb.g = rgb.g * pow(0.5, num);
+		rgb.b = rgb.b * pow(0.5, num);
+	}
 	surface_color(data, rgb);
 	return (num);
 }
