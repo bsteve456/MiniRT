@@ -6,90 +6,48 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 11:38:06 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/26 20:51:23 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/30 12:51:39 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-vect	square_corner_init(float x, float y, float z)
+vect	square_corner_init(float a, float b, float c)
 {
-	vect p;
+		vect res;
 
-	p.x = x;
-	p.y = y;
-	p.z = z;
-	return (p);
+		res.x = a;
+		res.y = b;
+		res.z = c;
+		return (res);
 }
 
-float orient(vect a, vect b, vect c, vect n)
+int		inter_plane_square(t_square *square, data_t *data)
 {
-	float res;
-	vect v1;
-	vect v2;
+	t_triangle trgl2;
+	t_triangle trgl1;
 
-	v1 = vectSub(b, a);
-	v2 = vectSub(c, a);
-	res = vectDot(crossP(v1, v2), n);
-	return (res);
-}
-
-int		dot_product(vect *corner, vect q, vect n)
-{
-	float o1;
-	float o2;
-	float o3;
-	float o4;
-	
-	o1 = orient(q, corner[0], corner[1], n);
-	o2 = orient(q, corner[1], corner[2], n);
-	o3 = orient(q, corner[2], corner[3], n);
-	o4 = orient(q, corner[3], corner[0], n);
-	if((o1 >= 0 && o2 >= 0 && o3 >= 0 && o4 >= 0) ||
-		(o1 < 0 && o2 < 0 && o3 < 0 && o4 < 0))
-		return (1);
-	return (0);
-}
-
-void	inter_square(vect Pt, t_square *square, data_t *data, float t)
-{
-	vect *square_corner = ft_calloc(4, sizeof(vect));
-
-	square_corner[0] = square_corner_init(square->p0.x - square->height/2, 
-		square->p0.y + square->height/2, square->p0.z);
-	square_corner[1] = square_corner_init(square->p0.x + square->height/2, 
-		square->p0.y + square->height/2, square->p0.z);
-	square_corner[2] = square_corner_init(square->p0.x + square->height/2, 
-		square->p0.y - square->height/2, square->p0.z);
-	square_corner[3] = square_corner_init(square->p0.x - square->height/2, 
-		square->p0.y - square->height/2, square->p0.z);
-	data->rgb = square->rgb;
-	if(dot_product(square_corner, Pt, square->N) == 1)
+	vect Oy = square_corner_init(0, 1, 0);
+	vect OP1 = crossP(square->N, Oy);
+	float d = sqrt(2 * square->height * square->height) / 2;
+	OP1 = vectMult(OP1, d);
+	vect p1 = vectAdd(square->p0 , OP1);
+	vect OP2 = crossP(square->N, OP1);
+	vect p2 = vectAdd(square->p0, OP2);
+	vect OP3 = crossP(square->N, OP2);
+	vect p3 = vectAdd(square->p0, OP3);
+	vect OP4 = crossP(square->N, OP3);
+	vect p4 = vectAdd(square->p0, OP4);
+	trgl1.p0 = p1;
+	trgl1.p1 = p2;
+	trgl1.p2 = p4;
+	trgl2.p0 = p3;
+	trgl2.p1 = p2;
+	trgl2.p2 = p4;
+	if(inter_triangle(&trgl1, data) == 1 || inter_triangle(&trgl2, data) == 1)
 	{
-		square->N.z = (square->N.z > 0) ? -square->N.z : square->N.z;
 		data->rgbt = square->rgb;
-		temporary_value(data, t, Pt, square->N);
+		return (1);
 	}
-	free(square_corner);
-}
-
-
-void	inter_plane_square(t_square *square, data_t *data)
-{
-	vect p0l0;
-	float t;
-	float demom;
-	vect Pt;
-
-	square->N = normalize(square->N);
-	demom = vectDot(data->ray.dir, square->N);
-	if(fabs(demom) > 0.00001f) {
-		p0l0 = vectSub(square->p0, data->ray.orig);
-		t = vectDot(p0l0, square->N) / demom;
-		if(t >= 0.00001f)
-		{
-			Pt = vectAdd(data->ray.orig, vectMult(data->ray.dir, t));
-			inter_square(Pt, square, data, t);
-		}
-	}
+	return (0);
 }

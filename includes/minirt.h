@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 10:37:11 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/28 18:22:25 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/30 12:04:36 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -218,12 +218,11 @@ int		shadow_cylinder(t_sdaw d_ray, t_cylinder *cy);
 int		shadow_triangle(t_sdaw d_ray, t_triangle *trgl);
 float	find_t0(float a, float b, float c);
 void	surface_color(data_t *data, color rgb);
-void	inter_plane_square(t_square *square, data_t *data);
+int		inter_plane_square(t_square *square, data_t *data);
 void	inter_cylinder(t_cylinder *cy, data_t *data);
 int		inter_disk(t_cylinder *cy, vect p, data_t *data);
-void	inter_triangle(t_triangle *trgl, data_t *data);
+int		inter_triangle(t_triangle *trgl, data_t *data);
 vect	square_corner_init(float x, float y, float z);
-float	orient(vect a, vect b, vect c, vect n);
 float	inter_triangle2(vect Pt, t_triangle *trgl, vect N);
 void	check_order_object(data_t *data, int n, int obj_type);
 void	temporary_value(data_t *data, float t, vect Pt, vect N);
@@ -238,4 +237,5 @@ void	free_imga(t_lst **imga);
 int		check_params1(char *line);
 int		check_rgb(color rgb);
 vect	find_normal(vect Pt, t_cylinder *cy);
+vect	find_N(t_triangle *trgl);
 #endif

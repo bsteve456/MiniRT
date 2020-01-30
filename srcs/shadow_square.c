@@ -6,70 +6,34 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 11:38:11 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/23 12:09:25 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/30 12:03:35 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-int		dot_product_s(vect *corner, vect q, vect n)
-{
-	float o1;
-	float o2;
-	float o3;
-	float o4;
-	
-	o1 = orient(q, corner[0], corner[1], n);
-	o2 = orient(q, corner[1], corner[2], n);
-	o3 = orient(q, corner[2], corner[3], n);
-	o4 = orient(q, corner[3], corner[0], n);
-	if((o1 >= 0 && o2 >= 0 && o3 >= 0 && o4 >= 0) ||
-		(o1 < 0 && o2 < 0 && o3 < 0 && o4 < 0))
-		return (1);
-	return (0);
-}
-
-int		inter_square_s(vect Pt, t_square *square)
-{
-	vect *square_corner = ft_calloc(4, sizeof(vect));
-
-	square_corner[0] = square_corner_init(square->p0.x - square->height/2, 
-		square->p0.y + square->height/2, square->p0.z);
-	square_corner[1] = square_corner_init(square->p0.x + square->height/2, 
-		square->p0.y + square->height/2, square->p0.z);
-	square_corner[2] = square_corner_init(square->p0.x + square->height/2, 
-		square->p0.y - square->height/2, square->p0.z);
-	square_corner[3] = square_corner_init(square->p0.x - square->height/2, 
-		square->p0.y - square->height/2, square->p0.z);
-	if(dot_product_s(square_corner, Pt, square->N) == 1)
-	{
-		free(square_corner);
-		return (1);
-	}
-	free(square_corner);
-	return (0);
-}
-
-
 int		shadow_square(t_sdaw d_ray, t_square *square)
 {
-	vect p0l0;
-	float t;
-	float demom;
-	vect Pt;
-
-	square->N = normalize(square->N);
-	demom = vectDot(d_ray.dir, square->N);
-	if(fabs(demom) > 0.00001f) {
-		p0l0 = vectSub(square->p0, d_ray.orig);
-		t = vectDot(p0l0, square->N) / demom;
-		if(t >= 0.00001f)
-		{
-			Pt = vectAdd(d_ray.orig, vectMult(d_ray.dir, t));
-			if(inter_square_s(Pt, square) == 1)
-				return (1);
-		}
-	}
+	t_triangle trgl1;
+	t_triangle trgl2;
+	vect Oy = square_corner_init(0, 1, 0);
+	vect OP1 = crossP(square->N, Oy);
+	float d = sqrt(2 * square->height * square->height) / 2;
+	OP1 = vectMult(OP1, d);
+	vect p1 = vectAdd(square->p0 , OP1);
+	vect OP2 = crossP(square->N, OP1);
+	vect p2 = vectAdd(square->p0, OP2);
+	vect OP3 = crossP(square->N, OP2);
+	vect p3 = vectAdd(square->p0, OP3);
+	vect OP4 = crossP(square->N, OP3);
+	vect p4 = vectAdd(square->p0, OP4);
+	trgl1.p0 = p3;
+	trgl1.p1 = p2;
+	trgl1.p2 = p4;
+	trgl2.p0 = p1;
+	trgl2.p1 = p2;
+	trgl2.p2 = p4;
+	if(shadow_triangle(d_ray, &trgl1) == 1 || shadow_triangle(d_ray, &trgl2) == 1)
+		return(1);
 	return (0);
 }
-
