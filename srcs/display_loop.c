@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/29 13:28:17 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/27 15:11:32 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/31 10:02:16 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,12 @@ void	window_loop(t_list *scene, data_t *data, t_cam *cam)
 {
 	float i;
 	float j;
+
 	i = 0;
-	while(i < data->widw->x)
+	while (i < data->widw->x)
 	{
 		j = 0;
-		while(j < data->widw->y)
+		while (j < data->widw->y)
 		{
 			data = complet_ray_pixel(i, j, cam, data);
 			display_list(scene, data);
@@ -38,17 +39,17 @@ void	window_loop(t_list *scene, data_t *data, t_cam *cam)
 
 void	display_camera(t_lst *imga, int n)
 {
-	img_lst  test;
+	img_lst	test;
+	t_lst	*copy;
 
 	test.img = imga;
-	t_lst *copy;
 	copy = imga;
 	test.copy = copy;
-	if(n == 1)
+	if (n == 1)
 		screenshot_loop(copy);
 	else
 	{
-		mlx_hook(copy->mlx_win, 17, 0, &X_close, &test);
+		mlx_hook(copy->mlx_win, 17, 0, &x_close, &test);
 		mlx_key_hook(copy->mlx_win, &deal_key, &test);
 		mlx_loop(copy->mlx_ptr);
 	}
@@ -68,17 +69,17 @@ void	init_img(data_t *data)
 void	camera_loop(t_list *scene, int n)
 {
 	object	*cam_obj;
-	data_t *data;
-	t_list *copy;
-	t_lst *img;
+	data_t	*data;
+	t_list	*copy;
+	t_lst	*img;
 
 	img = NULL;
 	copy = scene;
-	data = init_data(scene); // NULL
-	while(copy)
+	data = init_data(scene);
+	while (copy)
 	{
 		cam_obj = copy->content;
-		if(cam_obj->type == 0)
+		if (cam_obj->type == 0)
 		{
 			init_img(data);
 			window_loop(scene, data, cam_obj->obj);

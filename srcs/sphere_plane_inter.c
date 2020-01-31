@@ -6,42 +6,41 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 09:47:34 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/29 12:05:01 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/31 13:48:09 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-
 void	sphere_n_pt(float t0, t_sphere *sphere, data_t *data)
 {
-	vect Pt;
-	vect N;
+	vect pt;
+	vect n;
 
-	Pt = vectAdd(data->ray.orig, vectMult(data->ray.dir, (double)t0));
-	N = vectSub(Pt, sphere->center);
+	pt = vectadd(data->ray.orig, vectmult(data->ray.dir, (double)t0));
+	n = vectsub(pt, sphere->center);
 	data->rgbt = sphere->rgb;
-	temporary_value(data, t0, Pt, N);
+	temporary_value(data, t0, pt, n);
 }
 
-float find_t0(float a, float b, float c)
+float	find_t0(float a, float b, float c)
 {
 	float t0;
 	float t1;
 	float discr;
 
 	discr = (b * b) - (4 * a * c);
-	if(discr == 0.0)
+	if (discr == 0.0)
 		t0 = -b / (2 * a);
 	else
 	{
 		t0 = (-b + sqrt(discr)) / (2 * a);
 		t1 = (-b - sqrt(discr)) / (2 * a);
-		if(t0 < 0)
+		if (t0 < 0)
 			return (t1);
-		if(t1 < 0)
-			return(t0);
-		if(t0 > t1)
+		if (t1 < 0)
+			return (t0);
+		if (t0 > t1)
 			t0 = t1;
 	}
 	return (t0);
@@ -49,16 +48,16 @@ float find_t0(float a, float b, float c)
 
 void	inter_sphere(t_sphere *sphere, data_t *data)
 {
-	float a;
-	float b;
-	float c;
-	vect vectOS;
+	float	a;
+	float	b;
+	float	c;
+	vect	vectos;
 
-	vectOS = vectSub(data->ray.orig, sphere->center);
-	a = vectDot(data->ray.dir, data->ray.dir);
-	b = 2 * vectDot(data->ray.dir, vectOS);
-	c = vectDot(vectOS, vectOS) - (sphere->radius * sphere->radius);
-	if((b * b) - (4 * a * c) >= 0.0000)
+	vectos = vectsub(data->ray.orig, sphere->center);
+	a = vectdot(data->ray.dir, data->ray.dir);
+	b = 2 * vectdot(data->ray.dir, vectos);
+	c = vectdot(vectos, vectos) - (sphere->radius * sphere->radius);
+	if ((b * b) - (4 * a * c) >= 0.0000)
 	{
 		a = find_t0(a, b, c);
 		sphere_n_pt(a, sphere, data);
@@ -67,23 +66,24 @@ void	inter_sphere(t_sphere *sphere, data_t *data)
 
 void	inter_plane(t_plane *plane, data_t *data)
 {
-	vect Pt;
-	vect p0l0;
-	float t;
-	float demom;
+	vect	pt;
+	vect	p0l0;
+	float	t;
+	float	demom;
 
 	plane->N = normalize(plane->N);
-	if((demom = vectDot(data->ray.dir, plane->N)) > 0)
-		plane->N = vectMult(plane->N, -1);
-	demom = vectDot(data->ray.dir, plane->N);
-	if(fabs(demom) > 0.00001f) {
-		p0l0 = vectSub(plane->p0, data->ray.orig);
-		t = vectDot(p0l0, plane->N) / demom;
-		if(t >= 0.00001f)
+	if ((demom = vectdot(data->ray.dir, plane->N)) > 0)
+		plane->N = vectmult(plane->N, -1);
+	demom = vectdot(data->ray.dir, plane->N);
+	if (fabs(demom) > 0.00001f)
+	{
+		p0l0 = vectsub(plane->p0, data->ray.orig);
+		t = vectdot(p0l0, plane->N) / demom;
+		if (t >= 0.00001f)
 		{
-			Pt = vectAdd(data->ray.orig, vectMult(data->ray.dir, t));
+			pt = vectadd(data->ray.orig, vectmult(data->ray.dir, t));
 			data->rgbt = plane->rgb;
-			temporary_value(data, t, Pt, plane->N);
+			temporary_value(data, t, pt, plane->N);
 		}
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 10:37:11 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/30 12:04:36 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/31 13:51:11 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,11 +180,11 @@ typedef struct bitmap_image_header {
     unsigned int    clr_important;      // 4 bytes
 } bih;
 
-vect	vectSub(vect v1, vect v2);
-float	vectDot(vect v1, vect v2);
-vect	vectAdd(vect v1, vect v2);
-vect	vectMult(vect v1, float num);
-vect	crossP(vect v1, vect v2);
+vect	vectsub(vect v1, vect v2);
+float	vectdot(vect v1, vect v2);
+vect	vectadd(vect v1, vect v2);
+vect	vectmult(vect v1, float num);
+vect	crossp(vect v1, vect v2);
 vect	normalize(vect ray);
 vect	x_axis_rot(vect dir, float theta);
 vect	y_axis_rot(vect dir, float theta);
@@ -194,7 +194,7 @@ float	create_float(char **line);
 int		create_color(color *rgb, char **line);
 vect	create_vect(char **line);
 int		camera(t_list **scene, char *line);
-int		A_light(t_list **scene, char *line);
+int		a_light(t_list **scene, char *line);
 int		resolution(t_list **scene, char *line);
 int		sphere(t_list **scene, char *line);
 int		light_init(t_list **scene, char *line);
@@ -222,7 +222,7 @@ int		inter_plane_square(t_square *square, data_t *data);
 void	inter_cylinder(t_cylinder *cy, data_t *data);
 int		inter_disk(t_cylinder *cy, vect p, data_t *data);
 int		inter_triangle(t_triangle *trgl, data_t *data);
-vect	square_corner_init(float x, float y, float z);
+vect	vect_init(float x, float y, float z);
 float	inter_triangle2(vect Pt, t_triangle *trgl, vect N);
 void	check_order_object(data_t *data, int n, int obj_type);
 void	temporary_value(data_t *data, float t, vect Pt, vect N);
@@ -230,12 +230,15 @@ void	put_color_to_window(data_t *data, color rgb);
 t_lst	*lstnew(data_t *content);
 void	lstadd_back(t_lst **alst, t_lst *new);
 int		deal_key(int key, img_lst *img_test);
-int		X_close(img_lst *img_test);
+int		x_close(img_lst *img_test);
 void	screenshot_loop(t_lst *imga);
 void	free_data(data_t *data);
 void	free_imga(t_lst **imga);
 int		check_params1(char *line);
 int		check_rgb(color rgb);
 vect	find_normal(vect Pt, t_cylinder *cy);
-vect	find_N(t_triangle *trgl);
+vect	find_n(t_triangle *trgl);
+t_triangle	trgl_init(void);
+t_triangle		create_triangle(t_triangle trgl, float d, t_square *square);
+t_triangle		create_triangle2(t_triangle trgl, float d, t_square *square);
 #endif

@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 13:20:20 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/27 15:02:37 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/31 10:15:07 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	put_color_to_window(data_t *data, color rgb)
 	data->img_data[x + 2] = rgb.r;
 }
 
-float	vectDot(vect v1, vect v2)
+float	vectdot(vect v1, vect v2)
 {
 	float res;
 
@@ -30,9 +30,11 @@ float	vectDot(vect v1, vect v2)
 	return (res);
 }
 
-int 	X_close(img_lst *img_test)
+int		x_close(img_lst *img_test)
 {
-	t_lst *imga = img_test->img;
+	t_lst *imga;
+
+	imga = img_test->img;
 	mlx_destroy_window(img_test->copy->mlx_ptr, img_test->copy->mlx_win);
 	free_imga(&imga);
 	_Exit(0);
@@ -41,18 +43,28 @@ int 	X_close(img_lst *img_test)
 
 int		deal_key(int key, img_lst *img_test)
 {
-	t_lst *imga = img_test->img;
-	if(key == 0 && img_test->copy)
+	t_lst *imga;
+
+	imga = img_test->img;
+	if (key == 0 && img_test->copy)
 	{
-		mlx_put_image_to_window(img_test->copy->mlx_ptr, img_test->copy->mlx_win, img_test->copy->img, 0, 0);
-		if(img_test->copy->next != NULL)
+		mlx_put_image_to_window(img_test->copy->mlx_ptr,
+		img_test->copy->mlx_win, img_test->copy->img, 0, 0);
+		if (img_test->copy->next != NULL)
 			img_test->copy = img_test->copy->next;
 	}
-	if(key == 53)
+	if (key == 53)
 	{
 		mlx_destroy_window(img_test->copy->mlx_ptr, img_test->copy->mlx_win);
 		free_imga(&imga);
 		_Exit(0);
 	}
 	return (0);
+}
+
+void	temporary_value(data_t *data, float t, vect pt, vect n)
+{
+	data->temp = t;
+	data->Ptemp = pt;
+	data->Ntemp = n;
 }

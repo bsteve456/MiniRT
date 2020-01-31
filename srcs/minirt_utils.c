@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 17:28:04 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/28 18:13:41 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/31 09:59:19 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,17 @@
 
 float	create_float_utils(char **line, float *dot, float num)
 {
-		if(**line == '.')
-			*dot = 1;
-		if(ft_isdigit(**line) == 2048 && *dot == 0)
-			num = num * 10 + ((**line - '0') / pow(10, *dot));
-		if(ft_isdigit(**line) == 2048 && *dot >= 1)
-		{
-			num += ((float)(**line - '0') / pow(10, *dot));
-			(*dot)++;
-		}
-		return (num);
+	if (**line == '.')
+		*dot = 1;
+	if (ft_isdigit(**line) == 2048 && *dot == 0)
+		num = num * 10 + ((**line - '0') / pow(10, *dot));
+	if (ft_isdigit(**line) == 2048 && *dot >= 1)
+	{
+		num += ((float)(**line - '0') / pow(10, *dot));
+		(*dot)++;
+	}
+	return (num);
 }
-
 
 float	create_float(char **line)
 {
@@ -35,12 +34,12 @@ float	create_float(char **line)
 
 	dot = 0;
 	num = 0;
-	while(**line == ' ' || **line == ',')
+	while (**line == ' ' || **line == ',')
 		(*line)++;
 	neg = (**line == '-') ? -1 : 1;
-	if(neg == -1)
+	if (neg == -1)
 		(*line)++;
-	while(ft_isdigit(**line) == 2048 || **line == '.')
+	while (ft_isdigit(**line) == 2048 || **line == '.')
 	{
 		num = create_float_utils(line, &dot, num);
 		(*line)++;
@@ -59,6 +58,8 @@ int		create_color(color *rgb, char **line)
 	if (check_params1(*line) == -1)
 		return (-1);
 	(*rgb).b = create_float(line);
+	if (check_rgb(*rgb) == -1)
+		return (-1);
 	return (1);
 }
 
@@ -74,9 +75,9 @@ vect	create_vect(char **line)
 
 void	check_order_object(data_t *data, int n, int obj_type)
 {
-	if(data->temp >= 0)
+	if (data->temp >= 0)
 	{
-		if(data->t == -1)
+		if (data->t == -1)
 		{
 			data->t = data->temp;
 			data->Pt = data->Ptemp;
@@ -85,7 +86,7 @@ void	check_order_object(data_t *data, int n, int obj_type)
 			data->n = n;
 			data->type = obj_type;
 		}
-		else if(data->t > data->temp)
+		else if (data->t > data->temp)
 		{
 			data->t = data->temp;
 			data->Pt = data->Ptemp;
@@ -95,11 +96,4 @@ void	check_order_object(data_t *data, int n, int obj_type)
 			data->type = obj_type;
 		}
 	}
-}
-
-void	temporary_value(data_t *data, float t, vect Pt, vect N)
-{
-	data->temp = t;
-	data->Ptemp = Pt;
-	data->Ntemp = N;
 }

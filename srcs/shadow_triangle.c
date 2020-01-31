@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 12:00:00 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/30 09:07:29 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/31 13:50:38 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,22 @@
 
 int		shadow_triangle(t_sdaw d_ray, t_triangle *trgl)
 {
-	vect N;
-	float t;
-	vect Pt;
+	vect	n;
+	float	t;
+	vect	pt;
+	float	demom;
+	vect	p0l0;
 
-	N	= find_N(trgl);
-	float demom = vectDot(d_ray.dir, N);
-	if(fabs(demom) > 0.00001f)
+	n = find_n(trgl);
+	demom = vectdot(d_ray.dir, n);
+	if (fabs(demom) > 0.00001f)
 	{
-		vect p0l0 = vectSub(trgl->p0, d_ray.orig);
-		t = vectDot(p0l0, N) / demom;
-		if(t > 0.0f)
+		p0l0 = vectsub(trgl->p0, d_ray.orig);
+		t = vectdot(p0l0, n) / demom;
+		if (t > 0.0f)
 		{
-			Pt = vectAdd(d_ray.orig, vectMult(d_ray.dir, (double)t));
-			if(inter_triangle2(Pt, trgl, N) == 1)
+			pt = vectadd(d_ray.orig, vectmult(d_ray.dir, (double)t));
+			if (inter_triangle2(pt, trgl, n) == 1)
 				return (1);
 		}
 	}

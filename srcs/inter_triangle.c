@@ -6,64 +6,64 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 23:49:09 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/30 14:14:50 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/31 13:51:55 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-vect	find_N(t_triangle *trgl)
+vect	find_n(t_triangle *trgl)
 {
-	vect A;
-	vect B;
-	vect N;
+	vect a;
+	vect b;
+	vect n;
 
-	A = vectSub(trgl->p1, trgl->p0);
-	B = vectSub(trgl->p2, trgl->p0);
-	N = crossP(A, B);
-	return (N);
+	a = vectsub(trgl->p1, trgl->p0);
+	b = vectsub(trgl->p2, trgl->p0);
+	n = crossp(a, b);
+	return (n);
 }
 
-float	inter_triangle2(vect Pt, t_triangle *trgl, vect N)
+float	inter_triangle2(vect pt, t_triangle *trgl, vect n)
 {
 	vect edge[3];
-	vect C[3];
+	vect c[3];
 
-	edge[0] = vectSub(trgl->p1, trgl->p0);
-	edge[1] = vectSub(trgl->p2, trgl->p1);
-	edge[2] = vectSub(trgl->p0, trgl->p2);
-	C[0] = vectSub(Pt, trgl->p0);
-	C[1] = vectSub(Pt, trgl->p1);
-	C[2] = vectSub(Pt, trgl->p2);
-	if(vectDot(N, crossP(edge[0], C[0])) >= -0.001f &&
-		vectDot(N, crossP(edge[1], C[1])) >= -0.001f &&
-		vectDot(N, crossP(edge[2], C[2])) >= -0.001f)
+	edge[0] = vectsub(trgl->p1, trgl->p0);
+	edge[1] = vectsub(trgl->p2, trgl->p1);
+	edge[2] = vectsub(trgl->p0, trgl->p2);
+	c[0] = vectsub(pt, trgl->p0);
+	c[1] = vectsub(pt, trgl->p1);
+	c[2] = vectsub(pt, trgl->p2);
+	if (vectdot(n, crossp(edge[0], c[0])) >= -0.001f &&
+		vectdot(n, crossp(edge[1], c[1])) >= -0.001f &&
+		vectdot(n, crossp(edge[2], c[2])) >= -0.001f)
 		return (1);
 	return (0);
 }
 
-int	inter_triangle(t_triangle *trgl, data_t *data)
+int		inter_triangle(t_triangle *trgl, data_t *data)
 {
-	vect N;
-	float t;
-	vect Pt;
-	
-	N = find_N(trgl);
-	float demom = vectDot(data->ray.dir, N);
-	demom = vectDot(data->ray.dir, N);
-	if(fabs(demom) > 0.00001f)
+	vect	n;
+	float	t;
+	vect	pt;
+	float	demom;
+	vect	p0l0;
+
+	n = find_n(trgl);
+	demom = vectdot(data->ray.dir, n);
+	if (fabs(demom) > 0.00001f)
 	{
-		vect p0l0 = vectSub(trgl->p0, data->ray.orig);
-		t = vectDot(p0l0, N) / demom;
-		if(t >= 0.00001f)
+		p0l0 = vectsub(trgl->p0, data->ray.orig);
+		t = vectdot(p0l0, n) / demom;
+		if (t >= 0.00001f)
 		{
-			Pt = vectAdd(data->ray.orig, vectMult(data->ray.dir, (double)t));
-			if(inter_triangle2(Pt, trgl, N) == 1)
+			pt = vectadd(data->ray.orig, vectmult(data->ray.dir, (double)t));
+			if (inter_triangle2(pt, trgl, n) == 1)
 			{
-				if(demom >= 0)
-					N = vectMult(N, -1);
+				n = (demom >= 0) ? vectmult(n, -1) : n;
 				data->rgbt = trgl->rgb;
-				temporary_value(data, t, Pt, N);
+				temporary_value(data, t, pt, n);
 				return (1);
 			}
 		}

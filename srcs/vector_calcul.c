@@ -6,13 +6,13 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 12:26:01 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/24 15:10:33 by blacking         ###   ########.fr       */
+/*   Updated: 2020/01/31 13:51:01 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-vect	vectSub(vect v1, vect v2)
+vect	vectsub(vect v1, vect v2)
 {
 	v1.x -= v2.x;
 	v1.y -= v2.y;
@@ -20,7 +20,7 @@ vect	vectSub(vect v1, vect v2)
 	return (v1);
 }
 
-vect	vectAdd(vect v1, vect v2)
+vect	vectadd(vect v1, vect v2)
 {
 	v1.x += v2.x;
 	v1.y += v2.y;
@@ -28,7 +28,7 @@ vect	vectAdd(vect v1, vect v2)
 	return (v1);
 }
 
-vect	vectMult(vect v1,float num)
+vect	vectmult(vect v1, float num)
 {
 	v1.x *= num;
 	v1.y *= num;
@@ -47,7 +47,7 @@ vect	normalize(vect ray)
 	return (ray);
 }
 
-vect	crossP(vect v1, vect v2)
+vect	crossp(vect v1, vect v2)
 {
 	vect res;
 
