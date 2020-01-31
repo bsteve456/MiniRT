@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 19:39:30 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/31 13:30:53 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/31 14:20:56 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ int	inter_shadow_sphere(t_sdaw d_ray, t_sphere *sphere)
 	float	b;
 	float	c;
 	float	t;
-	vect	vectos;
+	t_vect	t_vectos;
 
-	vectos = vectsub(d_ray.orig, sphere->center);
+	t_vectos = vectsub(d_ray.orig, sphere->center);
 	a = vectdot(d_ray.dir, d_ray.dir);
-	b = 2 * vectdot(d_ray.dir, vectos);
-	c = vectdot(vectos, vectos) - (sphere->radius * sphere->radius);
+	b = 2 * vectdot(d_ray.dir, t_vectos);
+	c = vectdot(t_vectos, t_vectos) - (sphere->radius * sphere->radius);
 	if ((b * b) - (4 * a * c) >= 0.0000)
 	{
 		t = find_t0(a, b, c);
@@ -35,7 +35,7 @@ int	inter_shadow_sphere(t_sdaw d_ray, t_sphere *sphere)
 
 int	inter_shadow_plane(t_sdaw d_ray, t_plane *plane)
 {
-	vect	p0l0;
+	t_vect	p0l0;
 	float	t;
 	float	demom;
 

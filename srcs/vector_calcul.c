@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector_calcul.c                                    :+:      :+:    :+:   */
+/*   t_vector_calcul.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 12:26:01 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/31 13:51:01 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/31 14:30:58 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-vect	vectsub(vect v1, vect v2)
+t_vect	vectsub(t_vect v1, t_vect v2)
 {
 	v1.x -= v2.x;
 	v1.y -= v2.y;
@@ -20,7 +20,7 @@ vect	vectsub(vect v1, vect v2)
 	return (v1);
 }
 
-vect	vectadd(vect v1, vect v2)
+t_vect	vectadd(t_vect v1, t_vect v2)
 {
 	v1.x += v2.x;
 	v1.y += v2.y;
@@ -28,7 +28,7 @@ vect	vectadd(vect v1, vect v2)
 	return (v1);
 }
 
-vect	vectmult(vect v1, float num)
+t_vect	vectmult(t_vect v1, float num)
 {
 	v1.x *= num;
 	v1.y *= num;
@@ -36,7 +36,7 @@ vect	vectmult(vect v1, float num)
 	return (v1);
 }
 
-vect	normalize(vect ray)
+t_vect	normalize(t_vect ray)
 {
 	float length;
 
@@ -47,9 +47,9 @@ vect	normalize(vect ray)
 	return (ray);
 }
 
-vect	crossp(vect v1, vect v2)
+t_vect	crossp(t_vect v1, t_vect v2)
 {
-	vect res;
+	t_vect res;
 
 	res.x = (v1.y * v2.z) - (v1.z * v2.y);
 	res.y = (v1.z * v2.x) - (v1.x * v2.z);

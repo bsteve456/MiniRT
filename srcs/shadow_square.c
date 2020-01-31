@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 11:38:11 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/31 13:52:14 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/31 14:25:10 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 t_triangle		create_triangle2(t_triangle trgl, float d, t_square *square)
 {
-	vect oy;
-	vect op1;
-	vect op2;
-	vect op3;
-	vect op4;
+	t_vect oy;
+	t_vect op1;
+	t_vect op2;
+	t_vect op3;
+	t_vect op4;
 
 	oy = vect_init(0, 1, 0);
 	op1 = crossp(square->N, oy);
@@ -34,11 +34,11 @@ t_triangle		create_triangle2(t_triangle trgl, float d, t_square *square)
 
 t_triangle		create_triangle(t_triangle trgl, float d, t_square *square)
 {
-	vect oy;
-	vect op1;
-	vect op2;
-	vect op3;
-	vect op4;
+	t_vect oy;
+	t_vect op1;
+	t_vect op2;
+	t_vect op3;
+	t_vect op4;
 
 	oy = vect_init(0, 1, 0);
 	op1 = crossp(square->N, oy);

@@ -6,15 +6,15 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 11:38:06 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/31 13:21:18 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/31 14:31:38 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-vect		vect_init(float a, float b, float c)
+t_vect		vect_init(float a, float b, float c)
 {
-	vect res;
+	t_vect res;
 
 	res.x = a;
 	res.y = b;

@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 17:09:47 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/31 08:59:01 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/31 14:13:25 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 int	resolution(t_list **scene, char *line)
 {
-	object	*widw;
+	t_object	*widw;
 	t_widw	*window;
 
 	if (!(window = ft_calloc(1, sizeof(t_widw))))
 		window = 0;
-	if (!(widw = ft_calloc(1, sizeof(object))))
+	if (!(widw = ft_calloc(1, sizeof(t_object))))
 		widw = 0;
 	widw->type = 1;
 	if (check_params1(line) == -1)
@@ -42,10 +42,10 @@ int	resolution(t_list **scene, char *line)
 
 int	a_light(t_list **scene, char *line)
 {
-	object		*t_lighta;
+	t_object		*t_lighta;
 	t_aligth	*aligth;
 
-	if (!(t_lighta = ft_calloc(1, sizeof(object))))
+	if (!(t_lighta = ft_calloc(1, sizeof(t_object))))
 		return (0);
 	if (!(aligth = ft_calloc(1, sizeof(t_aligth))))
 		return (0);
@@ -67,10 +67,10 @@ int	a_light(t_list **scene, char *line)
 
 int	camera(t_list **scene, char *line)
 {
-	object	*a_cam;
+	t_object	*a_cam;
 	t_cam	*cam;
 
-	if (!(a_cam = ft_calloc(1, sizeof(object))))
+	if (!(a_cam = ft_calloc(1, sizeof(t_object))))
 		return (0);
 	if (!(cam = ft_calloc(1, sizeof(t_cam))))
 		return (0);
@@ -91,10 +91,10 @@ int	camera(t_list **scene, char *line)
 
 int	light_init(t_list **scene, char *line)
 {
-	object		*a_light;
+	t_object		*a_light;
 	t_light		*light;
 
-	if (!(a_light = ft_calloc(1, sizeof(object))))
+	if (!(a_light = ft_calloc(1, sizeof(t_object))))
 		return (0);
 	if (!(light = ft_calloc(1, sizeof(t_light))))
 		return (0);
@@ -114,10 +114,10 @@ int	light_init(t_list **scene, char *line)
 
 int	plane(t_list **scene, char *line)
 {
-	object	*a_plane;
+	t_object	*a_plane;
 	t_plane	*plane;
 
-	if (!(a_plane = ft_calloc(1, sizeof(object))))
+	if (!(a_plane = ft_calloc(1, sizeof(t_object))))
 		return (0);
 	if (!(plane = ft_calloc(1, sizeof(t_plane))))
 		return (0);

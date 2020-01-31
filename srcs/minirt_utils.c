@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 17:28:04 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/31 09:59:19 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/31 14:16:11 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,9 @@ int		create_color(color *rgb, char **line)
 	return (1);
 }
 
-vect	create_vect(char **line)
+t_vect	create_vect(char **line)
 {
-	vect res;
+	t_vect res;
 
 	res.x = create_float(line);
 	res.y = create_float(line);

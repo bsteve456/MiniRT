@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 13:20:20 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/31 10:15:07 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/31 14:27:21 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	put_color_to_window(data_t *data, color rgb)
 	data->img_data[x + 2] = rgb.r;
 }
 
-float	vectdot(vect v1, vect v2)
+float	vectdot(t_vect v1, t_vect v2)
 {
 	float res;
 
@@ -62,7 +62,7 @@ int		deal_key(int key, img_lst *img_test)
 	return (0);
 }
 
-void	temporary_value(data_t *data, float t, vect pt, vect n)
+void	temporary_value(data_t *data, float t, t_vect pt, t_vect n)
 {
 	data->temp = t;
 	data->Ptemp = pt;

@@ -6,15 +6,15 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/29 13:42:47 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/31 13:29:40 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/31 14:01:34 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-t_widw		*object_widw(t_list *copy)
+t_widw		*t_object_widw(t_list *copy)
 {
-	object *widw;
+	t_object *widw;
 
 	while (copy)
 	{
@@ -35,7 +35,7 @@ data_t		*init_data(t_list *copy)
 		return (NULL);
 	if ((res->mlx_ptr = mlx_init()) == NULL)
 		return (NULL);
-	if ((widw = object_widw(copy)) == NULL)
+	if ((widw = t_object_widw(copy)) == NULL)
 		return (NULL);
 	res->widw = widw;
 	if ((res->mlx_win =

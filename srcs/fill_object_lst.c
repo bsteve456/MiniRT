@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_object_lst.c                                  :+:      :+:    :+:   */
+/*   fill_t_object_lst.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/28 15:53:04 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/30 17:50:01 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/31 14:15:13 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int		sphere(t_list **scene, char *line)
 {
-	object		*sphere;
+	t_object		*sphere;
 	t_sphere	*sphr;
 
-	if (!(sphere = ft_calloc(1, sizeof(object))))
+	if (!(sphere = ft_calloc(1, sizeof(t_object))))
 		return (0);
 	if (!(sphr = ft_calloc(1, sizeof(t_sphere))))
 		return (0);
@@ -37,10 +37,10 @@ int		sphere(t_list **scene, char *line)
 
 int		square(t_list **scene, char *line)
 {
-	object		*square;
+	t_object		*square;
 	t_square	*sqr;
 
-	if (!(square = ft_calloc(1, sizeof(object))))
+	if (!(square = ft_calloc(1, sizeof(t_object))))
 		return (0);
 	if (!(sqr = ft_calloc(1, sizeof(t_square))))
 		return (0);
@@ -63,10 +63,10 @@ int		square(t_list **scene, char *line)
 
 int		cylinder(t_list **scene, char *line)
 {
-	object		*cylinder;
+	t_object		*cylinder;
 	t_cylinder	*cyldr;
 
-	if (!(cylinder = ft_calloc(1, sizeof(object))))
+	if (!(cylinder = ft_calloc(1, sizeof(t_object))))
 		return (0);
 	if (!(cyldr = ft_calloc(1, sizeof(t_cylinder))))
 		return (0);
@@ -92,10 +92,10 @@ int		cylinder(t_list **scene, char *line)
 
 int		triangle(t_list **scene, char *line)
 {
-	object		*triangle;
+	t_object		*triangle;
 	t_triangle	*trgl;
 
-	if (!(triangle = ft_calloc(1, sizeof(object))))
+	if (!(triangle = ft_calloc(1, sizeof(t_object))))
 		return (0);
 	if (!(trgl = ft_calloc(1, sizeof(t_triangle))))
 		return (0);

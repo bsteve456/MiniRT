@@ -6,15 +6,15 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 16:27:07 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/31 09:52:42 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/31 14:09:02 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-vect	x_axis_rot(vect dir, float theta)
+t_vect	x_axis_rot(t_vect dir, float theta)
 {
-	vect new_dir;
+	t_vect new_dir;
 
 	theta *= M_PI;
 	new_dir.x = 1 * dir.x;
@@ -23,9 +23,9 @@ vect	x_axis_rot(vect dir, float theta)
 	return (new_dir);
 }
 
-vect	y_axis_rot(vect dir, float theta)
+t_vect	y_axis_rot(t_vect dir, float theta)
 {
-	vect new_dir;
+	t_vect new_dir;
 
 	theta *= M_PI;
 	new_dir.x = cos(theta) * dir.x + (sin(theta)) * dir.z;
@@ -34,9 +34,9 @@ vect	y_axis_rot(vect dir, float theta)
 	return (new_dir);
 }
 
-vect	z_axis_rot(vect dir, float theta)
+t_vect	z_axis_rot(t_vect dir, float theta)
 {
-	vect new_dir;
+	t_vect new_dir;
 
 	theta *= M_PI;
 	new_dir.x = cos(theta) * dir.x + (-1 * sin(theta)) * dir.y;

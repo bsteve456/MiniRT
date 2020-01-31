@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/29 13:28:17 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/31 10:02:16 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/31 14:00:05 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	init_img(data_t *data)
 
 void	camera_loop(t_list *scene, int n)
 {
-	object	*cam_obj;
+	t_object	*cam_obj;
 	data_t	*data;
 	t_list	*copy;
 	t_lst	*img;

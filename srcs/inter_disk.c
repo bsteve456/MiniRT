@@ -6,16 +6,16 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 10:34:33 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/31 13:49:02 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/31 14:23:10 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-int		inter_disk(t_cylinder *cy, vect p, data_t *data)
+int		inter_disk(t_cylinder *cy, t_vect p, data_t *data)
 {
-	vect	pt;
-	vect	p0l0;
+	t_vect	pt;
+	t_vect	p0l0;
 	float	t;
 	float	demom;
 	float	d1;

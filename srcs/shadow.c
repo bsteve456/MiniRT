@@ -6,13 +6,13 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 19:25:01 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/31 13:30:37 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/31 14:03:22 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-int		shadow_inter2(t_sdaw d_ray, object *obj, data_t *data, int nbis)
+int		shadow_inter2(t_sdaw d_ray, t_object *obj, data_t *data, int nbis)
 {
 	if (obj->type == 3 && data->n != nbis &&
 	inter_shadow_sphere(d_ray, obj->obj) == 1)
@@ -35,7 +35,7 @@ int		shadow_inter2(t_sdaw d_ray, object *obj, data_t *data, int nbis)
 int		shadow_inter(data_t *data, t_light *light, t_list *scene)
 {
 	t_sdaw	d_ray;
-	object	*obj;
+	t_object	*obj;
 	int		nbis;
 
 	nbis = 0;
@@ -55,7 +55,7 @@ int		shadow_inter(data_t *data, t_light *light, t_list *scene)
 
 int		shadow_ray(t_list *scene, data_t *data, color rgb)
 {
-	object	*light;
+	t_object	*light;
 	t_list	*copy;
 	int		num;
 	int		a;

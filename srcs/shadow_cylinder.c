@@ -6,16 +6,16 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 11:52:20 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/31 13:50:06 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/31 14:26:09 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-int		inter_disk1(t_cylinder *cy, vect p, t_sdaw d_ray)
+int		inter_disk1(t_cylinder *cy, t_vect p, t_sdaw d_ray)
 {
-	vect	pt;
-	vect	p0l0;
+	t_vect	pt;
+	t_vect	p0l0;
 	float	t;
 	float	demom;
 	float	d1;
@@ -38,7 +38,7 @@ int		inter_disk1(t_cylinder *cy, vect p, t_sdaw d_ray)
 
 int		top_bottom_cap1(t_cylinder *cy, t_sdaw d_ray)
 {
-	vect p1;
+	t_vect p1;
 
 	p1 = vectadd(cy->p0, vectmult(cy->N, cy->height));
 	cy->N = vectmult(cy->N, -1);
@@ -55,9 +55,9 @@ int		top_bottom_cap1(t_cylinder *cy, t_sdaw d_ray)
 
 float	find_delta_s(t_sdaw d_ray, t_cylinder *cy, float *a)
 {
-	vect	v1;
-	vect	v2;
-	vect	moo;
+	t_vect	v1;
+	t_vect	v2;
+	t_vect	moo;
 	float	abc[3];
 
 	moo = vectsub(d_ray.orig, cy->p0);
@@ -74,10 +74,10 @@ float	find_delta_s(t_sdaw d_ray, t_cylinder *cy, float *a)
 int		shadow_cylinder(t_sdaw d_ray, t_cylinder *cy)
 {
 	float	delta;
-	vect	pt;
+	t_vect	pt;
 	float	a;
 	float	b;
-	vect	n;
+	t_vect	n;
 
 	cy->N = normalize(cy->N);
 	delta = find_delta_s(d_ray, cy, &a);

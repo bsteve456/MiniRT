@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 09:47:34 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/31 13:48:09 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/31 14:19:19 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	sphere_n_pt(float t0, t_sphere *sphere, data_t *data)
 {
-	vect pt;
-	vect n;
+	t_vect pt;
+	t_vect n;
 
 	pt = vectadd(data->ray.orig, vectmult(data->ray.dir, (double)t0));
 	n = vectsub(pt, sphere->center);
@@ -51,12 +51,12 @@ void	inter_sphere(t_sphere *sphere, data_t *data)
 	float	a;
 	float	b;
 	float	c;
-	vect	vectos;
+	t_vect	t_vectos;
 
-	vectos = vectsub(data->ray.orig, sphere->center);
+	t_vectos = vectsub(data->ray.orig, sphere->center);
 	a = vectdot(data->ray.dir, data->ray.dir);
-	b = 2 * vectdot(data->ray.dir, vectos);
-	c = vectdot(vectos, vectos) - (sphere->radius * sphere->radius);
+	b = 2 * vectdot(data->ray.dir, t_vectos);
+	c = vectdot(t_vectos, t_vectos) - (sphere->radius * sphere->radius);
 	if ((b * b) - (4 * a * c) >= 0.0000)
 	{
 		a = find_t0(a, b, c);
@@ -66,8 +66,8 @@ void	inter_sphere(t_sphere *sphere, data_t *data)
 
 void	inter_plane(t_plane *plane, data_t *data)
 {
-	vect	pt;
-	vect	p0l0;
+	t_vect	pt;
+	t_vect	p0l0;
 	float	t;
 	float	demom;
 

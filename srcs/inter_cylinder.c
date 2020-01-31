@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 14:30:20 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/31 13:48:47 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/31 14:22:18 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	top_bottom_cap(t_cylinder *cy, data_t *data)
 {
-	vect p1;
+	t_vect p1;
 
 	p1 = vectadd(cy->p0, vectmult(cy->N, cy->height));
 	cy->N = vectmult(cy->N, -1);
@@ -25,9 +25,9 @@ void	top_bottom_cap(t_cylinder *cy, data_t *data)
 
 float	find_delta(data_t *data, t_cylinder *cy, float *a)
 {
-	vect	v1;
-	vect	v2;
-	vect	moo;
+	t_vect	v1;
+	t_vect	v2;
+	t_vect	moo;
 	float	abc[3];
 
 	moo = vectsub(data->ray.orig, cy->p0);
@@ -41,12 +41,12 @@ float	find_delta(data_t *data, t_cylinder *cy, float *a)
 	return ((abc[1] * abc[1]) - (4 * abc[0] * abc[2]));
 }
 
-vect	find_normal(vect pt, t_cylinder *cy)
+t_vect	find_normal(t_vect pt, t_cylinder *cy)
 {
-	vect	mop;
-	vect	mp;
+	t_vect	mop;
+	t_vect	mp;
 	float	b;
-	vect	n;
+	t_vect	n;
 
 	mop = vectsub(pt, cy->p0);
 	b = vectdot(mop, cy->N);
@@ -60,8 +60,8 @@ void	inter_cylinder(t_cylinder *cy, data_t *data)
 	float	delta;
 	float	a;
 	float	b;
-	vect	pt;
-	vect	n;
+	t_vect	pt;
+	t_vect	n;
 
 	cy->N = normalize(cy->N);
 	delta = find_delta(data, cy, &a);

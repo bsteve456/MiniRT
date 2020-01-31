@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 09:25:11 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/30 17:25:36 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/31 14:02:39 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ambient_light(t_list *scene, data_t *data)
 {
-	object		*alight;
+	t_object		*alight;
 	t_aligth	*light;
 
 	while (scene)
@@ -30,7 +30,7 @@ void	ambient_light(t_list *scene, data_t *data)
 	}
 }
 
-void	object_parse2(object *obj, data_t *data)
+void	object_parse2(t_object *obj, data_t *data)
 {
 	if (obj->type == 5)
 		inter_plane(obj->obj, data);
@@ -46,7 +46,7 @@ void	object_parse2(object *obj, data_t *data)
 
 void	object_parse(t_list *scene, data_t *data)
 {
-	object	*obj;
+	t_object	*obj;
 	t_list	*copy;
 	int		n;
 

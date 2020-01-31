@@ -6,17 +6,17 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 23:49:09 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/31 13:51:55 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/31 14:23:48 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-vect	find_n(t_triangle *trgl)
+t_vect	find_n(t_triangle *trgl)
 {
-	vect a;
-	vect b;
-	vect n;
+	t_vect a;
+	t_vect b;
+	t_vect n;
 
 	a = vectsub(trgl->p1, trgl->p0);
 	b = vectsub(trgl->p2, trgl->p0);
@@ -24,10 +24,10 @@ vect	find_n(t_triangle *trgl)
 	return (n);
 }
 
-float	inter_triangle2(vect pt, t_triangle *trgl, vect n)
+float	inter_triangle2(t_vect pt, t_triangle *trgl, t_vect n)
 {
-	vect edge[3];
-	vect c[3];
+	t_vect edge[3];
+	t_vect c[3];
 
 	edge[0] = vectsub(trgl->p1, trgl->p0);
 	edge[1] = vectsub(trgl->p2, trgl->p1);
@@ -44,11 +44,11 @@ float	inter_triangle2(vect pt, t_triangle *trgl, vect n)
 
 int		inter_triangle(t_triangle *trgl, data_t *data)
 {
-	vect	n;
+	t_vect	n;
 	float	t;
-	vect	pt;
+	t_vect	pt;
 	float	demom;
-	vect	p0l0;
+	t_vect	p0l0;
 
 	n = find_n(trgl);
 	demom = vectdot(data->ray.dir, n);

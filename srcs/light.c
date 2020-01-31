@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 14:54:49 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/31 13:30:24 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/31 14:20:08 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ void	reflected_color(t_light *light, float dotp, color *rgb)
 		rgb->b = light->rgb.b * light->ratio * dotp;
 }
 
-void	light_loop(vect pt, vect n, data_t *data, t_list *scene)
+void	light_loop(t_vect pt, t_vect n, data_t *data, t_list *scene)
 {
-	vect	l;
-	object	*a_light;
+	t_vect	l;
+	t_object	*a_light;
 	t_light	*light_a;
 	t_list	*copy;
 	color	rgb;

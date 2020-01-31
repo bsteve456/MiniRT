@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 12:00:00 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/31 13:50:38 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/31 14:26:48 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 int		shadow_triangle(t_sdaw d_ray, t_triangle *trgl)
 {
-	vect	n;
+	t_vect	n;
 	float	t;
-	vect	pt;
+	t_vect	pt;
 	float	demom;
-	vect	p0l0;
+	t_vect	p0l0;
 
 	n = find_n(trgl);
 	demom = vectdot(d_ray.dir, n);
