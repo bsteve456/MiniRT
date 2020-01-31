@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 10:37:11 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/31 14:29:39 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/31 15:10:11 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct
 	float	z;
 }			t_vect;
 
-typedef struct s_window
+typedef struct	s_window
 {
 	float			x;
 	float			y;
@@ -42,22 +42,22 @@ typedef struct s_window
 
 typedef struct
 {
-	int r;
-	int g;
-	int b;
-}			color;
+	int		r;
+	int		g;
+	int		b;
+}			t_color;
 
 typedef struct
 {
 	float ratio;
-	color rgb;
+	t_color rgb;
 }			t_aligth;
 
 typedef struct
 {
 	t_vect p0;
 	t_vect N;
-	color rgb;
+	t_color rgb;
 }			t_plane;
 
 typedef struct
@@ -78,7 +78,7 @@ typedef struct
 {
 	t_vect orig;
 	float ratio;
-	color rgb;
+	t_color rgb;
 }			t_light;
 
 typedef struct	data_s
@@ -97,8 +97,8 @@ typedef struct	data_s
 	t_vect		  Ptemp;
 	t_vect		  N;
 	t_vect		  Ntemp;
-	color		  rgb;
-	color		  rgbt;
+	t_color		  rgb;
+	t_color		  rgbt;
 	int			  n;
 	int			  type;
 }				data_t;
@@ -114,7 +114,7 @@ typedef struct
 {
 	t_vect center;
 	float radius;
-	color rgb;
+	t_color rgb;
 }			t_sphere;
 
 typedef struct
@@ -122,7 +122,7 @@ typedef struct
 	t_vect p0;
 	t_vect N;
 	float height;
-	color rgb;
+	t_color rgb;
 }			t_square;
 
 typedef struct
@@ -131,7 +131,7 @@ typedef struct
 	t_vect N;
 	float radius;
 	float height;
-	color rgb;
+	t_color rgb;
 }			t_cylinder;
 
 typedef struct
@@ -139,7 +139,7 @@ typedef struct
 	t_vect p0;
 	t_vect p1;
 	t_vect p2;
-	color rgb;
+	t_color rgb;
 }			t_triangle;
 
 typedef struct s_lst
@@ -192,7 +192,7 @@ t_vect	y_axis_rot(t_vect dir, float theta);
 t_vect	z_axis_rot(t_vect dir, float theta);
 int		parse_info_scene(t_list **scene, char *line);
 float	create_float(char **line);
-int		create_color(color *rgb, char **line);
+int		create_color(t_color *rgb, char **line);
 t_vect	create_vect(char **line);
 int		camera(t_list **scene, char *line);
 int		a_light(t_list **scene, char *line);
@@ -211,14 +211,14 @@ void	inter_sphere(t_sphere *sphere, data_t *data);
 void	object_parse(t_list *scene, data_t *data);
 void	light_loop(t_vect Pt, t_vect N, data_t *data, t_list *scene);
 void	inter_plane(t_plane *plane, data_t *data);
-int		shadow_ray(t_list *scene, data_t *data, color rgb);
+int		shadow_ray(t_list *scene, data_t *data, t_color rgb);
 int		inter_shadow_sphere(t_sdaw d_ray, t_sphere *sphere);
 int		inter_shadow_plane(t_sdaw d_ray, t_plane *plane);
 int		shadow_square(t_sdaw d_ray, t_square *square);
 int		shadow_cylinder(t_sdaw d_ray, t_cylinder *cy);
 int		shadow_triangle(t_sdaw d_ray, t_triangle *trgl);
 float	find_t0(float a, float b, float c);
-void	surface_color(data_t *data, color rgb);
+void	surface_color(data_t *data, t_color rgb);
 int		inter_plane_square(t_square *square, data_t *data);
 void	inter_cylinder(t_cylinder *cy, data_t *data);
 int		inter_disk(t_cylinder *cy, t_vect p, data_t *data);
@@ -227,7 +227,7 @@ t_vect	vect_init(float x, float y, float z);
 float	inter_triangle2(t_vect Pt, t_triangle *trgl, t_vect N);
 void	check_order_object(data_t *data, int n, int obj_type);
 void	temporary_value(data_t *data, float t, t_vect Pt, t_vect N);
-void	put_color_to_window(data_t *data, color rgb);
+void	put_color_to_window(data_t *data, t_color rgb);
 t_lst	*lstnew(data_t *content);
 void	lstadd_back(t_lst **alst, t_lst *new);
 int		deal_key(int key, img_lst *img_test);
@@ -236,7 +236,7 @@ void	screenshot_loop(t_lst *imga);
 void	free_data(data_t *data);
 void	free_imga(t_lst **imga);
 int		check_params1(char *line);
-int		check_rgb(color rgb);
+int		check_rgb(t_color rgb);
 t_vect	find_normal(t_vect Pt, t_cylinder *cy);
 t_vect	find_n(t_triangle *trgl);
 t_triangle	trgl_init(void);

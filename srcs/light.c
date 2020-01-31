@@ -6,22 +6,22 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 14:54:49 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/31 14:20:08 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/31 15:09:07 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-void	surface_color(data_t *data, color rgb)
+void	surface_color(data_t *data, t_color rgb)
 {
-	int		colora;
-	color	rgbr;
+	int		t_colora;
+	t_color	rgbr;
 
 	rgbr.r = (data->rgb.r > rgb.r) ? rgb.r : data->rgb.r;
 	rgbr.g = (data->rgb.g > rgb.g) ? rgb.g : data->rgb.g;
 	rgbr.b = (data->rgb.b > rgb.b) ? rgb.b : data->rgb.b;
-	colora = rgbr.r * pow(256, 2) + rgbr.g * 256 + rgbr.b;
-	if (colora < 0.0)
+	t_colora = rgbr.r * pow(256, 2) + rgbr.g * 256 + rgbr.b;
+	if (t_colora < 0.0)
 	{
 		rgbr.r = 0;
 		rgbr.g = 0;
@@ -30,7 +30,7 @@ void	surface_color(data_t *data, color rgb)
 	put_color_to_window(data, rgbr);
 }
 
-void	reflected_color2(t_aligth *light, color *rgb)
+void	reflected_color2(t_aligth *light, t_color *rgb)
 {
 	if (rgb->r < (light->rgb.r))
 		rgb->r = light->rgb.r;
@@ -40,7 +40,7 @@ void	reflected_color2(t_aligth *light, color *rgb)
 		rgb->b = light->rgb.b;
 }
 
-void	reflected_color(t_light *light, float dotp, color *rgb)
+void	reflected_color(t_light *light, float dotp, t_color *rgb)
 {
 	if (rgb->r < (light->rgb.r * light->ratio * dotp))
 		rgb->r = light->rgb.r * light->ratio * dotp;
@@ -56,7 +56,7 @@ void	light_loop(t_vect pt, t_vect n, data_t *data, t_list *scene)
 	t_object	*a_light;
 	t_light	*light_a;
 	t_list	*copy;
-	color	rgb;
+	t_color	rgb;
 
 	rgb.r = 0;
 	rgb.g = 0;

@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 19:25:01 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/31 14:03:22 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/31 15:09:45 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int		shadow_inter(data_t *data, t_light *light, t_list *scene)
 	return (0);
 }
 
-int		shadow_ray(t_list *scene, data_t *data, color rgb)
+int		shadow_ray(t_list *scene, data_t *data, t_color rgb)
 {
 	t_object	*light;
 	t_list	*copy;

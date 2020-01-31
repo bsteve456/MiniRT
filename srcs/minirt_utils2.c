@@ -6,13 +6,13 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 13:20:20 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/31 14:27:21 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/31 15:10:55 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-void	put_color_to_window(data_t *data, color rgb)
+void	put_color_to_window(data_t *data, t_color rgb)
 {
 	int x;
 

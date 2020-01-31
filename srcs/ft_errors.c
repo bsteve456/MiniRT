@@ -6,7 +6,7 @@
 /*   By: stbaleba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 18:10:19 by stbaleba          #+#    #+#             */
-/*   Updated: 2020/01/31 09:04:15 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/31 15:11:20 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		check_params1(char *line)
 	return (1);
 }
 
-int		check_rgb(color rgb)
+int		check_rgb(t_color rgb)
 {
 	if (rgb.b < 0 || rgb.g < 0 || rgb.r < 0)
 	{

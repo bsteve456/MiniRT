@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 17:28:04 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/31 14:16:11 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/31 15:07:45 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ float	create_float(char **line)
 	return (num * neg);
 }
 
-int		create_color(color *rgb, char **line)
+int		create_color(t_color *rgb, char **line)
 {
 	if (check_params1(*line) == -1)
 		return (-1);
