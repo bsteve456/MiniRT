@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/29 13:42:47 by blacking          #+#    #+#             */
-/*   Updated: 2020/02/01 09:22:34 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/02/01 11:28:54 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,9 @@ t_ray		init_ray(float i, float j, t_widw *widw, t_cam *cam)
 
 	new_ray.dir.x = i - (widw->x / 2);
 	new_ray.dir.y = (widw->y / 2) - j;
-	new_ray.dir.z = (widw->y / 2) / (tan((M_PI * 0.5 * cam->fov) / 180.0));
+	new_ray.dir.z = ((widw->y / 2) / (tan((M_PI * 0.5 * cam->fov) / 180.0)));
 	new_ray.dir = normalize(vectsub(new_ray.dir, cam->orig));
+//	printf("%f, %f , %f\n", new_ray.dir.x, new_ray.dir.y, new_ray.dir.z);
 	new_ray.dir = x_axis_rot(new_ray.dir, cam->orit.x);
 	new_ray.dir = y_axis_rot(new_ray.dir, cam->orit.y);
 	new_ray.dir = z_axis_rot(new_ray.dir, cam->orit.z);
