@@ -6,13 +6,13 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 17:21:08 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/31 09:05:21 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/31 17:30:27 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-void	free_data(data_t *data)
+void	free_data(t_data *data)
 {
 	free(data);
 }

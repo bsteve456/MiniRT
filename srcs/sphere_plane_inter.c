@@ -6,13 +6,13 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 09:47:34 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/31 14:19:19 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/31 17:25:45 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-void	sphere_n_pt(float t0, t_sphere *sphere, data_t *data)
+void	sphere_n_pt(float t0, t_sphere *sphere, t_data *data)
 {
 	t_vect pt;
 	t_vect n;
@@ -46,7 +46,7 @@ float	find_t0(float a, float b, float c)
 	return (t0);
 }
 
-void	inter_sphere(t_sphere *sphere, data_t *data)
+void	inter_sphere(t_sphere *sphere, t_data *data)
 {
 	float	a;
 	float	b;
@@ -64,26 +64,26 @@ void	inter_sphere(t_sphere *sphere, data_t *data)
 	}
 }
 
-void	inter_plane(t_plane *plane, data_t *data)
+void	inter_plane(t_plane *plane, t_data *data)
 {
 	t_vect	pt;
 	t_vect	p0l0;
 	float	t;
 	float	demom;
 
-	plane->N = normalize(plane->N);
-	if ((demom = vectdot(data->ray.dir, plane->N)) > 0)
-		plane->N = vectmult(plane->N, -1);
-	demom = vectdot(data->ray.dir, plane->N);
+	plane->n = normalize(plane->n);
+	if ((demom = vectdot(data->ray.dir, plane->n)) > 0)
+		plane->n = vectmult(plane->n, -1);
+	demom = vectdot(data->ray.dir, plane->n);
 	if (fabs(demom) > 0.00001f)
 	{
 		p0l0 = vectsub(plane->p0, data->ray.orig);
-		t = vectdot(p0l0, plane->N) / demom;
+		t = vectdot(p0l0, plane->n) / demom;
 		if (t >= 0.00001f)
 		{
 			pt = vectadd(data->ray.orig, vectmult(data->ray.dir, t));
 			data->rgbt = plane->rgb;
-			temporary_value(data, t, pt, plane->N);
+			temporary_value(data, t, pt, plane->n);
 		}
 	}
 }

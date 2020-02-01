@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 23:49:09 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/31 14:23:48 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/31 17:28:17 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ float	inter_triangle2(t_vect pt, t_triangle *trgl, t_vect n)
 	return (0);
 }
 
-int		inter_triangle(t_triangle *trgl, data_t *data)
+int		inter_triangle(t_triangle *trgl, t_data *data)
 {
 	t_vect	n;
 	float	t;

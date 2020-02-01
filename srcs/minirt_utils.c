@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 17:28:04 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/31 15:07:45 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/31 16:40:57 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,26 +73,26 @@ t_vect	create_vect(char **line)
 	return (res);
 }
 
-void	check_order_object(data_t *data, int n, int obj_type)
+void	check_order_object(t_data *data, int n, int obj_type)
 {
 	if (data->temp >= 0)
 	{
 		if (data->t == -1)
 		{
 			data->t = data->temp;
-			data->Pt = data->Ptemp;
-			data->N = data->Ntemp;
+			data->pt = data->ptemp;
+			data->n = data->ntemp;
 			data->rgb = data->rgbt;
-			data->n = n;
+			data->na = n;
 			data->type = obj_type;
 		}
 		else if (data->t > data->temp)
 		{
 			data->t = data->temp;
-			data->Pt = data->Ptemp;
-			data->N = data->Ntemp;
+			data->pt = data->ptemp;
+			data->n = data->ntemp;
 			data->rgb = data->rgbt;
-			data->n = n;
+			data->na = n;
 			data->type = obj_type;
 		}
 	}

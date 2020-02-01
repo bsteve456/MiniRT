@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/29 13:42:47 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/31 14:01:34 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/02/01 09:22:34 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ t_widw		*t_object_widw(t_list *copy)
 	return (NULL);
 }
 
-data_t		*init_data(t_list *copy)
+t_data		*init_data(t_list *copy)
 {
-	data_t *res;
+	t_data *res;
 	t_widw *widw;
 
-	if (!(res = ft_calloc(1, sizeof(data_t))))
+	if (!(res = ft_calloc(1, sizeof(t_data))))
 		return (NULL);
 	if ((res->mlx_ptr = mlx_init()) == NULL)
 		return (NULL);
@@ -59,7 +59,7 @@ t_ray		init_ray(float i, float j, t_widw *widw, t_cam *cam)
 	return (new_ray);
 }
 
-data_t		*complet_ray_pixel(float i, float j, t_cam *cam, data_t *data)
+t_data		*cplt_ray_pixel(float i, float j, t_cam *cam, t_data *data)
 {
 	data->x = i;
 	data->y = j;

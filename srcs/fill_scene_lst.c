@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 17:09:47 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/31 14:13:25 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/02/01 09:32:05 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	resolution(t_list **scene, char *line)
 {
 	t_object	*widw;
-	t_widw	*window;
+	t_widw		*window;
 
 	if (!(window = ft_calloc(1, sizeof(t_widw))))
 		window = 0;
@@ -43,7 +43,7 @@ int	resolution(t_list **scene, char *line)
 int	a_light(t_list **scene, char *line)
 {
 	t_object		*t_lighta;
-	t_aligth	*aligth;
+	t_aligth		*aligth;
 
 	if (!(t_lighta = ft_calloc(1, sizeof(t_object))))
 		return (0);
@@ -68,7 +68,7 @@ int	a_light(t_list **scene, char *line)
 int	camera(t_list **scene, char *line)
 {
 	t_object	*a_cam;
-	t_cam	*cam;
+	t_cam		*cam;
 
 	if (!(a_cam = ft_calloc(1, sizeof(t_object))))
 		return (0);
@@ -91,7 +91,7 @@ int	camera(t_list **scene, char *line)
 
 int	light_init(t_list **scene, char *line)
 {
-	t_object		*a_light;
+	t_object	*a_light;
 	t_light		*light;
 
 	if (!(a_light = ft_calloc(1, sizeof(t_object))))
@@ -115,7 +115,7 @@ int	light_init(t_list **scene, char *line)
 int	plane(t_list **scene, char *line)
 {
 	t_object	*a_plane;
-	t_plane	*plane;
+	t_plane		*plane;
 
 	if (!(a_plane = ft_calloc(1, sizeof(t_object))))
 		return (0);
@@ -127,7 +127,7 @@ int	plane(t_list **scene, char *line)
 	plane->p0 = create_vect(&line);
 	if (check_params1(line) == -1)
 		return (-1);
-	plane->N = create_vect(&line);
+	plane->n = create_vect(&line);
 	if (create_color(&(plane->rgb), &line) == -1)
 		return (-1);
 	a_plane->obj = plane;

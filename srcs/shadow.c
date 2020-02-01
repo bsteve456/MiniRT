@@ -6,40 +6,40 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 19:25:01 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/31 15:09:45 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/02/01 09:36:12 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-int		shadow_inter2(t_sdaw d_ray, t_object *obj, data_t *data, int nbis)
+int		shadow_inter2(t_sdaw d_ray, t_object *obj, t_data *data, int nbis)
 {
-	if (obj->type == 3 && data->n != nbis &&
+	if (obj->type == 3 && data->na != nbis &&
 	inter_shadow_sphere(d_ray, obj->obj) == 1)
 		return (1);
-	else if (obj->type == 5 && data->n != nbis &&
+	else if (obj->type == 5 && data->na != nbis &&
 	inter_shadow_plane(d_ray, obj->obj) == 1)
 		return (1);
-	else if (obj->type == 6 && data->n != nbis &&
+	else if (obj->type == 6 && data->na != nbis &&
 	shadow_square(d_ray, obj->obj) == 1)
 		return (1);
-	else if (obj->type == 7 && data->n != nbis &&
+	else if (obj->type == 7 && data->na != nbis &&
 	shadow_cylinder(d_ray, obj->obj) == 1)
 		return (1);
-	else if (obj->type == 8 && data->n != nbis &&
+	else if (obj->type == 8 && data->na != nbis &&
 	shadow_triangle(d_ray, obj->obj) == 1)
 		return (1);
 	return (0);
 }
 
-int		shadow_inter(data_t *data, t_light *light, t_list *scene)
+int		shadow_inter(t_data *data, t_light *light, t_list *scene)
 {
-	t_sdaw	d_ray;
+	t_sdaw		d_ray;
 	t_object	*obj;
-	int		nbis;
+	int			nbis;
 
 	nbis = 0;
-	d_ray.orig = data->Pt;
+	d_ray.orig = data->pt;
 	d_ray.dir = normalize(vectsub(light->orig, d_ray.orig));
 	d_ray.light_orig = light->orig;
 	while (scene)
@@ -53,12 +53,12 @@ int		shadow_inter(data_t *data, t_light *light, t_list *scene)
 	return (0);
 }
 
-int		shadow_ray(t_list *scene, data_t *data, t_color rgb)
+int		shadow_ray(t_list *scene, t_data *data, t_color rgb)
 {
 	t_object	*light;
-	t_list	*copy;
-	int		num;
-	int		a;
+	t_list		*copy;
+	int			num;
+	int			a;
 
 	copy = scene;
 	num = 0;

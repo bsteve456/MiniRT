@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_t_object_lst.c                                  :+:      :+:    :+:   */
+/*   fill_object_lst.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: stbaleba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/28 15:53:04 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/31 14:15:13 by stbaleba         ###   ########.fr       */
+/*   Created: 2020/02/01 09:31:07 by stbaleba          #+#    #+#             */
+/*   Updated: 2020/02/01 09:31:10 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		sphere(t_list **scene, char *line)
 {
-	t_object		*sphere;
+	t_object	*sphere;
 	t_sphere	*sphr;
 
 	if (!(sphere = ft_calloc(1, sizeof(t_object))))
@@ -37,7 +37,7 @@ int		sphere(t_list **scene, char *line)
 
 int		square(t_list **scene, char *line)
 {
-	t_object		*square;
+	t_object	*square;
 	t_square	*sqr;
 
 	if (!(square = ft_calloc(1, sizeof(t_object))))
@@ -50,7 +50,7 @@ int		square(t_list **scene, char *line)
 	sqr->p0 = create_vect(&line);
 	if (check_params1(line) == -1)
 		return (-1);
-	sqr->N = create_vect(&line);
+	sqr->n = create_vect(&line);
 	if (check_params1(line) == -1)
 		return (-1);
 	sqr->height = create_float(&line);
@@ -63,7 +63,7 @@ int		square(t_list **scene, char *line)
 
 int		cylinder(t_list **scene, char *line)
 {
-	t_object		*cylinder;
+	t_object	*cylinder;
 	t_cylinder	*cyldr;
 
 	if (!(cylinder = ft_calloc(1, sizeof(t_object))))
@@ -76,7 +76,7 @@ int		cylinder(t_list **scene, char *line)
 	cyldr->p0 = create_vect(&line);
 	if (check_params1(line) == -1)
 		return (-1);
-	cyldr->N = create_vect(&line);
+	cyldr->n = create_vect(&line);
 	if (check_params1(line) == -1)
 		return (-1);
 	cyldr->radius = create_float(&line) / 2;
@@ -92,7 +92,7 @@ int		cylinder(t_list **scene, char *line)
 
 int		triangle(t_list **scene, char *line)
 {
-	t_object		*triangle;
+	t_object	*triangle;
 	t_triangle	*trgl;
 
 	if (!(triangle = ft_calloc(1, sizeof(t_object))))

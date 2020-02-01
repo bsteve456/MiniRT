@@ -6,15 +6,15 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 09:25:11 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/31 14:02:39 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/02/01 09:26:16 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-void	ambient_light(t_list *scene, data_t *data)
+void	ambient_light(t_list *scene, t_data *data)
 {
-	t_object		*alight;
+	t_object	*alight;
 	t_aligth	*light;
 
 	while (scene)
@@ -30,7 +30,7 @@ void	ambient_light(t_list *scene, data_t *data)
 	}
 }
 
-void	object_parse2(t_object *obj, data_t *data)
+void	object_parse2(t_object *obj, t_data *data)
 {
 	if (obj->type == 5)
 		inter_plane(obj->obj, data);
@@ -44,17 +44,17 @@ void	object_parse2(t_object *obj, data_t *data)
 		inter_triangle(obj->obj, data);
 }
 
-void	object_parse(t_list *scene, data_t *data)
+void	object_parse(t_list *scene, t_data *data)
 {
 	t_object	*obj;
-	t_list	*copy;
-	int		n;
+	t_list		*copy;
+	int			n;
 
 	copy = scene;
 	data->t = -1;
 	data->temp = -1;
 	n = 0;
-	data->n = 0;
+	data->na = 0;
 	while (scene)
 	{
 		obj = scene->content;
@@ -64,5 +64,5 @@ void	object_parse(t_list *scene, data_t *data)
 		scene = scene->next;
 	}
 	if (data->t != -1)
-		light_loop(data->Pt, data->N, data, copy);
+		lght_lp(data->pt, data->n, data, copy);
 }

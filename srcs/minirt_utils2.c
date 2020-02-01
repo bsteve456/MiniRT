@@ -6,13 +6,13 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 13:20:20 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/31 15:10:55 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/31 17:51:22 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-void	put_color_to_window(data_t *data, t_color rgb)
+void	put_color_to_window(t_data *data, t_color rgb)
 {
 	int x;
 
@@ -30,7 +30,7 @@ float	vectdot(t_vect v1, t_vect v2)
 	return (res);
 }
 
-int		x_close(img_lst *img_test)
+int		x_close(t_img_lst *img_test)
 {
 	t_lst *imga;
 
@@ -41,7 +41,7 @@ int		x_close(img_lst *img_test)
 	return (0);
 }
 
-int		deal_key(int key, img_lst *img_test)
+int		deal_key(int key, t_img_lst *img_test)
 {
 	t_lst *imga;
 
@@ -62,9 +62,9 @@ int		deal_key(int key, img_lst *img_test)
 	return (0);
 }
 
-void	temporary_value(data_t *data, float t, t_vect pt, t_vect n)
+void	temporary_value(t_data *data, float t, t_vect pt, t_vect n)
 {
 	data->temp = t;
-	data->Ptemp = pt;
-	data->Ntemp = n;
+	data->ptemp = pt;
+	data->ntemp = n;
 }

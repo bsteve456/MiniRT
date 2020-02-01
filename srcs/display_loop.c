@@ -6,19 +6,19 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/29 13:28:17 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/31 14:00:05 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/02/01 09:28:03 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-void	display_list(t_list *scene, data_t *data)
+void	display_list(t_list *scene, t_data *data)
 {
 	ambient_light(scene, data);
 	object_parse(scene, data);
 }
 
-void	window_loop(t_list *scene, data_t *data, t_cam *cam)
+void	window_loop(t_list *scene, t_data *data, t_cam *cam)
 {
 	float i;
 	float j;
@@ -29,7 +29,7 @@ void	window_loop(t_list *scene, data_t *data, t_cam *cam)
 		j = 0;
 		while (j < data->widw->y)
 		{
-			data = complet_ray_pixel(i, j, cam, data);
+			data = cplt_ray_pixel(i, j, cam, data);
 			display_list(scene, data);
 			j++;
 		}
@@ -39,8 +39,8 @@ void	window_loop(t_list *scene, data_t *data, t_cam *cam)
 
 void	display_camera(t_lst *imga, int n)
 {
-	img_lst	test;
-	t_lst	*copy;
+	t_img_lst	test;
+	t_lst		*copy;
 
 	test.img = imga;
 	copy = imga;
@@ -56,7 +56,7 @@ void	display_camera(t_lst *imga, int n)
 	free_imga(&imga);
 }
 
-void	init_img(data_t *data)
+void	init_img(t_data *data)
 {
 	int bpp;
 	int size_line;
@@ -69,9 +69,9 @@ void	init_img(data_t *data)
 void	camera_loop(t_list *scene, int n)
 {
 	t_object	*cam_obj;
-	data_t	*data;
-	t_list	*copy;
-	t_lst	*img;
+	t_data		*data;
+	t_list		*copy;
+	t_lst		*img;
 
 	img = NULL;
 	copy = scene;

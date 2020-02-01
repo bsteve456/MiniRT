@@ -6,13 +6,13 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 14:54:49 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/31 15:09:07 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/02/01 09:33:07 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-void	surface_color(data_t *data, t_color rgb)
+void	surface_color(t_data *data, t_color rgb)
 {
 	int		t_colora;
 	t_color	rgbr;
@@ -50,13 +50,13 @@ void	reflected_color(t_light *light, float dotp, t_color *rgb)
 		rgb->b = light->rgb.b * light->ratio * dotp;
 }
 
-void	light_loop(t_vect pt, t_vect n, data_t *data, t_list *scene)
+void	lght_lp(t_vect pt, t_vect n, t_data *data, t_list *scene)
 {
-	t_vect	l;
+	t_vect		l;
 	t_object	*a_light;
-	t_light	*light_a;
-	t_list	*copy;
-	t_color	rgb;
+	t_light		*light_a;
+	t_list		*copy;
+	t_color		rgb;
 
 	rgb.r = 0;
 	rgb.g = 0;

@@ -6,13 +6,13 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 15:14:08 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/31 09:51:05 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/01/31 17:30:11 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-t_lst	*lstnew(data_t *content)
+t_lst	*lstnew(t_data *content)
 {
 	t_lst *new;
 
