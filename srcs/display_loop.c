@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/29 13:28:17 by blacking          #+#    #+#             */
-/*   Updated: 2020/02/01 11:41:40 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/02/03 09:50:08 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	window_loop(t_list *scene, t_data *data, t_cam *cam)
 	}
 }
 
-void	display_camera(t_lst *imga, int n)
+void	display_camera(t_lst *imga, int n, int na)
 {
 	t_img_lst	test;
 	t_lst		*copy;
@@ -45,7 +45,9 @@ void	display_camera(t_lst *imga, int n)
 	test.img = imga;
 	copy = imga;
 	test.copy = copy;
-	if (n == 1)
+	if (na == 0)
+		write(1, "Error\nNo camera.\n", 17);
+	else if (n == 1)
 		screenshot_loop(copy);
 	else
 	{
@@ -91,8 +93,5 @@ void	camera_loop(t_list *scene, int n)
 		copy = copy->next;
 	}
 	free_data(data);
-	if (na > 0)
-		display_camera(img, n);
-	else
-		write(1, "Error\nNo camera.\n", 17);
+	display_camera(img, n, na);
 }
