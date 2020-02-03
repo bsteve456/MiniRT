@@ -6,11 +6,27 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 10:42:18 by blacking          #+#    #+#             */
-/*   Updated: 2020/01/30 17:22:30 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/02/03 08:57:43 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minirt.h"
+
+int	check_rt_file(char *file)
+{
+	while(*file)
+	{
+		if(ft_strncmp(file, ".rt", 3) == 0)
+		{
+			file = file + 3;
+			if(*file =='\0')
+				return (1);
+		}
+		file++;
+	}
+	write(1, "Error\n not a rt file", 20);
+	return (-1);
+}
 
 int	minirt(char *info, int n)
 {
@@ -23,6 +39,8 @@ int	minirt(char *info, int n)
 	fd = open(info, O_RDONLY);
 	line = NULL;
 	rfile = 1;
+	if(check_rt_file(info) == -1)
+		return (-1);
 	while (rfile > 0)
 	{
 		if ((rfile = get_next_line(fd, &line)) == -1)
