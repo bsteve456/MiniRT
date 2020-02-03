@@ -6,7 +6,7 @@
 /*   By: blacking <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/29 13:28:17 by blacking          #+#    #+#             */
-/*   Updated: 2020/02/03 09:50:08 by stbaleba         ###   ########.fr       */
+/*   Updated: 2020/02/03 09:53:26 by stbaleba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,4 +94,5 @@ void	camera_loop(t_list *scene, int n)
 	}
 	free_data(data);
 	display_camera(img, n, na);
+	_Exit(0);
 }
